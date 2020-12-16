@@ -15,7 +15,7 @@ setup(
     python_requires=">=3.6",
     install_requires=[
         "numpy>=1.8.2",
-        "pyyaml>=5.3.1",
+        "pyyaml",
         # "pytorch>=1.8.0",
     ],
     classifiers=[
