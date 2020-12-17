@@ -9,6 +9,7 @@
     kwargs:
       moldesc: H 0 0 0
       basis: 6-311++G**
+      spin: 1
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
 
 - name: Ionization energy of He atom
@@ -36,6 +37,7 @@
     kwargs:
       moldesc: Li 0 0 0
       basis: 6-311++G**
+      spin: 1
   - type: mol
     kwargs:
       moldesc: Li 0 0 0
@@ -68,6 +70,7 @@
     kwargs:
       moldesc: B 0 0 0
       basis: 6-311++G**
+      spin: 1
   - type: mol
     kwargs:
       moldesc: B 0 0 0
@@ -138,6 +141,7 @@
     kwargs:
       moldesc: F 0 0 0
       basis: 6-311++G**
+      spin: 1
   - type: mol
     kwargs:
       moldesc: F 0 0 0
@@ -176,6 +180,7 @@
     kwargs:
       moldesc: H 0 0 0
       basis: 6-311++G**
+      spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=1333740&charge=0 for bond length and
     https://cccbdb.nist.gov/ea2.asp?casno=1333740&charge=0 for the atomization energy
@@ -193,6 +198,7 @@
     kwargs:
       moldesc: Li 0 0 0
       basis: 6-311++G**
+      spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=14452596&charge=0 for bond length and
     https://cccbdb.nist.gov/ea2.asp?casno=14452596&charge=0 for the atomization energy
@@ -210,10 +216,12 @@
     kwargs:
       moldesc: Li 0 0 0
       basis: 6-311++G**
+      spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
       basis: 6-311++G**
+      spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7580678&charge=0 for bond length and
     https://cccbdb.nist.gov/ea2.asp?casno=7580678&charge=0 for the atomization energy
@@ -232,6 +240,7 @@
     kwargs:
       moldesc: B 0 0 0
       basis: 6-311++G**
+      spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=14452610&charge=0 for bond length and
     https://cccbdb.nist.gov/ea2.asp?casno=14452610&charge=0 for the atomization energy
@@ -300,6 +309,7 @@
     kwargs:
       moldesc: N 1.0873 0 0; O -1.0873 0 0
       basis: 6-311++G**
+      spin: 1
   - type: mol
     kwargs:
       moldesc: N 0 0 0
@@ -313,6 +323,178 @@
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=10102439&charge=0 for bond length and
     https://cccbdb.nist.gov/ea2.asp?casno=10102439&charge=0 for the atomization energy
+
+# density matrix
+## dm of 1 atom
+- name: Density matrix of H
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+
+- name: Density matrix of He
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: He 0 0 0
+      basis: 6-311+G**
+
+- name: Density matrix of Li
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Li 0 0 0
+      basis: 6-311++G**
+      spin: 1
+
+- name: Density matrix of Be
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Be 0 0 0
+      basis: 6-311++G**
+
+- name: Density matrix of B
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: B 0 0 0
+      basis: 6-311++G**
+      spin: 1
+
+- name: Density matrix of C
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G**
+      spin: 2
+
+- name: Density matrix of N
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 0
+      basis: 6-311++G**
+      spin: 3
+
+- name: Density matrix of O
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+
+- name: Density matrix of F
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: F 0 0 0
+      basis: 6-311++G**
+      spin: 1
+
+## density matrix for diatomic molecules
+- name: Density matrix of H2
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: H 0.7005 0 0; H -0.7005 0 0
+      basis: 6-311++G**
+
+- name: Density matrix of Li2
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Li 2.52562 0 0; Li -2.52562 0 0
+      basis: 6-311++G**
+
+- name: Density matrix of LiH
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Li 1.5070 0 0; H -1.5070 0 0
+      basis: 6-311++G**
+
+- name: Density matrix of B2
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: B 1.5023 0 0; B -1.5023 0 0
+      basis: 6-311++G**
+      spin: 2
+
+- name: Density matrix of N2
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: N 1.0372 0 0; N -1.0372 0 0
+      basis: 6-311++G**
+
+- name: Density matrix of O2
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: O 1.1409 0 0; O -1.1409 0 0
+      basis: 6-311++G**
+      spin: 2
+
+- name: Density matrix of F2
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: F 1.3341 0 0; F -1.3341 0 0
+      basis: 6-311++G**
 
 # - name: Bond length of H2
 #   type: bl

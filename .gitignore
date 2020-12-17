@@ -6,6 +6,9 @@ rprofile.py
 xcdnn2/lightning_logs/
 xcdnn2/logs/
 
+# pickle files
+*.pkl
+
 # library dependence
 CMakeCache.txt
 CMakeFiles
