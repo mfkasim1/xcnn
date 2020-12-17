@@ -78,6 +78,8 @@ class LitDFTXC(pl.LightningModule):
         return parser
 
 if __name__ == "__main__":
+    from xcdnn2.utils import subs_present
+
     torch.manual_seed(123)
 
     # parsing the hyperparams
@@ -94,6 +96,14 @@ if __name__ == "__main__":
 
     # load the dataset and split into train and val
     dset = DFTDataset()
+    train_atoms = ["H", "He", "Li", "Be", "B"]
+    val_atoms = ["C", "N", "O", "F"]
+
+    train_filter = lambda obj: subs_present(train_atoms, obj["systems"][0]["kwargs"]["moldesc"])
+    val_filter = lambda obj: subs_present(val_atoms, obj["systems"][0]["kwargs"]["moldesc"])
+    train_idxs = dset.get_indices(train_filter)
+    val_idxs = dset.get_indices(val_filter)
+
     train_idxs = range(9)
     val_idxs = range(9, 17)
     dset_train = Subset(dset, train_idxs)

@@ -2,7 +2,7 @@ import os
 import yaml
 import warnings
 import pickle
-from typing import Optional, Dict, List, Union, Tuple
+from typing import Optional, Dict, List, Union, Tuple, Callable
 import hashlib
 import numpy as np
 from pyscf import gto, cc, scf
@@ -29,9 +29,6 @@ class DFTDataset(Dataset):
             self.obj = yaml.safe_load(f)
 
         for i in range(len(self.obj)):
-            # assign the object id
-            self.obj[i]["id"] = i
-
             # evaluate the true_val and save it to a temporary directory
             true_val = self.obj[i]["true_val"]
             if isinstance(true_val, str):
@@ -42,6 +39,10 @@ class DFTDataset(Dataset):
 
     def __getitem__(self, i: int) -> Dict:
         return self.obj[i]
+
+    def get_indices(self, filtfcn: Callable[[Dict], bool]) -> List[int]:
+        # return the id of the datasets that passes the filter function
+        return [i for (i, obj) in enumerate(self.obj) if filtfcn(obj)]
 
 def _eval_true_val(obji: Dict, true_val: str):
     # get the true value if true_val is a string
