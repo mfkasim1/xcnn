@@ -1,54 +1,51 @@
 import os
 import yaml
 from typing import Optional, Dict, Union, List
+import argparse
 import torch
 import xitorch as xt
 import pytorch_lightning as pl
+from pytorch_lightning.callbacks import ModelCheckpoint
 from torch.utils.data import DataLoader, Subset
-from dqc.api.getxc import get_libxc
-from dqc.xc.base_xc import BaseXC
 from dqc.utils.datastruct import ValGrad, SpinParam
+from dqc.api.getxc import get_libxc
 from xcdnn2.dft_dataset import DFTDataset, Evaluator
-from xcdnn2.xcmodels import BaseNNXC, NNLDA, NNGGA
+from xcdnn2.xcmodels import HybridXC
 
 ###################### training module ######################
-
-class Hybrid(BaseNNXC):
-    def __init__(self, xcstr: str, nnmodel: torch.nn.Module,
-                 dtype: torch.dtype = torch.double,
-                 device: torch.device = torch.device("cpu")):
-        # hybrid libxc and neural network xc where it starts as libxc and then
-        # trains the weights of libxc and nn xc
-
-        super().__init__()
-        self.xc = get_libxc(xcstr)
-        if self.xc.family == 1:
-            self.nnxc = NNLDA(nnmodel)
-        elif self.xc.family == 2:
-            self.nnxc = NNGGA(nnmodel)
-        elif self.xc.family == 3:
-            self.nnxc = NNMGGA(nnmodel)
-
-        self.aweight = torch.nn.Parameter(torch.tensor(0.0, dtype=dtype, device=device, requires_grad=True))
-        self.bweight = torch.nn.Parameter(torch.tensor(1.0, dtype=dtype, device=device, requires_grad=True))
-        self.weight_activation = torch.nn.Identity()
-
-    @property
-    def family(self) -> int:
-        return self.xc.family
-
-    def get_edensityxc(self, densinfo: Union[ValGrad, SpinParam[ValGrad]]) -> torch.Tensor:
-        nnlda_ene = self.nnxc.get_edensityxc(densinfo)
-        lda_ene = self.xc.get_edensityxc(densinfo)
-        aweight = self.weight_activation(self.aweight)
-        bweight = self.weight_activation(self.bweight)
-        return nnlda_ene * aweight + lda_ene * bweight
-
 class LitDFTXC(pl.LightningModule):
-    def __init__(self, evaluator: Evaluator, hparams: Dict):
+    def __init__(self, hparams: Dict):
         super().__init__()
-        self.evl = evaluator
+        self.evl = self._construct_model(hparams)
         self.hparams = hparams
+
+    def _construct_model(self, hparams: Dict) -> Evaluator:
+        # model-specific hyperparams
+        libxc = hparams["libxc"]
+        nhid = hparams["nhid"]
+
+        # prepare the nn xc model
+        family = get_libxc(libxc).family
+        if family == 1:
+            ninp = 2
+        elif family == 2:
+            ninp = 3
+        else:
+            raise RuntimeError("Unimplemented nn for xc family %d" % family)
+
+        # setup the xc nn model
+        nnmodel = torch.nn.Sequential(
+            torch.nn.Linear(ninp, nhid),
+            torch.nn.Softplus(),
+            torch.nn.Linear(nhid, 1, bias=False),
+        ).to(torch.double)
+        model_nnlda = HybridXC(args.libxc, nnmodel)
+
+        weights = {
+            "ie": hparams["iew"],
+            "ae": hparams["aew"],
+        }
+        return Evaluator(model_nnlda, weights)
 
     def configure_optimizers(self):
         params = self.parameters()
@@ -65,41 +62,35 @@ class LitDFTXC(pl.LightningModule):
         self.log("val_loss", loss)
         return loss
 
+    @staticmethod
+    def add_model_specific_args(parent_parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
+        parser = argparse.ArgumentParser(parents=[parent_parser], add_help=False)
+        parser.add_argument("--nhid", type=int, default=10,
+                            help="The number of hidden layers")
+        parser.add_argument("--libxc", type=str, default="lda_x",
+                            help="Initial xc to be used")
+        parser.add_argument("--lr", type=float, default=1e-4,
+                            help="Learning rate")
+        parser.add_argument("--iew", type=float, default=630.0,
+                            help="Weight of ionization energy")
+        parser.add_argument("--aew", type=float, default=630.0,
+                            help="Weight of atomization energy")
+        return parser
+
 if __name__ == "__main__":
     torch.manual_seed(123)
-    # hyperparams
-    libxc = "gga_x_pbe"
-    # libxc = "lda_x"
-    nhid = 10
-    weights = {
-        "ie": 630.0,
-        "ae": 630.0,
-    }
-    hparams = {
-        "lr": 1e-4
-    }
 
-    family = get_libxc(libxc).family
-    if family == 1:
-        ninp = 2
-    elif family == 2:
-        ninp = 3
-    else:
-        raise RuntimeError("Unimplemented nn for xc family %d" % family)
+    # parsing the hyperparams
+    parser = argparse.ArgumentParser()
+    parser = LitDFTXC.add_model_specific_args(parser)
+    # parser = pl.Trainer.add_argparse_args(parser)
+    args = parser.parse_args()
 
-    torch.autograd.set_detect_anomaly(True)
+    # putting all the hyperparameters in a dictionary
+    hparams = vars(args)
 
-    # prepare the nn xc model
-    nnmodel = torch.nn.Sequential(
-        torch.nn.Linear(ninp, nhid),
-        torch.nn.Softplus(),
-        torch.nn.Linear(nhid, 1, bias=False),
-    ).to(torch.double)
-
-    # setup the xc model
-    model_nnlda = Hybrid(libxc, nnmodel)
-    evl = Evaluator(model_nnlda, weights)
-    plsystem = LitDFTXC(evl, hparams)
+    # create the lightning module
+    plsystem = LitDFTXC(hparams)
 
     # load the dataset and split into train and val
     dset = DFTDataset()
@@ -112,7 +103,8 @@ if __name__ == "__main__":
 
     # set up the logger and trainer
     tb_logger = pl.loggers.TensorBoardLogger('logs/')
-    trainer = pl.Trainer(logger=tb_logger)
+    chkpt_val = ModelCheckpoint(monitor="val_loss", save_top_k=4)
+    trainer = pl.Trainer(logger=tb_logger, callbacks=[chkpt_val])
     trainer.fit(plsystem,
                 train_dataloader=dloader_train,
                 val_dataloaders=dloader_val)

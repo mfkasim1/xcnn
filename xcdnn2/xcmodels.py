@@ -4,6 +4,7 @@ from typing import Union, Iterator, List
 from dqc.xc.base_xc import BaseXC
 from dqc.utils.datastruct import ValGrad, SpinParam
 from dqc.utils.safeops import safenorm
+from dqc.api.getxc import get_libxc
 
 class BaseNNXC(BaseXC, torch.nn.Module):
     @abstractproperty
@@ -97,3 +98,34 @@ class NNGGA(BaseNNXC):
         res = self.nnmodel(x) * n  # (*BD, nr)
         res = res.squeeze(-1)
         return res
+
+class HybridXC(BaseNNXC):
+    def __init__(self, xcstr: str, nnmodel: torch.nn.Module,
+                 dtype: torch.dtype = torch.double,
+                 device: torch.device = torch.device("cpu")):
+        # hybrid libxc and neural network xc where it starts as libxc and then
+        # trains the weights of libxc and nn xc
+
+        super().__init__()
+        self.xc = get_libxc(xcstr)
+        if self.xc.family == 1:
+            self.nnxc = NNLDA(nnmodel)
+        elif self.xc.family == 2:
+            self.nnxc = NNGGA(nnmodel)
+        elif self.xc.family == 3:
+            self.nnxc = NNMGGA(nnmodel)
+
+        self.aweight = torch.nn.Parameter(torch.tensor(0.0, dtype=dtype, device=device, requires_grad=True))
+        self.bweight = torch.nn.Parameter(torch.tensor(1.0, dtype=dtype, device=device, requires_grad=True))
+        self.weight_activation = torch.nn.Identity()
+
+    @property
+    def family(self) -> int:
+        return self.xc.family
+
+    def get_edensityxc(self, densinfo: Union[ValGrad, SpinParam[ValGrad]]) -> torch.Tensor:
+        nnlda_ene = self.nnxc.get_edensityxc(densinfo)
+        lda_ene = self.xc.get_edensityxc(densinfo)
+        aweight = self.weight_activation(self.aweight)
+        bweight = self.weight_activation(self.bweight)
+        return nnlda_ene * aweight + lda_ene * bweight
