@@ -75,6 +75,8 @@ class LitDFTXC(pl.LightningModule):
                             help="Weight of ionization energy")
         parser.add_argument("--aew", type=float, default=630.0,
                             help="Weight of atomization energy")
+        parser.add_argument("--dmw", type=float, default=630.0,
+                            help="Weight of density matrix")
         return parser
 
 if __name__ == "__main__":
