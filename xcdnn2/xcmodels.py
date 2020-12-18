@@ -101,6 +101,8 @@ class NNGGA(BaseNNXC):
 
 class HybridXC(BaseNNXC):
     def __init__(self, xcstr: str, nnmodel: torch.nn.Module,
+                 aweight0: float = 0.0,  # weight of the neural network
+                 bweight0: float = 1.0,  # weight of the default xc
                  dtype: torch.dtype = torch.double,
                  device: torch.device = torch.device("cpu")):
         # hybrid libxc and neural network xc where it starts as libxc and then
@@ -115,8 +117,8 @@ class HybridXC(BaseNNXC):
         elif self.xc.family == 3:
             self.nnxc = NNMGGA(nnmodel)
 
-        self.aweight = torch.nn.Parameter(torch.tensor(0.0, dtype=dtype, device=device, requires_grad=True))
-        self.bweight = torch.nn.Parameter(torch.tensor(1.0, dtype=dtype, device=device, requires_grad=True))
+        self.aweight = torch.nn.Parameter(torch.tensor(aweight0, dtype=dtype, device=device, requires_grad=True))
+        self.bweight = torch.nn.Parameter(torch.tensor(bweight0, dtype=dtype, device=device, requires_grad=True))
         self.weight_activation = torch.nn.Identity()
 
     @property
