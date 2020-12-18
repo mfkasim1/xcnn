@@ -153,11 +153,10 @@ class Evaluator(torch.nn.Module):
 
     def _save_dm_cache(self, s: str, dm: Union[torch.Tensor, SpinParam[torch.Tensor]]):
         if isinstance(dm, SpinParam):
-            dm.u = dm.u.detach()
-            dm.d = dm.d.detach()
+            dm_copy = SpinParam(u=dm.u.detach(), d=dm.d.detach())
         else:
-            dm = dm.detach()
-        self.dm_dict[s] = dm
+            dm_copy = dm.detach()
+        self.dm_dict[s] = dm_copy
 
     def _get_glob(self, systems: List[Dict]):
         # return the global variables for the command evaluation
