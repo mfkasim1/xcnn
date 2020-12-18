@@ -44,6 +44,7 @@ class LitDFTXC(pl.LightningModule):
         weights = {
             "ie": hparams["iew"],
             "ae": hparams["aew"],
+            "dm": hparams["dmw"],
         }
         return Evaluator(model_nnlda, weights)
 
@@ -75,7 +76,7 @@ class LitDFTXC(pl.LightningModule):
                             help="Weight of ionization energy")
         parser.add_argument("--aew", type=float, default=630.0,
                             help="Weight of atomization energy")
-        parser.add_argument("--dmw", type=float, default=630.0,
+        parser.add_argument("--dmw", type=float, default=200.0,
                             help="Weight of density matrix")
         return parser
 
@@ -106,8 +107,10 @@ if __name__ == "__main__":
     train_idxs = dset.get_indices(train_filter)
     val_idxs = dset.get_indices(val_filter)
 
-    train_idxs = range(9)
-    val_idxs = range(9, 17)
+    # train_idxs = range(24, 26)  # dm
+    # val_idxs = range(20, 23)
+    # train_idxs = range(3)  # ie
+    # val_idxs = range(3, 6)
     dset_train = Subset(dset, train_idxs)
     dset_val = Subset(dset, val_idxs)
     dloader_train = DataLoader(dset_train, batch_size=None)
