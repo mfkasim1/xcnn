@@ -55,12 +55,12 @@ class LitDFTXC(pl.LightningModule):
 
     def training_step(self, train_batch: Dict, batch_idx: int) -> torch.Tensor:
         loss = self.evl.calc_loss_function(train_batch)
-        self.log("train_loss", loss)
+        self.log("train_loss", loss, on_step=False, on_epoch=True)
         return loss
 
     def validation_step(self, validation_batch: Dict, batch_idx: int) -> torch.Tensor:
         loss = self.evl.calc_loss_function(validation_batch)
-        self.log("val_loss", loss)
+        self.log("val_loss", loss, on_step=False, on_epoch=True)
         return loss
 
     @staticmethod
@@ -87,6 +87,8 @@ if __name__ == "__main__":
 
     # parsing the hyperparams
     parser = argparse.ArgumentParser()
+    parser.add_argument("--record", action="store_const", default=False, const=True,
+                        help="Flag to record the progress")
     parser = LitDFTXC.add_model_specific_args(parser)
     # parser = pl.Trainer.add_argparse_args(parser)
     args = parser.parse_args()
@@ -116,10 +118,14 @@ if __name__ == "__main__":
     dloader_train = DataLoader(dset_train, batch_size=None)
     dloader_val = DataLoader(dset_val, batch_size=None)
 
-    # set up the logger and trainer
-    tb_logger = pl.loggers.TensorBoardLogger('logs/')
-    chkpt_val = ModelCheckpoint(monitor="val_loss", save_top_k=4)
-    trainer = pl.Trainer(logger=tb_logger, callbacks=[chkpt_val])
+    # setup the trainer
+    if args.record:
+        # set up the logger
+        tb_logger = pl.loggers.TensorBoardLogger('logs/')
+        chkpt_val = ModelCheckpoint(monitor="val_loss", save_top_k=4)
+        trainer = pl.Trainer(logger=tb_logger, callbacks=[chkpt_val])
+    else:
+        trainer = pl.Trainer(logger=False, checkpoint_callback=False)
     trainer.fit(plsystem,
                 train_dataloader=dloader_train,
                 val_dataloaders=dloader_val)
