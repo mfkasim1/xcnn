@@ -1,13 +1,9 @@
-import os
-import yaml
-from typing import Optional, Dict, Union, List
+from typing import Dict
 import argparse
 import torch
-import xitorch as xt
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint
 from torch.utils.data import DataLoader, Subset
-from dqc.utils.datastruct import ValGrad, SpinParam
 from dqc.api.getxc import get_libxc
 from xcdnn2.dft_dataset import DFTDataset, Evaluator
 from xcdnn2.xcmodels import HybridXC
