@@ -7,6 +7,7 @@ import hashlib
 import numpy as np
 from pyscf import gto, cc, scf
 import torch
+import xitorch as xt
 from torch.utils.data import Dataset
 from dqc.system.base_system import BaseSystem
 from dqc.system.mol import Mol
@@ -107,17 +108,21 @@ class Evaluator(torch.nn.Module):
         # calculate the loss function given the item
         itemtype = item["type"]
 
-        with warnings.catch_warnings(record=True) as w:
-            # evaluate the command
-            val = eval(item["cmd"], self._get_glob(item["systems"]))
+        with warnings.catch_warnings():
+            warnings.simplefilter("always", xt.MathWarning)
+            warnings.simplefilter("error", xt.ConvergenceWarning)
 
-            # compare the calcluated value with the true value
-            true_val = self._get_true_val(item["true_val"], itemtype)
-            loss = self._get_loss_func(true_val, val, itemtype)
+            try:
+                # evaluate the command
+                val = eval(item["cmd"], self._get_glob(item["systems"]))
 
-            # if there is a convergence warning, do not propagate the gradient
-            if len(w) > 0:
-                loss = loss * 0 + loss.detach()
+                # compare the calcluated value with the true value
+                true_val = self._get_true_val(item["true_val"], itemtype)
+                loss = self._get_loss_func(true_val, val, itemtype)
+
+            except xt.ConvergenceWarning:
+                # if there is a convergence warning, do not propagate the gradient
+                loss = sum(p.sum() * 0 for p in self.xc.parameters())
 
         return loss
 
