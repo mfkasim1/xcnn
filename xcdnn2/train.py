@@ -68,6 +68,8 @@ class LitDFTXC(pl.LightningModule):
                             help="Initial xc to be used")
         parser.add_argument("--lr", type=float, default=1e-4,
                             help="Learning rate")
+        parser.add_argument("--clipval", type=float, default=0,
+                            help="Clip gradients with norm above this value. 0 means no clipping.")
         parser.add_argument("--iew", type=float, default=630.0,
                             help="Weight of ionization energy")
         parser.add_argument("--aew", type=float, default=630.0,
@@ -98,7 +100,7 @@ if __name__ == "__main__":
     # load the dataset and split into train and val
     dset = DFTDataset()
     train_atoms = ["H", "He", "Li", "Be", "B"]
-    val_atoms = ["C", "N", "O", "F"]
+    val_atoms = ["C", "N", "O", "F", "Ne"]
 
     train_filter = lambda obj: subs_present(train_atoms, obj["systems"][0]["kwargs"]["moldesc"])
     val_filter = lambda obj: subs_present(val_atoms, obj["systems"][0]["kwargs"]["moldesc"])
@@ -115,13 +117,20 @@ if __name__ == "__main__":
     dloader_val = DataLoader(dset_val, batch_size=None)
 
     # setup the trainer
+    trainer_kwargs = {
+        "logger": False,
+        "checkpoint_callback": False,
+        "num_sanity_val_steps": 0,
+        "gradient_clip_val": args.clipval
+    }
     if args.record:
         # set up the logger
         tb_logger = pl.loggers.TensorBoardLogger('logs/')
         chkpt_val = ModelCheckpoint(monitor="val_loss", save_top_k=4)
-        trainer = pl.Trainer(logger=tb_logger, callbacks=[chkpt_val])
-    else:
-        trainer = pl.Trainer(logger=False, checkpoint_callback=False)
+        trainer_kwargs["logger"] = tb_logger
+        trainer_kwargs["checkpoint_callback"] = [chkpt_val]
+
+    trainer = pl.Trainer(**trainer_kwargs)
     trainer.fit(plsystem,
                 train_dataloader=dloader_train,
                 val_dataloaders=dloader_val)

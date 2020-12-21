@@ -150,21 +150,21 @@
       spin: 2
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
 
-# - name: Ionization energy of Ne atom
-#   type: ie
-#   cmd: energy(systems[1]) - energy(systems[0])
-#   true_val: 0.792482331026
-#   systems:
-#   - type: mol
-#     kwargs:
-#       moldesc: Ne 0 0 0
-#       basis: 6-311++G**
-#   - type: mol
-#     kwargs:
-#       moldesc: Ne 0 0 0
-#       basis: 6-311++G**
-#       charge: 1
-#   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
+- name: Ionization energy of Ne atom
+  type: ie
+  cmd: energy(systems[1]) - energy(systems[0])
+  true_val: 0.792482331026
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Ne 0 0 0
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: Ne 0 0 0
+      basis: 6-311++G**
+      charge: 1
+  ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
 
 # atomization energy
 - name: Atomization energy of H2
@@ -422,6 +422,16 @@
       moldesc: F 0 0 0
       basis: 6-311++G**
       spin: 1
+
+- name: Density matrix of Ne
+  type: dm
+  cmd: dm(systems[0])
+  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Ne 0 0 0
+      basis: 6-311++G**
 
 ## density matrix for diatomic molecules
 - name: Density matrix of H2
