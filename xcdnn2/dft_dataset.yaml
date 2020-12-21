@@ -368,27 +368,28 @@
       moldesc: Be 0 0 0
       basis: 6-311++G**
 
-- name: Density matrix of B
-  type: dm
-  cmd: dm(systems[0])
-  true_val: ccsd_dm(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: B 0 0 0
-      basis: 6-311++G**
-      spin: 1
-
-- name: Density matrix of C
-  type: dm
-  cmd: dm(systems[0])
-  true_val: ccsd_dm(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G**
-      spin: 2
+# asymmetric
+# - name: Density matrix of B
+#   type: dm
+#   cmd: dm(systems[0])
+#   true_val: ccsd_dm(systems[0])
+#   systems:
+#   - type: mol
+#     kwargs:
+#       moldesc: B 0 0 0
+#       basis: 6-311++G**
+#       spin: 1
+#
+# - name: Density matrix of C
+#   type: dm
+#   cmd: dm(systems[0])
+#   true_val: ccsd_dm(systems[0])
+#   systems:
+#   - type: mol
+#     kwargs:
+#       moldesc: C 0 0 0
+#       basis: 6-311++G**
+#       spin: 2
 
 - name: Density matrix of N
   type: dm
@@ -401,27 +402,28 @@
       basis: 6-311++G**
       spin: 3
 
-- name: Density matrix of O
-  type: dm
-  cmd: dm(systems[0])
-  true_val: ccsd_dm(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: O 0 0 0
-      basis: 6-311++G**
-      spin: 2
-
-- name: Density matrix of F
-  type: dm
-  cmd: dm(systems[0])
-  true_val: ccsd_dm(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: F 0 0 0
-      basis: 6-311++G**
-      spin: 1
+# asymmetric
+# - name: Density matrix of O
+#   type: dm
+#   cmd: dm(systems[0])
+#   true_val: ccsd_dm(systems[0])
+#   systems:
+#   - type: mol
+#     kwargs:
+#       moldesc: O 0 0 0
+#       basis: 6-311++G**
+#       spin: 2
+#
+# - name: Density matrix of F
+#   type: dm
+#   cmd: dm(systems[0])
+#   true_val: ccsd_dm(systems[0])
+#   systems:
+#   - type: mol
+#     kwargs:
+#       moldesc: F 0 0 0
+#       basis: 6-311++G**
+#       spin: 1
 
 - name: Density matrix of Ne
   type: dm
@@ -464,47 +466,48 @@
       moldesc: Li 1.5070 0 0; H -1.5070 0 0
       basis: 6-311++G**
 
-- name: Density matrix of B2
-  type: dm
-  cmd: dm(systems[0])
-  true_val: ccsd_dm(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: B 1.5023 0 0; B -1.5023 0 0
-      basis: 6-311++G**
-      spin: 2
-
-- name: Density matrix of N2
-  type: dm
-  cmd: dm(systems[0])
-  true_val: ccsd_dm(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: N 1.0372 0 0; N -1.0372 0 0
-      basis: 6-311++G**
-
-- name: Density matrix of O2
-  type: dm
-  cmd: dm(systems[0])
-  true_val: ccsd_dm(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: O 1.1409 0 0; O -1.1409 0 0
-      basis: 6-311++G**
-      spin: 2
-
-- name: Density matrix of F2
-  type: dm
-  cmd: dm(systems[0])
-  true_val: ccsd_dm(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: F 1.3341 0 0; F -1.3341 0 0
-      basis: 6-311++G**
+# asymmetric
+# - name: Density matrix of B2
+#   type: dm
+#   cmd: dm(systems[0])
+#   true_val: ccsd_dm(systems[0])
+#   systems:
+#   - type: mol
+#     kwargs:
+#       moldesc: B 1.5023 0 0; B -1.5023 0 0
+#       basis: 6-311++G**
+#       spin: 2
+#
+# - name: Density matrix of N2
+#   type: dm
+#   cmd: dm(systems[0])
+#   true_val: ccsd_dm(systems[0])
+#   systems:
+#   - type: mol
+#     kwargs:
+#       moldesc: N 1.0372 0 0; N -1.0372 0 0
+#       basis: 6-311++G**
+#
+# - name: Density matrix of O2
+#   type: dm
+#   cmd: dm(systems[0])
+#   true_val: ccsd_dm(systems[0])
+#   systems:
+#   - type: mol
+#     kwargs:
+#       moldesc: O 1.1409 0 0; O -1.1409 0 0
+#       basis: 6-311++G**
+#       spin: 2
+#
+# - name: Density matrix of F2
+#   type: dm
+#   cmd: dm(systems[0])
+#   true_val: ccsd_dm(systems[0])
+#   systems:
+#   - type: mol
+#     kwargs:
+#       moldesc: F 1.3341 0 0; F -1.3341 0 0
+#       basis: 6-311++G**
 
 # - name: Bond length of H2
 #   type: bl
