@@ -71,11 +71,11 @@ class LitDFTXC(pl.LightningModule):
                             help="Learning rate")
         parser.add_argument("--clipval", type=float, default=0,
                             help="Clip gradients with norm above this value. 0 means no clipping.")
-        parser.add_argument("--iew", type=float, default=630.0,
+        parser.add_argument("--iew", type=float, default=440.0,
                             help="Weight of ionization energy")
-        parser.add_argument("--aew", type=float, default=630.0,
+        parser.add_argument("--aew", type=float, default=1340.0,
                             help="Weight of atomization energy")
-        parser.add_argument("--dmw", type=float, default=200.0,
+        parser.add_argument("--dmw", type=float, default=220.0,
                             help="Weight of density matrix")
         return parser
 
