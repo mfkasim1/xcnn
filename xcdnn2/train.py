@@ -90,6 +90,8 @@ if __name__ == "__main__":
                         help="Flag to record the progress")
     parser.add_argument("--tvset", type=int, default=1,
                         help="Training/validation set")
+    parser.add_argument("--exclude_types", type=str, nargs="*", default=[],
+                        help="Exclude several types of dataset")
     parser = LitDFTXC.add_model_specific_args(parser)
     # parser = pl.Trainer.add_argparse_args(parser)
     args = parser.parse_args()
@@ -109,9 +111,11 @@ if __name__ == "__main__":
         # train_atoms = ["H", "Li", "B", "C", "O", "Ne"]
         val_atoms = ["He", "Be", "N", "F"]
 
-    val_filter = lambda obj: subs_present(val_atoms, obj["name"].split()[-1])
+    general_filter = lambda obj: obj["type"] not in args.exclude_types
+    all_idxs = dset.get_indices(general_filter)
+    val_filter = lambda obj: subs_present(val_atoms, obj["name"].split()[-1]) and general_filter(obj)
     val_idxs = dset.get_indices(val_filter)
-    train_idxs = list(set(range(len(dset))) - set(val_idxs))
+    train_idxs = list(set(all_idxs) - set(val_idxs))
     # print(train_idxs, len(train_idxs))
     # print(val_idxs, len(val_idxs))
     # raise RuntimeError
