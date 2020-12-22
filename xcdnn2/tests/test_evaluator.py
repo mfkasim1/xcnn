@@ -23,9 +23,10 @@ class SimpleNN(torch.nn.Module):
 
 @pytest.mark.parametrize(
     "dset_type",
-    ["ie", "dm"]  # no need to test "ae" because it is similar to "ie"
+    ["ie", "ae", "dm"]
 )
 def test_evaluator_nn_grad(dset_type):
+    torch.manual_seed(123)
     # get the dataset of some type of calculation
     dset = DFTDataset()
     idxs = dset.get_indices(lambda obj: obj["type"] == dset_type)
