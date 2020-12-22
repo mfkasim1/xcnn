@@ -1,11 +1,15 @@
 from typing import List
 
-def subs_present(cs: List[str], s: str) -> bool:
+def subs_present(cs: List[str], s: str, at_start: bool = False) -> bool:
     # find the characters/substrings in the string
     # return True if at least one of the substring present in the string s
     for c in cs:
-        if c in s:
-            return True
+        if not at_start:
+            if c in s:
+                return True
+        else:
+            if c == s[:len(c)]:
+                return True
     return False
 
 def print_active_tensors(printout: bool = True) -> int:

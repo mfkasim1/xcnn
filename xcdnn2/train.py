@@ -57,6 +57,7 @@ class LitDFTXC(pl.LightningModule):
     def validation_step(self, validation_batch: Dict, batch_idx: int) -> torch.Tensor:
         loss = self.evl.calc_loss_function(validation_batch)
         self.log("val_loss", loss, on_step=False, on_epoch=True)
+        self.log("val_loss_%s" % validation_batch["type"], loss, on_step=False, on_epoch=True)
         return loss
 
     @staticmethod
@@ -87,6 +88,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--record", action="store_const", default=False, const=True,
                         help="Flag to record the progress")
+    parser.add_argument("--tvset", type=int, default=1,
+                        help="Training/validation set")
     parser = LitDFTXC.add_model_specific_args(parser)
     # parser = pl.Trainer.add_argparse_args(parser)
     args = parser.parse_args()
@@ -99,11 +102,15 @@ if __name__ == "__main__":
 
     # load the dataset and split into train and val
     dset = DFTDataset()
-    train_atoms = ["H", "He", "Li", "Be", "B"]
-    val_atoms = ["C", "N", "O", "F", "Ne"]
+    if args.tvset == 1:
+        train_atoms = ["H", "He", "Li", "Be", "B"]
+        val_atoms = ["C", "N", "O", "F", "Ne"]
+    elif args.tvset == 2:  # randomly selected
+        train_atoms = ["H", "Li", "C", "O", "Ne"]
+        val_atoms = ["He", "Be", "B", "N", "F"]
 
-    train_filter = lambda obj: subs_present(train_atoms, obj["systems"][0]["kwargs"]["moldesc"])
-    val_filter = lambda obj: subs_present(val_atoms, obj["systems"][0]["kwargs"]["moldesc"])
+    train_filter = lambda obj: subs_present(train_atoms, obj["name"].split()[-1], at_start=True)
+    val_filter = lambda obj: subs_present(val_atoms, obj["name"].split()[-1], at_start=True)
     train_idxs = dset.get_indices(train_filter)
     val_idxs = dset.get_indices(val_filter)
 
