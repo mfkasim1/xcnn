@@ -62,10 +62,13 @@ class LitDFTXC(pl.LightningModule):
 
     def validation_step(self, validation_batch: Dict, batch_idx: int) -> torch.Tensor:
         loss = self.evl.calc_loss_function(validation_batch)
+
         tpe = validation_batch["type"]
-        wloss = loss / self.weights[tpe]
-        self.log("val_loss", wloss * self.dweights[tpe], on_step=False, on_epoch=True)
-        self.log("val_loss_%s" % validation_batch["type"], wloss, on_step=False, on_epoch=True)
+        rawloss = loss.detach() / self.weights[tpe]  # raw loss without weighting
+        vloss = rawloss * self.dweights[tpe]  # normalized loss standardized by the datasets' mean
+        self.log("val_loss", vloss, on_step=False, on_epoch=True)
+        self.log("val_loss_%s" % validation_batch["type"], rawloss, on_step=False, on_epoch=True)
+
         return loss
 
     @staticmethod
