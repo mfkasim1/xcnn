@@ -42,6 +42,12 @@ class LitDFTXC(pl.LightningModule):
             "ae": hparams["aew"],
             "dm": hparams["dmw"],
         }
+        self.dweights = {  # weights from the dataset
+            "ie": 1340.0,
+            "ae": 440.0,
+            "dm": 220.0,
+        }
+        self.weights = weights
         return Evaluator(model_nnlda, weights)
 
     def configure_optimizers(self):
@@ -56,8 +62,10 @@ class LitDFTXC(pl.LightningModule):
 
     def validation_step(self, validation_batch: Dict, batch_idx: int) -> torch.Tensor:
         loss = self.evl.calc_loss_function(validation_batch)
-        self.log("val_loss", loss, on_step=False, on_epoch=True)
-        self.log("val_loss_%s" % validation_batch["type"], loss, on_step=False, on_epoch=True)
+        tpe = validation_batch["type"]
+        wloss = loss / self.weights[tpe]
+        self.log("val_loss", wloss * self.dweights[tpe], on_step=False, on_epoch=True)
+        self.log("val_loss_%s" % validation_batch["type"], wloss, on_step=False, on_epoch=True)
         return loss
 
     @staticmethod

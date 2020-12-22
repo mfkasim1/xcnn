@@ -43,8 +43,8 @@ def test_evaluator_nn_grad(dset_type):
 
     def get_loss(w1, w2):
         nn = SimpleNN(w1, w2)
-        evl = Evaluator(HybridXC("lda_x", nn, aweight0=0.2), weights)
+        evl = Evaluator(HybridXC("lda_x", nn, aweight0=1.0), weights)
         res = evl.calc_loss_function(dset[idxs[0]])
         return res
 
-    torch.autograd.gradcheck(get_loss, (w1, w2))
+    torch.autograd.gradcheck(get_loss, (w1, w2), eps=1e-4, atol=1e-4)
