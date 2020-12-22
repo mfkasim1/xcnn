@@ -103,16 +103,18 @@ if __name__ == "__main__":
     # load the dataset and split into train and val
     dset = DFTDataset()
     if args.tvset == 1:
-        train_atoms = ["H", "He", "Li", "Be", "B"]
-        val_atoms = ["C", "N", "O", "F", "Ne"]
+        # train_atoms = ["H", "He", "Li", "Be", "B", "C"]
+        val_atoms = ["N", "O", "F", "Ne"]
     elif args.tvset == 2:  # randomly selected
-        train_atoms = ["H", "Li", "C", "O", "Ne"]
-        val_atoms = ["He", "Be", "B", "N", "F"]
+        # train_atoms = ["H", "Li", "B", "C", "O", "Ne"]
+        val_atoms = ["He", "Be", "N", "F"]
 
-    train_filter = lambda obj: subs_present(train_atoms, obj["name"].split()[-1], at_start=True)
-    val_filter = lambda obj: subs_present(val_atoms, obj["name"].split()[-1], at_start=True)
-    train_idxs = dset.get_indices(train_filter)
+    val_filter = lambda obj: subs_present(val_atoms, obj["name"].split()[-1])
     val_idxs = dset.get_indices(val_filter)
+    train_idxs = list(set(range(len(dset))) - set(val_idxs))
+    # print(train_idxs, len(train_idxs))
+    # print(val_idxs, len(val_idxs))
+    # raise RuntimeError
 
     # train_idxs = range(24, 26)  # dm
     # val_idxs = range(20, 23)
