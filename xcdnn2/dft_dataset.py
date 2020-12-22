@@ -149,7 +149,7 @@ class Evaluator(torch.nn.Module):
 
         # run ks
         syst = _get_dqc_system(system)
-        qc = KS(syst, xc=self.xc).run(dm0=dm0)
+        qc = KS(syst, xc=self.xc).run(dm0=dm0, bck_options={"max_niter": 50})
         dm = qc.aodm()
 
         # save the cache
