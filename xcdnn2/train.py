@@ -55,7 +55,7 @@ class LitDFTXC(pl.LightningModule):
         params = list(self.parameters())
 
         # making optimizer for every type of datasets (to stabilize the gradients)
-        opts = [torch.optim.Adam(params, lr=self.hparams["lr"]) for tpe in self.weights]
+        opts = [torch.optim.Adam(params, lr=self.hparams["%slr" % tpe]) for tpe in self.weights]
         return opts
 
     def training_step(self, train_batch: Dict, batch_idx: int, optimizer_idx: int) -> torch.Tensor:
@@ -96,8 +96,12 @@ class LitDFTXC(pl.LightningModule):
                             help="The number of hidden layers")
         parser.add_argument("--libxc", type=str, default="lda_x",
                             help="Initial xc to be used")
-        parser.add_argument("--lr", type=float, default=1e-4,
-                            help="Learning rate")
+        parser.add_argument("--ielr", type=float, default=1e-4,
+                            help="Learning rate for ionization energy (chosen if there is --split_opt)")
+        parser.add_argument("--aelr", type=float, default=1e-4,
+                            help="Learning rate for atomization energy (ignored if no --split_opt)")
+        parser.add_argument("--dmlr", type=float, default=1e-4,
+                            help="Learning rate for density matrix (ignored if no --split_opt)")
         parser.add_argument("--clipval", type=float, default=0,
                             help="Clip gradients with norm above this value. 0 means no clipping.")
         parser.add_argument("--iew", type=float, default=440.0,
