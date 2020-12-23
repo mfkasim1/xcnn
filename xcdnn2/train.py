@@ -1,5 +1,6 @@
 import os
 import copy
+import math
 import numpy as np
 from typing import Dict, Optional
 import argparse
@@ -296,11 +297,13 @@ def run_training_via_cmd_line(hparams: Dict):
 def run_training_until_complete(hparams: Dict, with_tune: bool = True):
     max_epochs = hparams["max_epochs"]
     max_epochs_1_run = 50
-    epochs_1_run = int(max_epochs / max_epochs_1_run + 1)
-    n = int(max_epochs / epochs_1_run + 1)
+
+    # calculate how many epochs and how many repetitions needed
+    n = int(math.ceil(max_epochs / max_epochs_1_run))
+    epochs_1_run = int(math.ceil(max_epochs / n))
 
     for i in range(n):
-        hparams["max_epochs"] = epochs_1_run * (i + 1)
+        hparams["max_epochs"] = max(epochs_1_run * (i + 1), max_epochs)
         # print(i, hparams)
         val_loss = run_training_via_cmd_line(hparams)
         if with_tune and val_loss is not None:
