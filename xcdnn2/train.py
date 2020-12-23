@@ -171,9 +171,10 @@ if __name__ == "__main__":
     if args.record:
         # set up the logger
         tb_logger = pl.loggers.TensorBoardLogger('logs/')
-        chkpt_val = ModelCheckpoint(monitor="val_loss", save_top_k=4)
+        chkpt_val = ModelCheckpoint(monitor="val_loss", save_top_k=4, save_last=True)
         trainer_kwargs["logger"] = tb_logger
-        trainer_kwargs["checkpoint_callback"] = [chkpt_val]
+        trainer_kwargs["callbacks"] = [chkpt_val]
+        trainer_kwargs["checkpoint_callback"] = True
 
     trainer = pl.Trainer(**trainer_kwargs)
     trainer.fit(plsystem,
