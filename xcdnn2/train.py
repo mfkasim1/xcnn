@@ -1,4 +1,5 @@
-from typing import Dict
+import os
+from typing import Dict, Optional
 import argparse
 import torch
 import pytorch_lightning as pl
@@ -118,6 +119,12 @@ class LitDFTXC(pl.LightningModule):
                             help="Flag to split optimizer based on the dataset type")
         return parser
 
+def get_exp_version(version: Optional[str]) -> Optional[str]:
+    if version is not None:
+        if version.isdigit():
+            return "version_%d" % int(version)
+    return version
+
 if __name__ == "__main__":
     from xcdnn2.utils import subs_present
 
@@ -127,6 +134,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--record", action="store_const", default=False, const=True,
                         help="Flag to record the progress")
+    parser.add_argument("--version", type=str,
+                        help="The training version, if exists, then resume the training")
     parser = LitDFTXC.add_model_specific_args(parser)
     # parser = pl.Trainer.add_argparse_args(parser)
     args = parser.parse_args()
@@ -149,8 +158,8 @@ if __name__ == "__main__":
     general_filter = lambda obj: obj["type"] not in args.exclude_types
     all_idxs = dset.get_indices(general_filter)
     val_filter = lambda obj: subs_present(val_atoms, obj["name"].split()[-1]) and general_filter(obj)
-    val_idxs = dset.get_indices(val_filter)
-    train_idxs = list(set(all_idxs) - set(val_idxs))
+    val_idxs = dset.get_indices(val_filter)[:2]
+    train_idxs = list(set(all_idxs) - set(val_idxs))[:2]
     # print(train_idxs, len(train_idxs))
     # print(val_idxs, len(val_idxs))
     # raise RuntimeError
@@ -172,13 +181,22 @@ if __name__ == "__main__":
         "gradient_clip_val": args.clipval,
         "automatic_optimization": False,
     }
+    logdir = "logs/"
+    version = get_exp_version(args.version)
     if args.record:
         # set up the logger
-        tb_logger = pl.loggers.TensorBoardLogger('logs/')
+        tb_logger = pl.loggers.TensorBoardLogger(logdir, version=version)
         chkpt_val = ModelCheckpoint(monitor="val_loss", save_top_k=4, save_last=True)
         trainer_kwargs["logger"] = tb_logger
         trainer_kwargs["callbacks"] = [chkpt_val]
         trainer_kwargs["checkpoint_callback"] = True
+
+    # resume the training from the given version
+    if version is not None:
+        fpath = os.path.join(logdir, "default", version, "checkpoints", "last.ckpt")
+        if os.path.exists(fpath):
+            print("Resuming the training from %s" % fpath)
+            trainer_kwargs["resume_from_checkpoint"] = fpath
 
     trainer = pl.Trainer(**trainer_kwargs)
     trainer.fit(plsystem,
