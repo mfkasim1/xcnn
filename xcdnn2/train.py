@@ -160,10 +160,18 @@ def get_trainer_argparse(parent_parser: argparse.ArgumentParser) -> argparse.Arg
 def convert_to_tune_config(hparams: Dict) -> Dict:
     # set the hyperparameters to be tuned
     res = copy.deepcopy(hparams)
+    split_opt = hparams["split_opt"]
+    exclude_types = hparams["exclude_types"]
+    res["record"] = True  # if hparams are tuned, it must be recorded
+
     res["nhid"] = tune.choice([16, 32, 64])
-    res["ielr"] = tune.loguniform(1e-5, 3e-3)
-    res["aelr"] = tune.loguniform(1e-5, 3e-3)
-    res["dmlr"] = tune.loguniform(1e-5, 3e-3)
+    res["nnxcmode"] = tune.choice([1, 2])
+    if (split_opt and "ie" not in exclude_types) or (not split_opt):
+        res["ielr"] = tune.loguniform(1e-5, 3e-3)
+    if split_opt and "ae" not in exclude_types:
+        res["aelr"] = tune.loguniform(1e-5, 3e-3)
+    if split_opt and "dm" not in exclude_types:
+        res["dmlr"] = tune.loguniform(1e-5, 3e-3)
     return res
 
 ######################## dataset and training part ########################
