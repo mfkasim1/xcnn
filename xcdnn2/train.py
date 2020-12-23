@@ -313,7 +313,7 @@ def run_training_until_complete(hparams: Dict, with_tune: bool = True):
     epochs_1_run = int(math.ceil(max_epochs / n))
 
     for i in range(n):
-        hparams["max_epochs"] = max(epochs_1_run * (i + 1), max_epochs)
+        hparams["max_epochs"] = min(epochs_1_run * (i + 1), max_epochs)
         # print(i, hparams)
         val_loss = run_training_via_cmd_line(hparams)
         if with_tune and val_loss is not None:
