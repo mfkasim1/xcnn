@@ -16,6 +16,8 @@ setup(
     install_requires=[
         "numpy>=1.8.2",
         "pyyaml",
+        "pytorch_lightning",
+        "ray[tune]"
         # "pytorch>=1.8.0",
     ],
     classifiers=[

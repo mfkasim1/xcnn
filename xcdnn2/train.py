@@ -1,15 +1,20 @@
 import os
+import copy
+import numpy as np
 from typing import Dict, Optional
 import argparse
 import torch
 import pytorch_lightning as pl
+from ray import tune
+import xcdnn2
 from pytorch_lightning.callbacks import ModelCheckpoint
 from torch.utils.data import DataLoader, Subset
 from dqc.api.getxc import get_libxc
 from xcdnn2.dft_dataset import DFTDataset, Evaluator
 from xcdnn2.xcmodels import HybridXC
+from ray.tune.suggest.hyperopt import HyperOptSearch
 
-FILEPATH = os.path.dirname(os.path.realpath(__file__))
+FILEPATH = os.path.dirname(os.path.realpath(xcdnn2.__file__))
 
 ###################### training module ######################
 class LitDFTXC(pl.LightningModule):
@@ -93,39 +98,9 @@ class LitDFTXC(pl.LightningModule):
 
     @staticmethod
     def add_model_specific_args(parent_parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
-        parser = argparse.ArgumentParser(parents=[parent_parser], add_help=False)
-        # arguments to be stored in the hparams file
-        # model hyperparams
-        parser.add_argument("--nhid", type=int, default=10,
-                            help="The number of hidden layers")
-        parser.add_argument("--libxc", type=str, default="lda_x",
-                            help="Initial xc to be used")
+        return get_trainer_argparse(parent_parser)
 
-        # training hyperparams
-        parser.add_argument("--ielr", type=float, default=1e-4,
-                            help="Learning rate for ionization energy (chosen if there is --split_opt)")
-        parser.add_argument("--aelr", type=float, default=1e-4,
-                            help="Learning rate for atomization energy (ignored if no --split_opt)")
-        parser.add_argument("--dmlr", type=float, default=1e-4,
-                            help="Learning rate for density matrix (ignored if no --split_opt)")
-        parser.add_argument("--clipval", type=float, default=0,
-                            help="Clip gradients with norm above this value. 0 means no clipping.")
-        parser.add_argument("--iew", type=float, default=440.0,
-                            help="Weight of ionization energy")
-        parser.add_argument("--aew", type=float, default=1340.0,
-                            help="Weight of atomization energy")
-        parser.add_argument("--dmw", type=float, default=220.0,
-                            help="Weight of density matrix")
-        parser.add_argument("--max_epochs", type=int, default=1000,
-                            help="Maximum number of epochs")
-        parser.add_argument("--tvset", type=int, default=2,
-                            help="Training/validation set")
-        parser.add_argument("--exclude_types", type=str, nargs="*", default=[],
-                            help="Exclude several types of dataset")
-        parser.add_argument("--split_opt", action="store_const", default=False, const=True,
-                            help="Flag to split optimizer based on the dataset type")
-        return parser
-
+######################## hparams part ########################
 def get_program_argparse() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     parser.add_argument("--record", action="store_const", default=False, const=True,
@@ -134,10 +109,61 @@ def get_program_argparse() -> argparse.ArgumentParser:
                         help="The training version, if exists, then resume the training")
     parser.add_argument("--logdir", type=str, default="logs",
                         help="The log directory relative to this file's path")
+
+    # hparams not used for the actual training
+    # (only for different execution modes of this file)
     parser.add_argument("--cmd", action="store_const", default=False, const=True,
-                        help="Run via command line")
+                        help="Run the training via command line")
+    parser.add_argument("--tune", action="store_const", default=False, const=True,
+                        help="Run the hyperparameters tuning")
     return parser
 
+def get_trainer_argparse(parent_parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(parents=[parent_parser], add_help=False)
+    # arguments to be stored in the hparams file
+    # model hyperparams
+    parser.add_argument("--nhid", type=int, default=10,
+                        help="The number of hidden layers")
+    parser.add_argument("--libxc", type=str, default="lda_x",
+                        help="Initial xc to be used")
+
+    # training hyperparams
+    parser.add_argument("--ielr", type=float, default=1e-4,
+                        help="Learning rate for ionization energy (chosen if there is --split_opt)")
+    parser.add_argument("--aelr", type=float, default=1e-4,
+                        help="Learning rate for atomization energy (ignored if no --split_opt)")
+    parser.add_argument("--dmlr", type=float, default=1e-4,
+                        help="Learning rate for density matrix (ignored if no --split_opt)")
+    parser.add_argument("--clipval", type=float, default=0,
+                        help="Clip gradients with norm above this value. 0 means no clipping.")
+    parser.add_argument("--iew", type=float, default=440.0,
+                        help="Weight of ionization energy")
+    parser.add_argument("--aew", type=float, default=1340.0,
+                        help="Weight of atomization energy")
+    parser.add_argument("--dmw", type=float, default=220.0,
+                        help="Weight of density matrix")
+    parser.add_argument("--max_epochs", type=int, default=1000,
+                        help="Maximum number of epochs")
+    parser.add_argument("--tvset", type=int, default=2,
+                        help="Training/validation set")
+    parser.add_argument("--exclude_types", type=str, nargs="*", default=[],
+                        help="Exclude several types of dataset")
+    parser.add_argument("--split_opt", action="store_const", default=False, const=True,
+                        help="Flag to split optimizer based on the dataset type")
+    parser.add_argument("--tiny_dset", action="store_const", default=False, const=True,
+                        help="Flag to use tiny dataset for sanity check")
+    return parser
+
+def convert_to_tune_config(hparams: Dict) -> Dict:
+    # set the hyperparameters to be tuned
+    res = copy.deepcopy(hparams)
+    res["nhid"] = tune.choice([16, 32, 64])
+    res["ielr"] = tune.loguniform(1e-5, 3e-3)
+    res["aelr"] = tune.loguniform(1e-5, 3e-3)
+    res["dmlr"] = tune.loguniform(1e-5, 3e-3)
+    return res
+
+######################## dataset and training part ########################
 def get_datasets(hparams: Dict):
     from xcdnn2.utils import subs_present
     # load the datasets and returns the dataloader for training and validation
@@ -155,8 +181,11 @@ def get_datasets(hparams: Dict):
     general_filter = lambda obj: obj["type"] not in hparams["exclude_types"]
     all_idxs = dset.get_indices(general_filter)
     val_filter = lambda obj: subs_present(val_atoms, obj["name"].split()[-1]) and general_filter(obj)
-    val_idxs = dset.get_indices(val_filter)[:1]
-    train_idxs = list(set(all_idxs) - set(val_idxs))[:1]
+    val_idxs = dset.get_indices(val_filter)
+    train_idxs = list(set(all_idxs) - set(val_idxs))
+    if hparams["tiny_dset"]:
+        val_idxs = val_idxs[:1]
+        train_idxs = train_idxs[:1]
     # print(train_idxs, len(train_idxs))
     # print(val_idxs, len(val_idxs))
     # raise RuntimeError
@@ -190,6 +219,7 @@ def get_trainer(hparams: Dict):
         trainer_kwargs["logger"] = tb_logger
         trainer_kwargs["callbacks"] = [chkpt_val]
         trainer_kwargs["checkpoint_callback"] = True
+        print("Version: %s" % tb_logger.version)
     else:
         chkpt_val = None
 
@@ -220,29 +250,75 @@ def run_training(hparams: Dict):
                 val_dataloaders=dloader_val)
     return chkpt_val.best_model_score.item()
 
+############## hparams tuning part ##############
 def run_training_via_cmd_line(hparams: Dict):
+    # execute the training, but via command line
+    # this is done because there is an unknown memory leak in the training
+    # procedure
+
     import subprocess as sp
-    cmds = ["python", "train.py"]
+    cmds = ["python", os.path.join(FILEPATH, "train.py")]
     for key, val in hparams.items():
-        if key == "cmd":
+        if key == "cmd" or key == "tune":
             continue
 
         arg = "--" + key
         if isinstance(val, bool) and val is not None:  # a flag
             if val:
                 cmds.append(arg)
-        elif isinstance(val, list):
+        elif isinstance(val, list) or isinstance(val, tuple):
             cmds.append(arg)
             cmds.extend([str(s) for s in val])
         elif isinstance(val, str) or isinstance(val, int) or isinstance(val, float):
             cmds.append(arg)
             cmds.append(str(val))
+        elif val is None:
+            pass
         else:
-            raise RuntimeError("Unknown type of value: %s" % type(val))
+            raise RuntimeError("Unknown type of value: %s from key '%s'" % (type(val), key))
+
     process = sp.run(cmds, stdout=sp.PIPE, stderr=sp.STDOUT)
     stdout = process.stdout.decode("utf-8")
-    val = float(stdout.split()[-1])
+    # print("stdout", stdout)
+
+    # get the values from stdout
+    val = None
+    for line in stdout.split("\n"):
+        if line.startswith("Output:"):
+            val = float(line.split()[-1])
+        elif line.startswith("Version:"):
+            # set the version number so it can continue
+            version = line.split()[-1]
+            hparams["version"] = version
+
     return val
+
+def run_training_until_complete(hparams: Dict, with_tune: bool = True):
+    max_epochs = hparams["max_epochs"]
+    max_epochs_1_run = 50
+    epochs_1_run = int(max_epochs / max_epochs_1_run + 1)
+    n = int(max_epochs / epochs_1_run + 1)
+
+    for i in range(n):
+        hparams["max_epochs"] = epochs_1_run * (i + 1)
+        # print(i, hparams)
+        val_loss = run_training_via_cmd_line(hparams)
+        if with_tune and val_loss is not None:
+            tune.report(val_loss=val_loss)
+    return {"val_loss": val_loss}
+
+def optimize_hparams(hparams: Dict):
+    config = convert_to_tune_config(hparams)
+    alg = HyperOptSearch(mode="min", metric="val_loss")
+    alg = tune.suggest.ConcurrencyLimiter(alg, 1)
+    analysis = tune.run(
+        run_training_until_complete,
+        config=config,
+        num_samples=-1,
+        search_alg=alg,
+        resources_per_trial={"cpu": 8, "gpu": 0},
+    )
+    print("Best config:", analysis.get_best_config(metric="val_loss", mode="min"))
 
 if __name__ == "__main__":
     torch.manual_seed(123)
@@ -256,7 +332,9 @@ if __name__ == "__main__":
     # putting all the hyperparameters in a dictionary
     hparams = vars(args)
     if args.cmd:
-        bestval = run_training_via_cmd_line(hparams)
+        bestval = run_training_until_complete(hparams, False)
+    elif args.tune:
+        bestval = optimize_hparams(hparams)
     else:
         bestval = run_training(hparams)
     print("Output:", bestval)
