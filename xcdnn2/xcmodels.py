@@ -61,6 +61,10 @@ class NNLDA(BaseNNXC):
             exunif = b * n_cbrt
             x = torch.cat((n_cbrt, xi), dim=-1)  # (*BD, nr, 2)
             res = self.nnmodel(x) * n * exunif  # (*BD, nr)
+        elif self.nnxcmode == 3:
+            n_cbrt = safepow(n, 1.0 / 3)
+            x = torch.cat((n_cbrt, xi), dim=-1)  # (*BD, nr, 2)
+            res = self.nnmodel(x) * n  # (*BD, nr)
         else:
             raise RuntimeError("Unknown nnxcmode: %d" % self.nnxcmode)
         res = res.squeeze(-1)
@@ -117,6 +121,10 @@ class NNGGA(BaseNNXC):
             exunif = b * n_cbrt
             x = torch.cat((n_cbrt, xi, s), dim=-1)  # (*BD, nr, 3)
             res = self.nnmodel(x) * n * exunif  # (*BD, nr)
+        elif self.nnxcmode == 3:
+            n_cbrt = safepow(n, 1.0 / 3)
+            x = torch.cat((n_cbrt, xi, s), dim=-1)  # (*BD, nr, 3)
+            res = self.nnmodel(x) * n  # (*BD, nr)
         else:
             raise RuntimeError("Unknown nnxcmode: %d" % self.nnxcmode)
         res = res.squeeze(-1)

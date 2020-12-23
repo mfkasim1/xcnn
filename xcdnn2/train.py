@@ -171,7 +171,7 @@ def convert_to_tune_config(hparams: Dict) -> Dict:
 
     res["nhid"] = tune.choice([16, 32, 64])
     res["ndepths"] = tune.choice([1, 2, 3, 4])
-    res["nnxcmode"] = tune.choice([1, 2])
+    res["nnxcmode"] = tune.choice([1, 2, 3])
     if (split_opt and "ie" not in exclude_types) or (not split_opt):
         res["ielr"] = tune.loguniform(1e-5, 3e-3)
     if split_opt and "ae" not in exclude_types:
