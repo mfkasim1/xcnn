@@ -1,9 +1,10 @@
 from abc import abstractproperty, abstractmethod
 import torch
+import numpy as np
 from typing import Union, Iterator, List
 from dqc.xc.base_xc import BaseXC
 from dqc.utils.datastruct import ValGrad, SpinParam
-from dqc.utils.safeops import safenorm
+from dqc.utils.safeops import safenorm, safepow
 from dqc.api.getxc import get_libxc
 
 class BaseNNXC(BaseXC, torch.nn.Module):
@@ -23,7 +24,7 @@ class BaseNNXC(BaseXC, torch.nn.Module):
 class NNLDA(BaseNNXC):
     # neural network xc functional of LDA (only receives the density as input)
 
-    def __init__(self, nnmodel: torch.nn.Module):
+    def __init__(self, nnmodel: torch.nn.Module, nnxcmode: int = 1):
         # nnmodel should receives input with shape (..., 2)
         # where the last dimension is for:
         # (0) total density: (n_up + n_dn), and
@@ -32,6 +33,7 @@ class NNLDA(BaseNNXC):
         # it represents the energy density per density per volume
         super().__init__()
         self.nnmodel = nnmodel
+        self.nnxcmode = nnxcmode
 
     @property
     def family(self) -> int:
@@ -40,6 +42,7 @@ class NNLDA(BaseNNXC):
     def get_edensityxc(self, densinfo: Union[ValGrad, SpinParam[ValGrad]]) -> torch.Tensor:
         # densinfo.value: (*BD, nr)
         # collect the total density (n) and the spin density (xi)
+        b = -0.7385587663820223  # -0.75 / np.pi * (3*np.pi**2)**(1./3) for exunif
         if isinstance(densinfo, ValGrad):  # unpolarized case
             n = densinfo.value.unsqueeze(-1)  # (*BD, nr, 1)
             xi = torch.zeros_like(n)
@@ -49,15 +52,24 @@ class NNLDA(BaseNNXC):
             n = nu + nd  # (*BD, nr, 1)
             xi = (nu - nd) / (n + 1e-18)  # avoiding nan
 
-        x = torch.cat((n, xi), dim=-1)  # (*BD, nr, 2)
-        res = self.nnmodel(x) * n  # (*BD, nr)
+        # decide how to calculate the Exc from the NN output
+        if self.nnxcmode == 1:
+            x = torch.cat((n, xi), dim=-1)  # (*BD, nr, 2)
+            res = self.nnmodel(x) * n
+        elif self.nnxcmode == 2:
+            n_cbrt = safepow(n, 1.0 / 3)
+            exunif = b * n_cbrt
+            x = torch.cat((n_cbrt, xi), dim=-1)  # (*BD, nr, 2)
+            res = self.nnmodel(x) * n * exunif  # (*BD, nr)
+        else:
+            raise RuntimeError("Unknown nnxcmode: %d" % self.nnxcmode)
         res = res.squeeze(-1)
         return res
 
 class NNGGA(BaseNNXC):
     # neural network xc functional of GGA (receives the density and grad as inputs)
 
-    def __init__(self, nnmodel: torch.nn.Module):
+    def __init__(self, nnmodel: torch.nn.Module, nnxcmode: int = 1):
         # nnmodel should receives input with shape (..., 3)
         # where the last dimension is for:
         # (0) total density (n): (n_up + n_dn), and
@@ -67,6 +79,7 @@ class NNGGA(BaseNNXC):
         # it represents the energy density per density per volume
         super().__init__()
         self.nnmodel = nnmodel
+        self.nnxcmode = nnxcmode
 
     @property
     def family(self) -> int:
@@ -78,6 +91,7 @@ class NNGGA(BaseNNXC):
 
         # collect the total density (n), spin density (xi), and normalized gradients (s)
         a = 6.187335452560271  # 2 * (3 * np.pi ** 2) ** (1.0 / 3)
+        b = -0.7385587663820223  # -0.75 / np.pi * (3*np.pi**2)**(1./3) for exunif
         if isinstance(densinfo, ValGrad):  # unpolarized case
             assert densinfo.grad is not None
             n = densinfo.value.unsqueeze(-1)  # (*BD, nr, 1)
@@ -94,13 +108,23 @@ class NNGGA(BaseNNXC):
             xi = (nu - nd) / n_offset
             s = safenorm(densinfo.u.grad + densinfo.d.grad, dim=-1).unsqueeze(-1) / (a * n_offset ** (4.0 / 3))
 
-        x = torch.cat((n, xi, s), dim=-1)  # (*BD, nr, 3)
-        res = self.nnmodel(x) * n  # (*BD, nr)
+        # decide how to calculate the Exc from the NN output
+        if self.nnxcmode == 1:
+            x = torch.cat((n, xi, s), dim=-1)  # (*BD, nr, 3)
+            res = self.nnmodel(x) * n  # (*BD, nr)
+        elif self.nnxcmode == 2:
+            n_cbrt = safepow(n, 1.0 / 3)
+            exunif = b * n_cbrt
+            x = torch.cat((n_cbrt, xi, s), dim=-1)  # (*BD, nr, 3)
+            res = self.nnmodel(x) * n * exunif  # (*BD, nr)
+        else:
+            raise RuntimeError("Unknown nnxcmode: %d" % self.nnxcmode)
         res = res.squeeze(-1)
         return res
 
 class HybridXC(BaseNNXC):
-    def __init__(self, xcstr: str, nnmodel: torch.nn.Module,
+    def __init__(self, xcstr: str, nnmodel: torch.nn.Module, *,
+                 nnxcmode: int = 1,  # mode to decide how to compute Exc from NN output
                  aweight0: float = 0.0,  # weight of the neural network
                  bweight0: float = 1.0,  # weight of the default xc
                  dtype: torch.dtype = torch.double,
@@ -111,11 +135,11 @@ class HybridXC(BaseNNXC):
         super().__init__()
         self.xc = get_libxc(xcstr)
         if self.xc.family == 1:
-            self.nnxc = NNLDA(nnmodel)
+            self.nnxc = NNLDA(nnmodel, nnxcmode)
         elif self.xc.family == 2:
-            self.nnxc = NNGGA(nnmodel)
+            self.nnxc = NNGGA(nnmodel, nnxcmode)
         elif self.xc.family == 3:
-            self.nnxc = NNMGGA(nnmodel)
+            self.nnxc = NNMGGA(nnmodel, nnxcmode)
 
         self.aweight = torch.nn.Parameter(torch.tensor(aweight0, dtype=dtype, device=device, requires_grad=True))
         self.bweight = torch.nn.Parameter(torch.tensor(bweight0, dtype=dtype, device=device, requires_grad=True))

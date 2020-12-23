@@ -44,7 +44,7 @@ class LitDFTXC(pl.LightningModule):
             torch.nn.Softplus(),
             torch.nn.Linear(nhid, 1, bias=False),
         ).to(torch.double)
-        model_nnlda = HybridXC(hparams["libxc"], nnmodel)
+        model_nnlda = HybridXC(hparams["libxc"], nnmodel, nnxcmode=hparams["nnxcmode"])
 
         weights = {
             "ie": hparams["iew"],
@@ -127,6 +127,8 @@ def get_trainer_argparse(parent_parser: argparse.ArgumentParser) -> argparse.Arg
                         help="The number of hidden layers")
     parser.add_argument("--libxc", type=str, default="lda_x",
                         help="Initial xc to be used")
+    parser.add_argument("--nnxcmode", type=int, default=1,
+                        help="The mode to decide how to compute Exc from NN output")
 
     # training hyperparams
     parser.add_argument("--ielr", type=float, default=1e-4,
