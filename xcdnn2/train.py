@@ -134,6 +134,8 @@ def get_program_argparse() -> argparse.ArgumentParser:
                         help="The training version, if exists, then resume the training")
     parser.add_argument("--logdir", type=str, default="logs",
                         help="The log directory relative to this file's path")
+    parser.add_argument("--cmd", action="store_const", default=False, const=True,
+                        help="Run via command line")
     return parser
 
 def get_datasets(hparams: Dict):
@@ -153,8 +155,8 @@ def get_datasets(hparams: Dict):
     general_filter = lambda obj: obj["type"] not in hparams["exclude_types"]
     all_idxs = dset.get_indices(general_filter)
     val_filter = lambda obj: subs_present(val_atoms, obj["name"].split()[-1]) and general_filter(obj)
-    val_idxs = dset.get_indices(val_filter)
-    train_idxs = list(set(all_idxs) - set(val_idxs))
+    val_idxs = dset.get_indices(val_filter)[:1]
+    train_idxs = list(set(all_idxs) - set(val_idxs))[:1]
     # print(train_idxs, len(train_idxs))
     # print(val_idxs, len(val_idxs))
     # raise RuntimeError
@@ -188,6 +190,8 @@ def get_trainer(hparams: Dict):
         trainer_kwargs["logger"] = tb_logger
         trainer_kwargs["callbacks"] = [chkpt_val]
         trainer_kwargs["checkpoint_callback"] = True
+    else:
+        chkpt_val = None
 
     # resume the training from the given version
     if version is not None:
@@ -197,7 +201,7 @@ def get_trainer(hparams: Dict):
             trainer_kwargs["resume_from_checkpoint"] = fpath
 
     trainer = pl.Trainer(**trainer_kwargs)
-    return trainer
+    return trainer, chkpt_val
 
 def get_exp_version(version: Optional[str]) -> Optional[str]:
     # get the experiment version based on the input from the user's hparams
@@ -210,10 +214,35 @@ def run_training(hparams: Dict):
     # create the lightning module and the datasets
     plsystem = LitDFTXC(hparams)
     dloader_train, dloader_val = get_datasets(hparams)
-    trainer = get_trainer(hparams)
+    trainer, chkpt_val = get_trainer(hparams)
     trainer.fit(plsystem,
                 train_dataloader=dloader_train,
                 val_dataloaders=dloader_val)
+    return chkpt_val.best_model_score.item()
+
+def run_training_via_cmd_line(hparams: Dict):
+    import subprocess as sp
+    cmds = ["python", "train.py"]
+    for key, val in hparams.items():
+        if key == "cmd":
+            continue
+
+        arg = "--" + key
+        if isinstance(val, bool) and val is not None:  # a flag
+            if val:
+                cmds.append(arg)
+        elif isinstance(val, list):
+            cmds.append(arg)
+            cmds.extend([str(s) for s in val])
+        elif isinstance(val, str) or isinstance(val, int) or isinstance(val, float):
+            cmds.append(arg)
+            cmds.append(str(val))
+        else:
+            raise RuntimeError("Unknown type of value: %s" % type(val))
+    process = sp.run(cmds, stdout=sp.PIPE, stderr=sp.STDOUT)
+    stdout = process.stdout.decode("utf-8")
+    val = float(stdout.split()[-1])
+    return val
 
 if __name__ == "__main__":
     torch.manual_seed(123)
@@ -226,4 +255,8 @@ if __name__ == "__main__":
 
     # putting all the hyperparameters in a dictionary
     hparams = vars(args)
-    run_training(hparams)
+    if args.cmd:
+        bestval = run_training_via_cmd_line(hparams)
+    else:
+        bestval = run_training(hparams)
+    print("Output:", bestval)
