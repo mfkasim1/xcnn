@@ -158,8 +158,8 @@ if __name__ == "__main__":
     general_filter = lambda obj: obj["type"] not in args.exclude_types
     all_idxs = dset.get_indices(general_filter)
     val_filter = lambda obj: subs_present(val_atoms, obj["name"].split()[-1]) and general_filter(obj)
-    val_idxs = dset.get_indices(val_filter)[:2]
-    train_idxs = list(set(all_idxs) - set(val_idxs))[:2]
+    val_idxs = dset.get_indices(val_filter)
+    train_idxs = list(set(all_idxs) - set(val_idxs))
     # print(train_idxs, len(train_idxs))
     # print(val_idxs, len(val_idxs))
     # raise RuntimeError
