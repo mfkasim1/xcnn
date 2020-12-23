@@ -48,16 +48,33 @@ class LitDFTXC(pl.LightningModule):
             "dm": 220.0,
         }
         self.weights = weights
+        self.type_indices = {x: i for i, x in enumerate(self.weights.keys())}
         return Evaluator(model_nnlda, weights)
 
     def configure_optimizers(self):
-        params = self.parameters()
-        optimizer = torch.optim.Adam(params, lr=self.hparams["lr"])
-        return optimizer
+        params = list(self.parameters())
 
-    def training_step(self, train_batch: Dict, batch_idx: int) -> torch.Tensor:
+        # making optimizer for every type of datasets (to stabilize the gradients)
+        opts = [torch.optim.Adam(params, lr=self.hparams["lr"]) for tpe in self.weights]
+        return opts
+
+    def training_step(self, train_batch: Dict, batch_idx: int, optimizer_idx: int) -> torch.Tensor:
+        # obtain which optimizer should be performed based on the batch type
+        tpe = train_batch["type"]
+        if self.hparams["split_opt"]:
+            idx = self.type_indices[tpe]
+        else:
+            idx = 0
+        opt = self.optimizers()[idx]
+
+        # perform the backward pass manually
         loss = self.evl.calc_loss_function(train_batch)
-        self.log("train_loss", loss, on_step=False, on_epoch=True)
+        self.manual_backward(loss, opt)
+        opt.step()
+        opt.zero_grad()
+
+        # log the training loss
+        self.log("train_loss", loss.detach(), on_step=False, on_epoch=True)
         return loss
 
     def validation_step(self, validation_batch: Dict, batch_idx: int) -> torch.Tensor:
@@ -74,6 +91,7 @@ class LitDFTXC(pl.LightningModule):
     @staticmethod
     def add_model_specific_args(parent_parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
         parser = argparse.ArgumentParser(parents=[parent_parser], add_help=False)
+        # arguments to be stored in the hparams file
         parser.add_argument("--nhid", type=int, default=10,
                             help="The number of hidden layers")
         parser.add_argument("--libxc", type=str, default="lda_x",
@@ -88,6 +106,12 @@ class LitDFTXC(pl.LightningModule):
                             help="Weight of atomization energy")
         parser.add_argument("--dmw", type=float, default=220.0,
                             help="Weight of density matrix")
+        parser.add_argument("--tvset", type=int, default=2,
+                            help="Training/validation set")
+        parser.add_argument("--exclude_types", type=str, nargs="*", default=[],
+                            help="Exclude several types of dataset")
+        parser.add_argument("--split_opt", action="store_const", default=False, const=True,
+                            help="Flag to split optimizer based on the dataset type")
         return parser
 
 if __name__ == "__main__":
@@ -99,10 +123,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--record", action="store_const", default=False, const=True,
                         help="Flag to record the progress")
-    parser.add_argument("--tvset", type=int, default=1,
-                        help="Training/validation set")
-    parser.add_argument("--exclude_types", type=str, nargs="*", default=[],
-                        help="Exclude several types of dataset")
     parser = LitDFTXC.add_model_specific_args(parser)
     # parser = pl.Trainer.add_argparse_args(parser)
     args = parser.parse_args()
@@ -145,7 +165,9 @@ if __name__ == "__main__":
         "logger": False,
         "checkpoint_callback": False,
         "num_sanity_val_steps": 0,
-        "gradient_clip_val": args.clipval
+        "gradient_clip_val": args.clipval,
+        "automatic_optimization": False,
+        "terminate_on_nan": True,
     }
     if args.record:
         # set up the logger
