@@ -196,7 +196,7 @@ def get_datasets(hparams: Dict):
     # val_idxs = range(3, 6)
     dset_train = Subset(dset, train_idxs)
     dset_val = Subset(dset, val_idxs)
-    dloader_train = DataLoader(dset_train, batch_size=None)
+    dloader_train = DataLoader(dset_train, batch_size=None, shuffle=True)
     dloader_val = DataLoader(dset_val, batch_size=None)
     return dloader_train, dloader_val
 
