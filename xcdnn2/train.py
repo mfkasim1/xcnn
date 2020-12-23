@@ -167,7 +167,6 @@ if __name__ == "__main__":
         "num_sanity_val_steps": 0,
         "gradient_clip_val": args.clipval,
         "automatic_optimization": False,
-        "terminate_on_nan": True,
     }
     if args.record:
         # set up the logger
