@@ -28,6 +28,7 @@ class LitDFTXC(pl.LightningModule):
         # model-specific hyperparams
         libxc = hparams["libxc"]
         nhid = hparams["nhid"]
+        ndepths = hparams["ndepths"]
 
         # prepare the nn xc model
         family = get_libxc(libxc).family
@@ -39,11 +40,13 @@ class LitDFTXC(pl.LightningModule):
             raise RuntimeError("Unimplemented nn for xc family %d" % family)
 
         # setup the xc nn model
-        nnmodel = torch.nn.Sequential(
-            torch.nn.Linear(ninp, nhid),
-            torch.nn.Softplus(),
-            torch.nn.Linear(nhid, 1, bias=False),
-        ).to(torch.double)
+        layers = []
+        for i in range(ndepths):
+            n1 = ninp if i == 0 else nhid
+            layers.append(torch.nn.Linear(n1, nhid))
+            layers.append(torch.nn.Softplus())
+        layers.append(torch.nn.Linear(nhid, 1, bias=False))
+        nnmodel = torch.nn.Sequential(*layers).to(torch.double)
         model_nnlda = HybridXC(hparams["libxc"], nnmodel, nnxcmode=hparams["nnxcmode"])
 
         weights = {
@@ -124,7 +127,9 @@ def get_trainer_argparse(parent_parser: argparse.ArgumentParser) -> argparse.Arg
     # arguments to be stored in the hparams file
     # model hyperparams
     parser.add_argument("--nhid", type=int, default=10,
-                        help="The number of hidden layers")
+                        help="The number of elements in hidden layers")
+    parser.add_argument("--ndepths", type=int, default=1,
+                        help="The number of hidden layers depths")
     parser.add_argument("--libxc", type=str, default="lda_x",
                         help="Initial xc to be used")
     parser.add_argument("--nnxcmode", type=int, default=1,
@@ -165,6 +170,7 @@ def convert_to_tune_config(hparams: Dict) -> Dict:
     res["record"] = True  # if hparams are tuned, it must be recorded
 
     res["nhid"] = tune.choice([16, 32, 64])
+    res["ndepths"] = tune.choice([1, 2, 3, 4])
     res["nnxcmode"] = tune.choice([1, 2])
     if (split_opt and "ie" not in exclude_types) or (not split_opt):
         res["ielr"] = tune.loguniform(1e-5, 3e-3)
