@@ -1,7 +1,9 @@
 import os
 import pytest
 import torch
-from xcdnn2.dft_dataset import Evaluator, DFTDataset
+from xcdnn2.evaluator import XCDNNEvaluator as Evaluator
+from xcdnn2.dataset import DFTDataset
+# from xcdnn2.dft_dataset import Evaluator, DFTDataset
 from xcdnn2.xcmodels import HybridXC
 
 dtype = torch.float64

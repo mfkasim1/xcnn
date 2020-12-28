@@ -1,4 +1,10 @@
-from typing import List
+from typing import List, Callable
+import hashlib
+import os
+import pickle
+import functools
+
+filedir = os.path.dirname(os.path.realpath(__file__))
 
 def subs_present(cs: List[str], s: str, at_start: bool = False) -> bool:
     # find the characters/substrings in the string
@@ -26,3 +32,36 @@ def print_active_tensors(printout: bool = True) -> int:
         except:
             pass
     return npresents
+
+def eval_and_save(fcn: Callable):
+    # save the results of the calculation of fcn to a pickle file
+
+    @functools.wraps(fcn)
+    def new_fcn(*args, **kwargs):
+        # get the representation of args and kwargs
+        s = fcn.__name__
+        s += ";" + (";".join([str(a) for a in args]))
+        s += ";" + (";".join(["%s=%s" % (k, v) for (k, v) in kwargs.items()]))
+
+        # get the file name to store the evaluated values
+        fname = str(hashlib.blake2s(str.encode(s)).hexdigest()) + ".pkl"
+        fdir = os.path.join(filedir, ".datasets")
+        if not os.path.exists(fdir):
+            os.mkdir(fdir)
+        fpath = os.path.join(fdir, fname)
+
+        # if the file exists, then load from the file, otherwise evaluate
+        if os.path.exists(fpath):
+            with open(fpath, "rb") as fb:
+                res = pickle.load(fb)
+        else:
+            # evaluate the true value
+            print("Evaluating the true value of '%s' and save it to %s" % \
+                  (s, fpath))
+            res = fcn(*args, **kwargs)
+
+            # save the result to a file
+            with open(fpath, "wb") as fb:
+                pickle.dump(res, fb)
+        return res
+    return new_fcn
