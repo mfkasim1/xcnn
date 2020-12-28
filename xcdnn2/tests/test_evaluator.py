@@ -1,9 +1,12 @@
+import os
 import pytest
 import torch
 from xcdnn2.dft_dataset import Evaluator, DFTDataset
 from xcdnn2.xcmodels import HybridXC
 
 dtype = torch.float64
+filedir = os.path.dirname(os.path.realpath(__file__))
+dset_types = ["ie", "ae", "dm"]
 
 class SimpleNN(torch.nn.Module):
     def __init__(self, w1, w2):
@@ -21,17 +24,24 @@ class SimpleNN(torch.nn.Module):
         z2 = torch.matmul(x1, self.w2)  # (..., nfout)
         return z2
 
-@pytest.mark.parametrize(
-    "dset_type",
-    ["ie", "ae", "dm"]
-)
-def test_evaluator_nn_grad(dset_type):
-    torch.manual_seed(123)
+def get_entry(dset_type):
+    # get the first entry of the given dataset type
+
     # get the dataset of some type of calculation
-    dset = DFTDataset()
+    fpath = os.path.join(filedir, "test_dataset.yaml")
+    dset = DFTDataset(fpath)
     idxs = dset.get_indices(lambda obj: obj["type"] == dset_type)
     if len(idxs) == 0:
         raise RuntimeError("No dataset is selected")
+    return dset[idxs[0]]
+
+@pytest.mark.parametrize(
+    "dset_type",
+    dset_types
+)
+def test_evaluator_nn_grad(dset_type):
+    torch.manual_seed(123)
+    entry = get_entry(dset_type)
 
     weights = {
         "ie": 1.0,
@@ -44,7 +54,39 @@ def test_evaluator_nn_grad(dset_type):
     def get_loss(w1, w2):
         nn = SimpleNN(w1, w2)
         evl = Evaluator(HybridXC("lda_x", nn, aweight0=1.0), weights)
-        res = evl.calc_loss_function(dset[idxs[0]])
+        res = evl.calc_loss_function(entry)
         return res
 
     torch.autograd.gradcheck(get_loss, (w1, w2), eps=1e-4, atol=1e-4)
+
+@pytest.mark.parametrize(
+    "dset_type",
+    dset_types
+)
+def test_evaluator_nn(dset_type):
+    # check the value of get_loss
+
+    # torch.manual_seed(125)  # should not really depend on the random seed
+    entry = get_entry(dset_type)
+
+    true_lossval = {
+        "ie": 8.7648592243,
+        "ae": 1.2724805701,
+        "dm": 0.170122569,
+    }[dset_type]
+    true_lossval = torch.tensor(true_lossval, dtype=dtype)
+
+    # setup the neural network and evaluator
+    weights = {
+        "ie": 1e3,
+        "ae": 1e3,
+        "dm": 1e3,
+    }
+    w1 = torch.nn.Parameter(torch.randn(2, 2, dtype=dtype))
+    w2 = torch.nn.Parameter(torch.randn(2, 1, dtype=dtype))
+    nn = SimpleNN(w1, w2)
+    evl = Evaluator(HybridXC("lda_x", nn, aweight0=0.0), weights)
+
+    # calculate the loss function
+    lossval = evl.calc_loss_function(entry)
+    assert torch.allclose(lossval, true_lossval)
