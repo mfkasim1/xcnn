@@ -10,6 +10,8 @@ import torch
 from pyscf import gto, cc, scf
 from dqc.qccalc.base_qccalc import BaseQCCalc
 from dqc.utils.datastruct import SpinParam
+from dqc.system.mol import Mol
+from dqc.system.base_system import BaseSystem
 from xcdnn2.xcmodels import BaseNNXC
 from xcdnn2.utils import eval_and_save
 
@@ -19,7 +21,7 @@ filedir = os.path.dirname(os.path.realpath(__file__))
 class System(dict):
     """
     Interface to the system in the dataset.
-    No calculation should be performed in this class.
+    No scientific calculation should be performed in this class.
     Please do not initialize this class directly, instead, use
     ``System.create()``.
     """
@@ -41,6 +43,25 @@ class System(dict):
 
         # caches
         self._caches = {}
+
+    def get_pyscf_system(self):
+        # convert the system dictionary PySCF system
+
+        systype = self["type"]
+        if systype == "mol":
+            kwargs = self["kwargs"]
+            return gto.M(atom=kwargs["moldesc"], basis=kwargs["basis"], spin=kwargs.get("spin", 0))
+        else:
+            raise RuntimeError("Unknown system type: %s" % systype)
+
+    def get_dqc_system(self) -> BaseSystem:
+        # convert the system dictionary to DQC system
+
+        systype = self["type"]
+        if systype == "mol":
+            return Mol(**self["kwargs"])
+        else:
+            raise RuntimeError("Unknown system type: %s" % systype)
 
     def get_cache(self, s: str):
         return self._caches.get(s, None)
@@ -176,22 +197,8 @@ class EntryDM(Entry):
     @eval_and_save
     def _get_true_val(self) -> torch.Tensor:
         # get the density matrix from PySCF's CCSD calculation
-
         system = self.get_systems()[0]
-
-        # run the PySCF's CCSD calculation
-        mol = self._get_pyscf_system(system)
-        mf  = scf.UHF(mol).run()
-        mcc = cc.UCCSD(mf)
-        mcc.kernel()
-
-        # obtain the total density matrix
-        modm = mcc.make_rdm1()
-        aodm0 = np.dot(mf.mo_coeff[0], np.dot(modm[0], mf.mo_coeff[0].T))
-        aodm1 = np.dot(mf.mo_coeff[1], np.dot(modm[1], mf.mo_coeff[1].T))
-        aodm = aodm0 + aodm1
-
-        return torch.as_tensor(aodm, dtype=torch.double)
+        return self.calc_pyscf_dm_tot(system)
 
     def get_val(self, qcs: List[BaseQCCalc]) -> torch.Tensor:
         dm = qcs[0].aodm()
@@ -203,12 +210,18 @@ class EntryDM(Entry):
     def get_loss(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
         return torch.mean((val - true_val) ** 2)
 
-    def _get_pyscf_system(self, system: System):
-        # convert the system dictionary PySCF system
+    @classmethod
+    def calc_pyscf_dm_tot(cls, system: System):
+        # run the PySCF's CCSD calculation
+        mol = system.get_pyscf_system()
+        mf  = scf.UHF(mol).run()
+        mcc = cc.UCCSD(mf)
+        mcc.kernel()
 
-        systype = system["type"]
-        if systype == "mol":
-            kwargs = system["kwargs"]
-            return gto.M(atom=kwargs["moldesc"], basis=kwargs["basis"], spin=kwargs.get("spin", 0))
-        else:
-            raise RuntimeError("Unknown system type: %s" % systype)
+        # obtain the total density matrix
+        modm = mcc.make_rdm1()
+        aodm0 = np.dot(mf.mo_coeff[0], np.dot(modm[0], mf.mo_coeff[0].T))
+        aodm1 = np.dot(mf.mo_coeff[1], np.dot(modm[1], mf.mo_coeff[1].T))
+        aodm = aodm0 + aodm1
+
+        return torch.as_tensor(aodm, dtype=torch.double)

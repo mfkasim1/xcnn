@@ -72,7 +72,7 @@ class XCDNNEvaluator(BaseEvaluator):
         dm0 = system.get_cache("dm0")
 
         # run ks
-        syst = self._get_dqc_system(system)
+        syst = system.get_dqc_system()
         qc = KS(syst, xc=self.xc).run(dm0=dm0, bck_options={"max_niter": 50})
         dm = qc.aodm()
 
@@ -83,12 +83,3 @@ class XCDNNEvaluator(BaseEvaluator):
             dm_cache = dm.detach()
         system.set_cache("dm0", dm_cache)
         return qc
-
-    def _get_dqc_system(self, system: System) -> BaseSystem:
-        # convert the system dictionary to DQC system
-
-        systype = system["type"]
-        if systype == "mol":
-            return Mol(**system["kwargs"])
-        else:
-            raise RuntimeError("Unknown system type: %s" % systype)
