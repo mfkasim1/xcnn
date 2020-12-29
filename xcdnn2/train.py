@@ -90,6 +90,7 @@ class LitDFTXC(pl.LightningModule):
         opt.zero_grad()
 
         # log the training loss
+        self.log("train_loss_%s" % tpe, loss.detach(), on_step=False, on_epoch=True)
         self.log("train_loss", loss.detach(), on_step=False, on_epoch=True)
         return loss
 
