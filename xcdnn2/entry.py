@@ -52,7 +52,7 @@ class System(dict):
         systype = self["type"]
         if systype == "mol":
             kwargs = self["kwargs"]
-            return gto.M(atom=kwargs["moldesc"], basis=kwargs["basis"], spin=kwargs.get("spin", 0))
+            return gto.M(atom=kwargs["moldesc"], basis=kwargs["basis"], spin=kwargs.get("spin", 0), unit="Bohr")
         else:
             raise RuntimeError("Unknown system type: %s" % systype)
 

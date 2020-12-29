@@ -56,7 +56,7 @@ class XCDNNEvaluator(BaseEvaluator):
 
                 # compare the calculated value with the true value
                 true_val = entry.get_true_val()
-                loss = w * entry.get_loss(true_val, val)
+                loss = w * entry.get_loss(val, true_val)
 
             except xt.ConvergenceWarning:
                 # if there is a convergence warning, do not propagate the gradient

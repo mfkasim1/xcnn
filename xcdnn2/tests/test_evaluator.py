@@ -75,8 +75,8 @@ def test_evaluator_nn(dset_type):
     true_lossval = {
         "ie": 8.7648592243,
         "ae": 1.2724805701,
-        "dm": 0.170122569,
-        "dens": 61.2028,
+        "dm": 0.0265032992,
+        "dens": 0.2927950191,
     }[dset_type]
     true_lossval = torch.tensor(true_lossval, dtype=dtype)
 
@@ -94,4 +94,6 @@ def test_evaluator_nn(dset_type):
 
     # calculate the loss function
     lossval = evl.calc_loss_function(entry)
+    # torch.set_printoptions(precision=10)
+    # print(lossval)
     assert torch.allclose(lossval, true_lossval)
