@@ -574,6 +574,134 @@
       moldesc: H 0.86625 0 0; F -0.86625 0 0
       basis: 6-311++G**
 
+# density profile
+## dens of 1 atom
+- name: Density profile of H
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+
+- name: Density profile of He
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: He 0 0 0
+      basis: 6-311+G**
+
+- name: Density profile of Li
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Li 0 0 0
+      basis: 6-311++G**
+      spin: 1
+
+- name: Density profile of Be
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Be 0 0 0
+      basis: 6-311++G**
+
+- name: Density profile of N
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 0
+      basis: 6-311++G**
+      spin: 3
+
+- name: Density profile of Ne
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Ne 0 0 0
+      basis: 6-311++G**
+
+## density profile for diatomic molecules
+- name: Density profile of H2
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: H 0.7005 0 0; H -0.7005 0 0
+      basis: 6-311++G**
+
+- name: Density profile of Li2
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Li 2.52562 0 0; Li -2.52562 0 0
+      basis: 6-311++G**
+
+- name: Density profile of LiH
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Li 1.5070 0 0; H -1.5070 0 0
+      basis: 6-311++G**
+
+- name: Density profile of B2
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: B 1.5023 0 0; B -1.5023 0 0
+      basis: 6-311++G**
+      spin: 2
+
+- name: Density profile of N2
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: N 1.0372 0 0; N -1.0372 0 0
+      basis: 6-311++G**
+
+- name: Density profile of O2
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: O 1.1409 0 0; O -1.1409 0 0
+      basis: 6-311++G**
+      spin: 2
+
+- name: Density profile of CO
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 1.0660 0 0; O -1.0660 0 0
+      basis: 6-311++G**
+
+- name: Density profile of F2
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: F 1.3341 0 0; F -1.3341 0 0
+      basis: 6-311++G**
+
+- name: Density profile of HF
+  type: dens
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: H 0.86625 0 0; F -0.86625 0 0
+      basis: 6-311++G**
+
 # loss function not implemented
 # - name: Bond length of H2
 #   type: bl

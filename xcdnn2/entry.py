@@ -265,13 +265,17 @@ class EntryDens(Entry):
         # extract the dm from the qc
         qc = qcs[0]
         dm = qc.aodm()
+        if isinstance(dm, SpinParam):
+            dmtot = dm.u + dm.d
+        else:
+            dmtot = dm
 
         # get the integration grid infos
         grid = self._get_integration_grid()
         rgrid = grid.get_rgrid()
 
         # get the density profile
-        return qc.get_system().get_hamiltonian().aodm2dens(dm, rgrid)
+        return qc.get_system().get_hamiltonian().aodm2dens(dmtot, rgrid)
 
     def get_loss(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
         # integration of squared difference at all spaces

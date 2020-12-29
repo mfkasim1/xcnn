@@ -55,11 +55,13 @@ class LitDFTXC(pl.LightningModule):
             "ie": hparams["iew"],
             "ae": hparams["aew"],
             "dm": hparams["dmw"],
+            "dens": hparams["densw"],
         }
         self.dweights = {  # weights from the dataset
             "ie": 1340.0,
             "ae": 440.0,
             "dm": 220.0,
+            "dens": 170.0,
         }
         self.weights = weights
         self.type_indices = {x: i for i, x in enumerate(self.weights.keys())}
@@ -144,6 +146,8 @@ def get_trainer_argparse(parent_parser: argparse.ArgumentParser) -> argparse.Arg
                         help="Learning rate for atomization energy (ignored if no --split_opt)")
     parser.add_argument("--dmlr", type=float, default=1e-4,
                         help="Learning rate for density matrix (ignored if no --split_opt)")
+    parser.add_argument("--denslr", type=float, default=1e-4,
+                        help="Learning rate for density profile (ignored if no --split_opt)")
     parser.add_argument("--clipval", type=float, default=0,
                         help="Clip gradients with norm above this value. 0 means no clipping.")
     parser.add_argument("--iew", type=float, default=440.0,
@@ -152,6 +156,8 @@ def get_trainer_argparse(parent_parser: argparse.ArgumentParser) -> argparse.Arg
                         help="Weight of atomization energy")
     parser.add_argument("--dmw", type=float, default=220.0,
                         help="Weight of density matrix")
+    parser.add_argument("--densw", type=float, default=170.0,
+                        help="Weight of density profile loss")
     parser.add_argument("--max_epochs", type=int, default=1000,
                         help="Maximum number of epochs")
     parser.add_argument("--tvset", type=int, default=2,
@@ -180,6 +186,8 @@ def convert_to_tune_config(hparams: Dict) -> Dict:
         res["aelr"] = tune.loguniform(1e-5, 3e-3)
     if split_opt and "dm" not in exclude_types:
         res["dmlr"] = tune.loguniform(1e-5, 3e-3)
+    if split_opt and "dens" not in exclude_types:
+        res["denslr"] = tune.loguniform(1e-5, 3e-3)
     return res
 
 ######################## dataset and training part ########################

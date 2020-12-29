@@ -38,6 +38,7 @@ if __name__ == "__main__":
         "ie": 1.0,
         "ae": 1.0,
         "dm": 1.0,
+        "dens": 1.0,
     }
     evl = Evaluator(get_libxc("lda_x"), weights)
 
