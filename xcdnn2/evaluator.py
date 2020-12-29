@@ -1,6 +1,6 @@
 from __future__ import annotations
 from abc import abstractmethod
-from typing import Dict
+from typing import Dict, Union
 import warnings
 import torch
 import xitorch as xt
@@ -40,8 +40,14 @@ class XCDNNEvaluator(BaseEvaluator):
         self.xc = xc
         self.weights = weights
 
-    def calc_loss_function(self, entry: Entry) -> torch.Tensor:
+    def calc_loss_function(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
         # calculate the loss function given the entry
+
+        # get the entry object
+        if isinstance(entry_raw, dict):
+            entry = Entry.create(entry_raw)
+        else:
+            entry = entry_raw
 
         w = self.weights[entry["type"]]
 

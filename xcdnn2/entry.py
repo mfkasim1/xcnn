@@ -79,26 +79,29 @@ class Entry(dict):
     Entry class should not be initialized directly, but created through
     ``Entry.create``
     """
-    @staticmethod
-    def create(entry_dct: Dict,
+
+    created_entries: Dict[str, Entry] = {}
+
+    @classmethod
+    def create(cls, entry_dct: Dict,
                dtype: torch.dtype = torch.double,
                device: torch.device = torch.device('cpu')) -> Entry:
-        tpe = entry_dct["type"]
-        kwargs = {
-            "entry_dct": entry_dct,
-            "dtype": dtype,
-            "device": device,
-        }
-        if tpe == "ie":
-            return EntryIE(**kwargs)
-        elif tpe == "ae":
-            return EntryAE(**kwargs)
-        elif tpe == "dm":
-            return EntryDM(**kwargs)
-        elif tpe == "dens":
-            return EntryDens(**kwargs)
-        else:
-            raise RuntimeError("Unknown entry type: %s" % tpe)
+        s = str(entry_dct)
+        if s not in cls.created_entries:
+            tpe = entry_dct["type"]
+            kwargs = {
+                "entry_dct": entry_dct,
+                "dtype": dtype,
+                "device": device,
+            }
+            obj = {
+                "ie": EntryIE,
+                "ae": EntryAE,
+                "dm": EntryDM,
+                "dens": EntryDens,
+            }[tpe](**kwargs)
+            cls.created_entries[s] = obj
+        return cls.created_entries[s]
 
     def __init__(self, entry_dct: Dict,
                  dtype: torch.dtype = torch.double,
