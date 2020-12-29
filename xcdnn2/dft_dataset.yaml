@@ -546,16 +546,13 @@
       basis: 6-311++G**
       spin: 2
 
-# PySCF not-converged
-# - name: Density matrix of CO
-#   type: dm
-#   cmd: dm(systems[0])
-#   true_val: ccsd_dm(systems[0])
-#   systems:
-#   - type: mol
-#     kwargs:
-#       moldesc: C 1.0660 0 0; O -1.0660 0 0
-#       basis: 6-311++G**
+- name: Density matrix of CO
+  type: dm
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 1.0660 0 0; O -1.0660 0 0
+      basis: 6-311++G**
 
 - name: Density matrix of F2
   type: dm
