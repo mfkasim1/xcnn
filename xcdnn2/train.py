@@ -11,7 +11,9 @@ import xcdnn2
 from pytorch_lightning.callbacks import ModelCheckpoint
 from torch.utils.data import DataLoader, Subset
 from dqc.api.getxc import get_libxc
-from xcdnn2.dft_dataset import DFTDataset, Evaluator
+from xcdnn2.evaluator import XCDNNEvaluator as Evaluator
+from xcdnn2.dataset import DFTDataset
+# from xcdnn2.dft_dataset import DFTDataset, Evaluator
 from xcdnn2.xcmodels import HybridXC
 from ray.tune.suggest.hyperopt import HyperOptSearch
 
