@@ -8,7 +8,7 @@ from xcdnn2.xcmodels import HybridXC
 
 dtype = torch.float64
 filedir = os.path.dirname(os.path.realpath(__file__))
-dset_types = ["ie", "ae", "dm"]
+dset_types = ["ie", "ae", "dm", "dens"]
 
 class SimpleNN(torch.nn.Module):
     def __init__(self, w1, w2):
@@ -49,6 +49,7 @@ def test_evaluator_nn_grad(dset_type):
         "ie": 1.0,
         "ae": 1.0,
         "dm": 1.0,
+        "dens": 1.0,
     }
     w1 = torch.nn.Parameter(torch.randn(2, 2, dtype=dtype))
     w2 = torch.nn.Parameter(torch.randn(2, 1, dtype=dtype))
@@ -59,7 +60,7 @@ def test_evaluator_nn_grad(dset_type):
         res = evl.calc_loss_function(entry)
         return res
 
-    torch.autograd.gradcheck(get_loss, (w1, w2), eps=1e-4, atol=1e-4)
+    torch.autograd.gradcheck(get_loss, (w1, w2), eps=1e-3, atol=1e-4)
 
 @pytest.mark.parametrize(
     "dset_type",
@@ -75,6 +76,7 @@ def test_evaluator_nn(dset_type):
         "ie": 8.7648592243,
         "ae": 1.2724805701,
         "dm": 0.170122569,
+        "dens": 61.2028,
     }[dset_type]
     true_lossval = torch.tensor(true_lossval, dtype=dtype)
 
@@ -83,6 +85,7 @@ def test_evaluator_nn(dset_type):
         "ie": 1e3,
         "ae": 1e3,
         "dm": 1e3,
+        "dens": 1e3,
     }
     w1 = torch.nn.Parameter(torch.randn(2, 2, dtype=dtype))
     w2 = torch.nn.Parameter(torch.randn(2, 1, dtype=dtype))

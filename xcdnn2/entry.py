@@ -8,10 +8,12 @@ import pickle
 import numpy as np
 import torch
 from pyscf import gto, cc, scf
+from pyscf.dft import numint
 from dqc.qccalc.base_qccalc import BaseQCCalc
 from dqc.utils.datastruct import SpinParam
 from dqc.system.mol import Mol
 from dqc.system.base_system import BaseSystem
+from dqc.grid.base_grid import BaseGrid
 from xcdnn2.xcmodels import BaseNNXC
 from xcdnn2.utils import eval_and_save
 
@@ -93,6 +95,8 @@ class Entry(dict):
             return EntryAE(**kwargs)
         elif tpe == "dm":
             return EntryDM(**kwargs)
+        elif tpe == "dens":
+            return EntryDens(**kwargs)
         else:
             raise RuntimeError("Unknown entry type: %s" % tpe)
 
@@ -225,3 +229,74 @@ class EntryDM(Entry):
         aodm = aodm0 + aodm1
 
         return torch.as_tensor(aodm, dtype=torch.double)
+
+class EntryDens(Entry):
+    """Entry for density profile (dens), compared with CCSD calculation"""
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        assert len(self.get_systems()) == 1, "dens entry can only have 1 system"
+        self._grid: Optional[BaseGrid] = None
+
+    @property
+    def entry_type(self) -> str:
+        return "dens"
+
+    @eval_and_save
+    def _get_true_val(self) -> torch.Tensor:
+        # get the density profile from PySCF's CCSD calculation
+
+        # get the density matrix from the PySCF calculation
+        system = self.get_systems()[0]
+        dm = EntryDM.calc_pyscf_dm_tot(system)
+
+        # get the grid from dqc and its weights with the reduced level of the grid
+        rgrid = self._get_integration_grid().get_rgrid()  # (*BG, ngrid, ndim)
+
+        # calculate the density profile
+        mol = system.get_pyscf_system()
+        ao = numint.eval_ao(mol, rgrid)
+        dens = numint.eval_rho(mol, ao, dm)  # (*BG, ngrid)
+        return torch.as_tensor(dens, dtype=self.dtype, device=self.device)
+
+    def get_val(self, qcs: List[BaseQCCalc]) -> torch.Tensor:
+        # extract the dm from the qc
+        qc = qcs[0]
+        dm = qc.aodm()
+
+        # get the integration grid infos
+        grid = self._get_integration_grid()
+        rgrid = grid.get_rgrid()
+
+        # get the density profile
+        return qc.get_system().get_hamiltonian().aodm2dens(dm, rgrid)
+
+    def get_loss(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
+        # integration of squared difference at all spaces
+        dvol = self._get_integration_grid().get_dvolume()
+        return torch.sum((true_val - val) ** 2 * dvol)
+
+    def _get_integration_grid(self) -> BaseGrid:
+        if self._grid is None:
+            system = self.get_systems()[0]
+
+            # reduce the level of grid
+            orig_grid_level: Optional[int] = None
+            if "grid" in system:
+                orig_grid_level = system["grid"]
+
+            # get the dqc grid
+            system["grid"] = 2
+            dqc_mol = system.get_dqc_system()
+            dqc_mol.setup_grid()
+            grid = dqc_mol.get_grid()
+            assert grid.coord_type == "cart"
+
+            # restore the grid level
+            if orig_grid_level is not None:
+                system["grid"] = orig_grid_level
+            else:
+                system.pop("grid")
+
+            self._grid = grid
+
+        return self._grid

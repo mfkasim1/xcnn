@@ -38,8 +38,15 @@
 # density matrix
 - name: Density matrix of H2
   type: dm
-  cmd: dm(systems[0])
-  true_val: ccsd_dm(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: H 0.7005 0 0; H -0.7005 0 0
+      basis: 6-311++G**
+
+# density profile
+- name: Density profile of H2
+  type: dens
   systems:
   - type: mol
     kwargs:
