@@ -58,8 +58,8 @@ class LitDFTXC(pl.LightningModule):
             "dens": hparams["densw"],
         }
         self.dweights = {  # weights from the dataset
-            "ie": 1340.0,
-            "ae": 440.0,
+            "ie": 440.0,
+            "ae": 1340.0,
             "dm": 220.0,
             "dens": 170.0,
         }
