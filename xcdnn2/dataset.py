@@ -44,6 +44,7 @@ if __name__ == "__main__":
 
     # run the datasets loss evaluation
     losses = {}
+    torch.set_printoptions(precision=10)
     for i in range(len(dset)):
         tpe = dset[i]["type"]
         if tpe not in losses:

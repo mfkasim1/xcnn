@@ -67,6 +67,7 @@ class XCDNNEvaluator(BaseEvaluator):
             except xt.ConvergenceWarning:
                 # if there is a convergence warning, do not propagate the gradient
                 loss = sum(p.sum() * 0 for p in self.xc.parameters())
+                print("Evaluation of '%s' is not converged")
 
         return loss
 
