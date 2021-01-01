@@ -49,7 +49,8 @@ class LitDFTXC(pl.LightningModule):
             layers.append(torch.nn.Softplus())
         layers.append(torch.nn.Linear(nhid, 1, bias=False))
         nnmodel = torch.nn.Sequential(*layers).to(torch.double)
-        model_nnlda = HybridXC(hparams["libxc"], nnmodel, nnxcmode=hparams["nnxcmode"])
+        model_nnlda = HybridXC(hparams["libxc"], nnmodel, ninpmode=hparams["ninpmode"],
+                               outmultmode=hparams["outmultmode"])
 
         weights = {
             "ie": hparams["iew"],
@@ -137,8 +138,12 @@ def get_trainer_argparse(parent_parser: argparse.ArgumentParser) -> argparse.Arg
                         help="The number of hidden layers depths")
     parser.add_argument("--libxc", type=str, default="lda_x",
                         help="Initial xc to be used")
-    parser.add_argument("--nnxcmode", type=int, default=1,
-                        help="The mode to decide how to compute Exc from NN output")
+    parser.add_argument("--ninpmode", type=int, default=1,
+                        help="The mode to decide the transformation of density to the NN input")
+    parser.add_argument("--outmultmode", type=int, default=1,
+                        help="The mode to decide the Eks from NN output")
+    parser.add_argument("--nnxcmode", type=int,
+                        help="The mode to decide how to compute Exc from NN output (obsolete, do not use)")
 
     # training hyperparams
     parser.add_argument("--ielr", type=float, default=1e-4,
@@ -180,7 +185,8 @@ def convert_to_tune_config(hparams: Dict) -> Dict:
 
     res["nhid"] = tune.choice([16, 32, 64])
     res["ndepths"] = tune.choice([1, 2, 3, 4])
-    res["nnxcmode"] = tune.choice([1, 2, 3])
+    res["ninpmode"] = tune.choice([1, 2, 3])
+    res["outmultmode"] = tune.choice([1, 2])
     if (split_opt and "ie" not in exclude_types) or (not split_opt):
         res["ielr"] = tune.loguniform(1e-5, 3e-3)
     if split_opt and "ae" not in exclude_types:
@@ -361,6 +367,23 @@ if __name__ == "__main__":
 
     # putting all the hyperparameters in a dictionary
     hparams = vars(args)
+
+    # handle obsolete option: nnxcmode
+    # if specified, then prioritize it over ninpmode and outmultmode and set
+    # those parameters according to the value of nnxcmode specified
+    nnxcmode = hparams["nnxcmode"]
+    if nnxcmode == 1:
+        hparams["ninpmode"] = 1
+        hparams["outmultmode"] = 1
+    elif nnxcmode == 2:
+        hparams["ninpmode"] = 2
+        hparams["outmultmode"] = 2
+    elif nnxcmode == 3:
+        hparams["ninpmode"] = 2
+        hparams["outmultmode"] = 1
+    else:
+        raise RuntimeError("Invalid value of nnxcmode: %d" % nnxcmode)
+
     if args.cmd:
         bestval = run_training_until_complete(hparams, False)
     elif args.tune:
