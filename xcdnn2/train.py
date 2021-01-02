@@ -372,7 +372,9 @@ if __name__ == "__main__":
     # if specified, then prioritize it over ninpmode and outmultmode and set
     # those parameters according to the value of nnxcmode specified
     nnxcmode = hparams["nnxcmode"]
-    if nnxcmode == 1:
+    if nnxcmode is None:
+        pass
+    elif nnxcmode == 1:
         hparams["ninpmode"] = 1
         hparams["outmultmode"] = 1
     elif nnxcmode == 2:
@@ -382,7 +384,7 @@ if __name__ == "__main__":
         hparams["ninpmode"] = 2
         hparams["outmultmode"] = 1
     else:
-        raise RuntimeError("Invalid value of nnxcmode: %d" % nnxcmode)
+        raise RuntimeError("Invalid value of nnxcmode: %s" % str(nnxcmode))
 
     if args.cmd:
         bestval = run_training_until_complete(hparams, False)
