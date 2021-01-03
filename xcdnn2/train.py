@@ -31,6 +31,7 @@ class LitDFTXC(pl.LightningModule):
         libxc = hparams["libxc"]
         nhid = hparams["nhid"]
         ndepths = hparams["ndepths"]
+        nn_with_skip = hparams["nn_with_skip"]
 
         # prepare the nn xc model
         family = get_libxc(libxc).family
@@ -42,13 +43,7 @@ class LitDFTXC(pl.LightningModule):
             raise RuntimeError("Unimplemented nn for xc family %d" % family)
 
         # setup the xc nn model
-        layers = []
-        for i in range(ndepths):
-            n1 = ninp if i == 0 else nhid
-            layers.append(torch.nn.Linear(n1, nhid))
-            layers.append(torch.nn.Softplus())
-        layers.append(torch.nn.Linear(nhid, 1, bias=False))
-        nnmodel = torch.nn.Sequential(*layers).to(torch.double)
+        nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip).to(torch.double)
         model_nnlda = HybridXC(hparams["libxc"], nnmodel, ninpmode=hparams["ninpmode"],
                                outmultmode=hparams["outmultmode"])
 
@@ -110,6 +105,65 @@ class LitDFTXC(pl.LightningModule):
     def add_model_specific_args(parent_parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
         return get_trainer_argparse(parent_parser)
 
+class NNModel(torch.nn.Module):
+    def __init__(self, ninp: int, nhid: int, ndepths: int, with_skip: bool = False):
+        super().__init__()
+        layers = []
+        activations = []
+        if with_skip:
+            skip_weights = []
+            conn_weights = []
+        for i in range(ndepths):
+            n1 = ninp if i == 0 else nhid
+            layers.append(torch.nn.Linear(n1, nhid))
+            activations.append(torch.nn.Softplus())
+            if with_skip and i >= 1:
+                # using Linear instead of parameter to avoid userwarning
+                # of parameterlist not supporting set attributes
+                conn_weights.append(torch.nn.Linear(1, 1, bias=False))
+                skip_weights.append(torch.nn.Linear(1, 1, bias=False))
+                # conn_weights.append(torch.nn.Parameter(torch.tensor(0.5)))
+                # skip_weights.append(torch.nn.Parameter(torch.tensor(0.5)))
+        layers.append(torch.nn.Linear(nhid, 1, bias=False))
+
+        # construct the nn parameters
+        self.layers = torch.nn.ModuleList(layers)
+        self.activations = torch.nn.ModuleList(activations)
+        self.with_skip = with_skip
+        if with_skip:
+            self.conn_weights = torch.nn.ModuleList(conn_weights)
+            self.skip_weights = torch.nn.ModuleList(skip_weights)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        for i in range(len(self.layers)):
+            y = self.layers[i](x)
+
+            # activation (no activation at the last layer)
+            if i < len(self.activations):
+                y = self.activations[i](y)
+
+            # skip connection (no skip at the first and last layer)
+            if self.with_skip and i >= 1 and i < len(self.layers) - 1:
+                y1 = self.conn_weights[i - 1](y.unsqueeze(-1))
+                y2 = self.skip_weights[i - 1](x.unsqueeze(-1))
+                y = (y1 + y2).squeeze(-1)
+            x = y
+        return x
+
+def construct_nn_model(ninp: int, nhid: int, ndepths: int, with_skip: bool = False):
+    # construct the neural network model of the xc energy
+    if not with_skip:
+        # old version, to enable loading the old models
+        layers = []
+        for i in range(ndepths):
+            n1 = ninp if i == 0 else nhid
+            layers.append(torch.nn.Linear(n1, nhid))
+            layers.append(torch.nn.Softplus())
+        layers.append(torch.nn.Linear(nhid, 1, bias=False))
+        return torch.nn.Sequential(*layers)
+    else:
+        return NNModel(ninp, nhid, ndepths, with_skip)
+
 ######################## hparams part ########################
 def get_program_argparse() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
@@ -136,6 +190,8 @@ def get_trainer_argparse(parent_parser: argparse.ArgumentParser) -> argparse.Arg
                         help="The number of elements in hidden layers")
     parser.add_argument("--ndepths", type=int, default=1,
                         help="The number of hidden layers depths")
+    parser.add_argument("--nn_with_skip", action="store_const", const=True, default=False,
+                        help="Add skip connection in the neural network")
     parser.add_argument("--libxc", type=str, default="lda_x",
                         help="Initial xc to be used")
     parser.add_argument("--ninpmode", type=int, default=1,
