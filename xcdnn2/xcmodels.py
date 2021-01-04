@@ -5,7 +5,7 @@ from typing import Union, Iterator, List
 from dqc.xc.base_xc import BaseXC
 from dqc.utils.datastruct import ValGrad, SpinParam
 from dqc.utils.safeops import safenorm, safepow
-from dqc.api.getxc import get_libxc
+from dqc.api.getxc import get_xc
 
 class BaseNNXC(BaseXC, torch.nn.Module):
     @abstractproperty
@@ -160,7 +160,7 @@ class HybridXC(BaseNNXC):
         # trains the weights of libxc and nn xc
 
         super().__init__()
-        self.xc = get_libxc(xcstr)
+        self.xc = get_xc(xcstr)
         if self.xc.family == 1:
             self.nnxc = NNLDA(nnmodel, ninpmode=ninpmode, outmultmode=outmultmode)
         elif self.xc.family == 2:

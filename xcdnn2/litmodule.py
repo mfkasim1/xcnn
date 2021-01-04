@@ -2,7 +2,7 @@ import argparse
 from typing import Dict
 import torch
 import pytorch_lightning as pl
-from dqc.api.getxc import get_libxc
+from dqc.api.getxc import get_xc
 from xcdnn2.xcmodels import HybridXC
 from xcdnn2.evaluator import XCDNNEvaluator as Evaluator
 
@@ -53,7 +53,7 @@ class LitDFTXC(pl.LightningModule):
         nn_with_skip = hparams.get("nn_with_skip", False)
 
         # prepare the nn xc model
-        family = get_libxc(libxc).family
+        family = get_xc(libxc).family
         if family == 1:
             ninp = 2
         elif family == 2:
