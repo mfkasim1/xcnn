@@ -1,6 +1,7 @@
 import argparse
 from typing import List, Dict
 import torch
+import numpy as np
 import matplotlib.pyplot as plt
 from xcdnn2.litmodule import LitDFTXC
 from xcdnn2.dataset import DFTDataset
