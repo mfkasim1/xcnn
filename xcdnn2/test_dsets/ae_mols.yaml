@@ -347,9 +347,8 @@
   systems:
   - type: mol
     kwargs:
-      moldesc: C 0 0 1.1363; C 0 0 -1.1363; O 0 0 3.1453; O 0 0 -3.1453
+      moldesc: C 0 0 1.1363; C 0 0 -1.1363; H 0 0 3.1453; H 0 0 -3.1453
       basis: 6-311++G**
-      spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
