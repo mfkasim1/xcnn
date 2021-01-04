@@ -1,4 +1,4 @@
-from typing import List, Callable
+from typing import List, Callable, Optional
 import hashlib
 import os
 import pickle
@@ -65,3 +65,10 @@ def eval_and_save(fcn: Callable):
                 pickle.dump(res, fb)
         return res
     return new_fcn
+
+def get_exp_version(version: Optional[str]) -> Optional[str]:
+    # get the experiment version based on the input from the user's hparams
+    if version is not None:
+        if version.isdigit():
+            return "version_%d" % int(version)
+    return version
