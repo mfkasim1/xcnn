@@ -171,7 +171,6 @@
     kwargs:
       moldesc: N 0 0 -2.2673; N 0 0 -0.1353; O 0 0 2.1025
       basis: 6-311++G**
-      spin: 1
   - type: mol
     kwargs:
       moldesc: N 0 0 0
