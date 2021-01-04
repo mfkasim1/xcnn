@@ -7,7 +7,7 @@
   systems:
   - type: mol
     kwargs:
-      moldesc: Be 0 0 0; H -0.7019 0 0; H 0.7019 0 0
+      moldesc: Be 0 0 0; H -2.5065 0 0; H 2.5065 0 0
       basis: 6-311++G**
   - type: mol
     kwargs:
@@ -29,7 +29,7 @@
   systems:
   - type: mol
     kwargs:
-      moldesc: B 0 0 0; H 0 0.6297 0; H 0.5454 -0.3149 0; H -0.5454 -0.3149 0
+      moldesc: B 0 0 0; H 0 2.2488 0; H 1.9476 -1.1244 0; H -1.9476 -1.1244 0
       basis: 6-311++G**
   - type: mol
     kwargs:
@@ -52,7 +52,7 @@
   systems:
   - type: mol
     kwargs:
-      moldesc: C 0 0 0; H 0.3321 0.3321 0.3321; H 0.3321 -0.3321 -0.3321; H -0.3321 0.3321 -0.3321; H -0.3321 -0.3321 0.3321
+      moldesc: C 0 0 0; H 1.1860 1.1860 1.1860; H 1.1860 -1.1860 -1.1860; H -1.1860 1.1860 -1.1860; H -1.1860 -1.1860 1.1860
       basis: 6-311++G**
   - type: mol
     kwargs:
@@ -75,7 +75,7 @@
   systems:
   - type: mol
     kwargs:
-      moldesc: N 0 0 0; H 0 -0.4962 -0.2019; H 0.4297 0.2481 -0.2019; H -0.4297 0.2481 -0.2019
+      moldesc: N 0 0 0; H 0 -1.7720 -0.7211; H 1.5346 0.8861 -0.7211; H -1.5346 0.8861 -0.7211
       basis: 6-311++G**
   - type: mol
     kwargs:
@@ -98,7 +98,7 @@
   systems:
   - type: mol
     kwargs:
-      moldesc: O 0 0 0.0621; H 0 0.4007 -0.2483; H 0 -0.4007 -0.2483
+      moldesc: O 0 0 0.2217; H 0 1.4309 -0.8867; H 0 -1.4309 -0.8867
       basis: 6-311++G**
   - type: mol
     kwargs:
