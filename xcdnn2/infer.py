@@ -7,34 +7,29 @@ from xcdnn2.dataset import DFTDataset
 
 class Plotter(object):
     # this object provides interface to plot the losses
-    def __init__(self, ntypes: int, hparams: Dict):
-        self.losses: List[List[float]] = []  # self.losses[i_entry][i_model]
+    def __init__(self, ntypes: int, hparams: Dict, all_losses: List[List[float]]):
+        self.losses = all_losses  # self.losses[i_entry][i_model]
         self.hparams = self._set_default_hparams(ntypes, hparams)
         self.ntypes = ntypes
-
-    def add_losses(self, losses: List[float]):
-        # add the losses from different types of models for one entry
-        assert len(losses) == self.ntypes
-        self.losses.append(losses)
 
     def show(self):
         # show the plot of the losses in the current axes
         assert len(self.losses) > 0
         plt.plot(self.losses, 'o')
-        if hparams["labels"]:
-            plt.legend(hparams["labels"])
-        if hparams["title"]:
-            plt.title(hparams["title"])
-        if hparams["xlabel"]:
-            plt.xlabel(hparams["xlabel"])
-        if hparams["ylabel"]:
-            plt.ylabel(hparams["ylabel"])
+        if self.hparams["labels"]:
+            plt.legend(self.hparams["labels"])
+        if self.hparams["title"]:
+            plt.title(self.hparams["title"])
+        if self.hparams["xlabel"]:
+            plt.xlabel(self.hparams["xlabel"])
+        if self.hparams["ylabel"]:
+            plt.ylabel(self.hparams["ylabel"])
         plt.show()
 
     def _set_default_hparams(self, ntypes: int, hparams: Dict):
         # set the default hparams
         # currently there's nothing to do here
-        pass
+        return hparams
 
     @staticmethod
     def get_plot_argparse(parent_parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
@@ -61,6 +56,10 @@ def get_infer_argparse() -> argparse.ArgumentParser:
                         help="If present, plot the values")
     return parser
 
+def list2str(x: List[float], fmt: str = "%.4e", sep: str = ", ") -> str:
+    # convert a list of float into a string
+    return sep.join([fmt % xx for xx in x])
+
 if __name__ == "__main__":
     parser = get_infer_argparse()
     parser = Plotter.get_plot_argparse(parser)
@@ -73,15 +72,21 @@ if __name__ == "__main__":
     # load the model and the dataset
     models = [LitDFTXC.load_from_checkpoint(checkpoint_path=chkpt) for chkpt in hparams["chkpts"]]
     dset = DFTDataset(hparams["dataset"])
-    plotter = Plotter(len(hparams["chkpts"]), hparams)
 
     # calculate the losses for all entries and models
+    all_losses = []
     for i in range(len(dset)):
         losses = [float(model.deviation(dset[i]).item()) for model in models]
-        losses_str = ", ".join(["%.4e" % loss for loss in losses])
+        losses_str = list2str(losses)
         print("%d out of %d: %s (%s)" % (i + 1, len(dset), dset[i]["name"], losses_str))
-        plotter.add_losses(losses)
+        all_losses.append(losses)
+
+    # get the mean
+    all_losses = np.array(all_losses)
+    print("     Mean absolute error (MAE): %s" % list2str(np.mean(all_losses, axis=0)))
+    print("Root mean squared error (RMSE): %s" % list2str(np.sqrt(np.mean(all_losses ** 2, axis=0))))
 
     # show the plot
     if hparams["plot"]:
+        plotter = Plotter(len(hparams["chkpts"]), hparams, all_losses)
         plotter.show()
