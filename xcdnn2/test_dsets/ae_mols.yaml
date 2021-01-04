@@ -225,3 +225,187 @@
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7783417&charge=0 for positions and
     https://cccbdb.nist.gov/ea2.asp?casno=7783417&charge=0 for the atomization energy
+
+# acids
+- name: Atomization energy of HCN
+  type: ae
+  cmd: energy(systems[3]) + energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.4820795671621143
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0; H 0 0 2.0107; N 0 0 -2.1845
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=74908&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=74908&charge=0 for the atomization energy
+
+- name: Atomization energy of HNC
+  type: ae
+  cmd: energy(systems[3]) + energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.458579283292396
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 -1.3993; N 0 0 0.8166; H 0 0 2.6802
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=6914074&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=6914074&charge=0 for the atomization energy
+
+- name: Atomization energy of HNO3
+  type: ae
+  cmd: energy(systems[3]) + energy(systems[2]) + 3 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.5909731029538884
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: N 0 0.2931 0; O -0.5053 -2.3155 0; O 2.2193 0.8511 0; O -1.8602 1.5866 0; H 1.1701 -3.0306 0
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7697372&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7697372&charge=0 for the atomization energy
+
+- name: Atomization energy of HCOOH
+  type: ae
+  cmd: 2 * energy(systems[3]) + energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.7649970851268915
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 0 0.7975 0; O -1.9536 -0.8226 0; O 2.1896 0.1931 0; H -0.6637 2.7613 0; H -1.2249 -2.5088 0
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=64186&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=64186&charge=0 for the atomization energy
+
+# hydrocarbons
+- name: Atomization energy of C2H2
+  type: ae
+  cmd: 2 * energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.6195010002284734
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 1.1363; C 0 0 -1.1363; O 0 0 3.1453; O 0 0 -3.1453
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=74862&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=74862&charge=0 for the atomization energy
+
+- name: Atomization energy of C2H4
+  type: ae
+  cmd: 4 * energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.8476480024644745
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 1.2652; C 0 0 -1.2652; H 0 1.7554 2.3283; H 0 -1.7554 2.3283; H 0 1.7554 -2.3283; H 0 -1.7554 -2.3283
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=74851&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=74851&charge=0 for the atomization energy
+
+- name: Atomization energy of C2H6
+  type: ae
+  cmd: 6 * energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 1.061512012073013
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 1.4513; C 0 0 -1.4513; H -1.9260 0 2.1870; H 0.9630 1.6679 2.1870; H 0.9630 -1.6679 2.1870; H 1.9260 0 -2.1870; H -0.9630 -1.6679 -2.1870; H -0.9630 1.6679 -2.1870
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=74840&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=74840&charge=0 for the atomization energy
