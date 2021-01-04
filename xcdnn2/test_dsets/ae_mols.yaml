@@ -1,0 +1,115 @@
+---
+# hydrides
+- name: Atomization energy of BeH2
+  type: ae
+  cmd: energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.237898
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Be 0 0 0; H -0.7019 0 0; H 0.7019 0 0
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Be 0 0 0
+      basis: 6-311++G**
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7787522&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7787522&charge=0 for the atomization energy
+
+- name: Atomization energy of BH3
+  type: ae
+  cmd: energy(systems[2]) + 3 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.4250999485736238
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: B 0 0 0; H 0 0.6297 0; H 0.5454 -0.3149 0; H -0.5454 -0.3149 0
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: B 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=13283313&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=13283313&charge=0 for the atomization energy
+
+- name: Atomization energy of CH4
+  type: ae
+  cmd: energy(systems[2]) + 4 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.625404637181158
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0; H 0.3321 0.3321 0.3321; H 0.3321 -0.3321 -0.3321; H -0.3321 0.3321 -0.3321; H -0.3321 -0.3321 0.3321
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=74828&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=74828&charge=0 for the atomization energy
+
+- name: Atomization energy of NH3
+  type: ae
+  cmd: energy(systems[2]) + 3 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.4410207243557021
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 0; H 0 -0.4962 -0.2019; H 0.4297 0.2481 -0.2019; H -0.4297 0.2481 -0.2019
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7664417&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7664417&charge=0 for the atomization energy
+
+- name: Atomization energy of H2O
+  type: ae
+  cmd: energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.34957148355960216
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0.0621; H 0 0.4007 -0.2483; H 0 -0.4007 -0.2483
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7732185&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7732185&charge=0 for the atomization energy
