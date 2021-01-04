@@ -113,3 +113,117 @@
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7732185&charge=0 for positions and
     https://cccbdb.nist.gov/ea2.asp?casno=7732185&charge=0 for the atomization energy
+
+# oxides
+- name: Atomization energy of CO2
+  type: ae
+  cmd: 2 * energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.6086459258316019
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0; O 0 0 2.1961; O 0 0 -2.1961
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=124389&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=124389&charge=0 for the atomization energy
+
+- name: Atomization energy of NO2
+  type: ae
+  cmd: 2 * energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.3533421936132523
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 0; O 0 2.0766 0.8793; O 0 -2.0766 0.8793
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=10102440&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=10102440&charge=0 for the atomization energy
+
+- name: Atomization energy of N2O
+  type: ae
+  cmd: energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.4203008630507965
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 -2.2673; N 0 0 -0.1353; O 0 0 2.1025
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: N 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=10024972&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=10024972&charge=0 for the atomization energy
+
+- name: Atomization energy of O3
+  type: ae
+  cmd: 3 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.2270424508061439
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0; O 0 2.0570 1.2655; O 0 -2.0570 1.2655
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=10028156&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=10028156&charge=0 for the atomization energy
+
+- name: Atomization energy of OF2
+  type: ae
+  cmd: energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.1426775743532654
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 1.1431; F 0 2.0793 -0.5080; F 0 -2.0793 -0.5080
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: F 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7783417&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7783417&charge=0 for the atomization energy
