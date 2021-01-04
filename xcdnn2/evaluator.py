@@ -16,10 +16,17 @@ class BaseEvaluator(torch.nn.Module):
     Object containing trainable parameters and the interface to the NN models.
     """
     @abstractmethod
-    def calc_loss_function(self, entry: Entry) -> torch.Tensor:
+    def calc_loss_function(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
         """
         Calculate the weighted loss function using the parameters.
         This is like the forward of standard torch nn Module.
+        """
+        pass
+
+    @abstractmethod
+    def calc_deviation(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
+        """
+        Calculates and returns deviation in a readable unit and interpretation.
         """
         pass
 
@@ -41,7 +48,17 @@ class XCDNNEvaluator(BaseEvaluator):
         self.weights = weights
 
     def calc_loss_function(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
-        # calculate the loss function given the entry
+        # calculate the loss function of the entry
+        fcn = lambda entry, val, true_val: self.weights[entry["type"]] * entry.get_loss(val, true_val)
+        return self._calc_loss(entry_raw, fcn)
+
+    def calc_deviation(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
+        # calculate the deviation from the true value in an interpretable format
+        fcn = lambda entry, val, true_val: entry.get_deviation(val, true_val)
+        return self._calc_loss(entry_raw, fcn)
+
+    def _calc_loss(self, entry_raw: Union[Entry, Dict], fcn: Callable) -> torch.Tensor:
+        # calculate the loss function given the entry and function to calculate the loss
 
         # get the entry object
         if isinstance(entry_raw, dict):
@@ -62,12 +79,12 @@ class XCDNNEvaluator(BaseEvaluator):
 
                 # compare the calculated value with the true value
                 true_val = entry.get_true_val()
-                loss = w * entry.get_loss(val, true_val)
+                loss = fcn(entry, val, true_val)
 
             except xt.ConvergenceWarning:
                 # if there is a convergence warning, do not propagate the gradient
                 loss = sum(p.sum() * 0 for p in self.xc.parameters())
-                print("Evaluation of '%s' is not converged")
+                print("Evaluation of '%s' is not converged" % entry["name"])
 
         return loss
 

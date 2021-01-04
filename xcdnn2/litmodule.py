@@ -92,6 +92,10 @@ class LitDFTXC(pl.LightningModule):
     def forward(self, x: Dict) -> torch.Tensor:
         return self.evl.calc_loss_function(x)
 
+    def deviation(self, x: Dict) -> torch.Tensor:
+        # deviation of the predicted value and true value in a meaningful format
+        return self.evl.calc_deviation(x)
+
     def training_step(self, train_batch: Dict, batch_idx: int, optimizer_idx: int) -> torch.Tensor:
         # obtain which optimizer should be performed based on the batch type
         tpe = train_batch["type"]

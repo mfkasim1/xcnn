@@ -163,6 +163,14 @@ class Entry(dict):
         """
         pass
 
+    @abstractmethod
+    def get_deviation(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
+        """
+        Returns the deviation of predicted value and true value in an interpretable
+        format and units.
+        """
+        pass
+
 class EntryIE(Entry):
     """Entry for Ionization Energy (IE)"""
     @property
@@ -181,6 +189,9 @@ class EntryIE(Entry):
 
     def get_loss(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
         return torch.mean((val - true_val) ** 2)
+
+    def get_deviation(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
+        return torch.mean((val - true_val).abs()) * 627.5  # MAE in kcal/mol
 
     def energy(self, qc: BaseQCCalc) -> torch.Tensor:
         return qc.energy()
@@ -216,6 +227,9 @@ class EntryDM(Entry):
 
     def get_loss(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
         return torch.mean((val - true_val) ** 2)
+
+    def get_deviation(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
+        return torch.mean((val - true_val).abs())  # MAE
 
     @classmethod
     def calc_pyscf_dm_tot(cls, system: System):
@@ -281,6 +295,9 @@ class EntryDens(Entry):
         # integration of squared difference at all spaces
         dvol = self._get_integration_grid().get_dvolume()
         return torch.sum((true_val - val) ** 2 * dvol)
+
+    def get_deviation(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
+        return self.get_loss(val, true_val)  # sum of squares
 
     def _get_integration_grid(self) -> BaseGrid:
         if self._grid is None:
