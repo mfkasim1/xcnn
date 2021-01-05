@@ -97,7 +97,7 @@ class XCDNNEvaluator(BaseEvaluator):
 
         # run ks
         syst = system.get_dqc_system()
-        qc = KS(syst, xc=self.xc).run(dm0=dm0, bck_options={"max_niter": 50}, fwd_options={"f_tol": 1e-5})
+        qc = KS(syst, xc=self.xc).run(dm0=dm0, bck_options={"max_niter": 50})
         dm = qc.aodm()
 
         # save the cache
