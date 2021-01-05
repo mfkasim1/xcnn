@@ -1,4 +1,5 @@
 import argparse
+import warnings
 from typing import Dict
 import torch
 import pytorch_lightning as pl
@@ -17,6 +18,7 @@ class LitDFTXC(pl.LightningModule):
         # * ndepths: int
         # * nn_with_skip: bool
         # * ninpmode: int
+        # * sinpmode: int
         # * outmultmode: int
         # * iew: float
         # * aew: float
@@ -24,10 +26,12 @@ class LitDFTXC(pl.LightningModule):
         # * densw: float
         super().__init__()
 
-        # handle obsolete option: nnxcmode
+        # handle deprecated option: nnxcmode
         # if specified, then prioritize it over ninpmode and outmultmode and set
         # those parameters according to the value of nnxcmode specified
         nnxcmode = hparams["nnxcmode"]
+        if nnxcmode is not None:
+            warnings.warn("--nnxcmode flag is deprecated, please use --ninpmode and --outmultmode")
         if nnxcmode is None:
             pass
         elif nnxcmode == 1:
@@ -63,7 +67,9 @@ class LitDFTXC(pl.LightningModule):
 
         # setup the xc nn model
         nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip).to(torch.double)
-        model_nnlda = HybridXC(hparams["libxc"], nnmodel, ninpmode=hparams["ninpmode"],
+        model_nnlda = HybridXC(hparams["libxc"], nnmodel,
+                               ninpmode=hparams["ninpmode"],
+                               sinpmode=hparams["sinpmode"],
                                outmultmode=hparams["outmultmode"])
 
         weights = {
@@ -143,10 +149,12 @@ class LitDFTXC(pl.LightningModule):
                             help="Initial xc to be used")
         parser.add_argument("--ninpmode", type=int, default=1,
                             help="The mode to decide the transformation of density to the NN input")
+        parser.add_argument("--sinpmode", type=int, default=1,
+                            help="The mode to decide the transformation of normalized grad density to the NN input")
         parser.add_argument("--outmultmode", type=int, default=1,
                             help="The mode to decide the Eks from NN output")
         parser.add_argument("--nnxcmode", type=int,
-                            help="The mode to decide how to compute Exc from NN output (obsolete, do not use)")
+                            help="The mode to decide how to compute Exc from NN output (deprecated, do not use)")
 
         # hparams for the loss function
         parser.add_argument("--iew", type=float, default=440.0,

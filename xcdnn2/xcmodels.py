@@ -82,7 +82,7 @@ class NNLDA(BaseNNXC):
 class NNGGA(BaseNNXC):
     # neural network xc functional of GGA (receives the density and grad as inputs)
 
-    def __init__(self, nnmodel: torch.nn.Module, ninpmode: int = 1, outmultmode: int = 1):
+    def __init__(self, nnmodel: torch.nn.Module, ninpmode: int = 1, sinpmode: int = 1, outmultmode: int = 1):
         # nnmodel should receives input with shape (..., 3)
         # where the last dimension is for:
         # (0) total density (n): (n_up + n_dn), and
@@ -93,6 +93,7 @@ class NNGGA(BaseNNXC):
         super().__init__()
         self.nnmodel = nnmodel
         self.ninpmode = ninpmode
+        self.sinpmode = sinpmode
         self.outmultmode = outmultmode
 
     @property
@@ -105,7 +106,6 @@ class NNGGA(BaseNNXC):
 
         # collect the total density (n), spin density (xi), and normalized gradients (s)
         a = 6.187335452560271  # 2 * (3 * np.pi ** 2) ** (1.0 / 3)
-        b = -0.7385587663820223  # -0.75 / np.pi * (3*np.pi**2)**(1./3) for exunif
         if isinstance(densinfo, ValGrad):  # unpolarized case
             assert densinfo.grad is not None
             n = densinfo.value.unsqueeze(-1)  # (*BD, nr, 1)
@@ -124,6 +124,7 @@ class NNGGA(BaseNNXC):
 
         # decide how to transform the density to be the input of nn
         ninp = get_n_input(n, self.ninpmode)
+        sinp = get_n_input(s, self.sinpmode)
 
         # get the neural network output
         x = torch.cat((ninp, xi, s), dim=-1)  # (*BD, nr, 3)
@@ -151,6 +152,8 @@ class NNGGA(BaseNNXC):
 class HybridXC(BaseNNXC):
     def __init__(self, xcstr: str, nnmodel: torch.nn.Module, *,
                  ninpmode: int = 1,  # mode to decide how to transform the density to nn input
+                 sinpmode: int = 1,  # mode of calculation of s (normalized gradient) to nn
+                                     # (only for GGA or higher)
                  outmultmode: int = 1,  # mode of calculating Eks from output of nn
                  aweight0: float = 0.0,  # weight of the neural network
                  bweight0: float = 1.0,  # weight of the default xc
@@ -164,9 +167,9 @@ class HybridXC(BaseNNXC):
         if self.xc.family == 1:
             self.nnxc = NNLDA(nnmodel, ninpmode=ninpmode, outmultmode=outmultmode)
         elif self.xc.family == 2:
-            self.nnxc = NNGGA(nnmodel, ninpmode=ninpmode, outmultmode=outmultmode)
+            self.nnxc = NNGGA(nnmodel, ninpmode=ninpmode, sinpmode=sinpmode, outmultmode=outmultmode)
         elif self.xc.family == 3:
-            self.nnxc = NNMGGA(nnmodel, ninpmode=ninpmode, outmultmode=outmultmode)
+            self.nnxc = NNMGGA(nnmodel, ninpmode=ninpmode, sinpmode=sinpmode, outmultmode=outmultmode)
 
         self.aweight = torch.nn.Parameter(torch.tensor(aweight0, dtype=dtype, device=device, requires_grad=True))
         self.bweight = torch.nn.Parameter(torch.tensor(bweight0, dtype=dtype, device=device, requires_grad=True))
