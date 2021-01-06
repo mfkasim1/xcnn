@@ -127,7 +127,7 @@ class NNGGA(BaseNNXC):
         sinp = get_n_input(s, self.sinpmode)
 
         # get the neural network output
-        x = torch.cat((ninp, xi, s), dim=-1)  # (*BD, nr, 3)
+        x = torch.cat((ninp, xi, sinp), dim=-1)  # (*BD, nr, 3)
         nnout = self.nnmodel(x)  # (*BD, nr, 1)
         res = get_out_from_nnout(nnout, n, self.outmultmode)  # (*BD, nr, 1)
 
