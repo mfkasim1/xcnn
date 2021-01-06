@@ -111,7 +111,7 @@ class NNGGA(BaseNNXC):
             n = densinfo.value.unsqueeze(-1)  # (*BD, nr, 1)
             xi = torch.zeros_like(n)
             n_offset = n + 1e-18  # avoiding nan
-            s = safenorm(densinfo.grad, dim=-1).unsqueeze(-1) / a * safepow(n, -4.0 / 3)
+            s = safenorm(densinfo.grad, dim=-1).unsqueeze(-1)
         else:  # polarized case
             assert densinfo.u.grad is not None
             assert densinfo.d.grad is not None
@@ -120,11 +120,15 @@ class NNGGA(BaseNNXC):
             n = nu + nd  # (*BD, nr, 1)
             n_offset = n + 1e-18  # avoiding nan
             xi = (nu - nd) / n_offset
-            s = safenorm(densinfo.u.grad + densinfo.d.grad, dim=-1).unsqueeze(-1) / a * safepow(n, -4.0 / 3)
+            s = safenorm(densinfo.u.grad + densinfo.d.grad, dim=-1).unsqueeze(-1)
+
+        # normalize the gradient
+        if self.sinpmode // 10 == 0:
+            s = s / a * safepow(n, -4.0 / 3)
 
         # decide how to transform the density to be the input of nn
         ninp = get_n_input(n, self.ninpmode)
-        sinp = get_n_input(s, self.sinpmode)
+        sinp = get_n_input(s, self.sinpmode % 10)
 
         # get the neural network output
         x = torch.cat((ninp, xi, sinp), dim=-1)  # (*BD, nr, 3)
