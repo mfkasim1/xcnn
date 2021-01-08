@@ -83,9 +83,13 @@ class Entry(dict):
     created_entries: Dict[str, Entry] = {}
 
     @classmethod
-    def create(cls, entry_dct: Dict,
+    def create(cls, entry_dct: Union[Dict, Entry],
                dtype: torch.dtype = torch.double,
                device: torch.device = torch.device('cpu')) -> Entry:
+        if isinstance(entry_dct, Entry):
+            # TODO: should we add dtype and device checks here?
+            return entry_dct
+
         s = str(entry_dct)
         if s not in cls.created_entries:
             tpe = entry_dct["type"]

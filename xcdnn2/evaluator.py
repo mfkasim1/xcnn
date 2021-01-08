@@ -61,10 +61,7 @@ class XCDNNEvaluator(BaseEvaluator):
         # calculate the loss function given the entry and function to calculate the loss
 
         # get the entry object
-        if isinstance(entry_raw, dict):
-            entry = Entry.create(entry_raw)
-        else:
-            entry = entry_raw
+        entry = Entry.create(entry_raw)
 
         w = self.weights[entry["type"]]
 
