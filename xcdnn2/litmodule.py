@@ -81,7 +81,8 @@ class LitDFTXC(pl.LightningModule):
         self.weights = weights
         self.type_indices = {x: i for i, x in enumerate(self.weights.keys())}
 
-        if not hparams["pyscf"]:
+        self.use_pyscf = hparams["pyscf"]
+        if not self.use_pyscf:
             # setup the xc nn model
             nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip).to(torch.double)
             model_nnlda = HybridXC(hparams["libxc"], nnmodel,
@@ -91,6 +92,8 @@ class LitDFTXC(pl.LightningModule):
             return XCDNNEvaluator(model_nnlda, weights)
         else:
             # if using pyscf, no neural network is constructed
+            # dummy parameter required just to make it run without error
+            self.dummy_param = torch.nn.Parameter(torch.tensor(0.0, dtype=torch.double))
             return PySCFEvaluator(hparams["libxc"], weights)
 
     def configure_optimizers(self):
@@ -101,7 +104,10 @@ class LitDFTXC(pl.LightningModule):
         return opts
 
     def forward(self, x: Dict) -> torch.Tensor:
-        return self.evl.calc_loss_function(x)
+        res = self.evl.calc_loss_function(x)
+        if self.use_pyscf:
+            res = res + self.dummy_param * 0
+        return res
 
     def deviation(self, x: Dict) -> torch.Tensor:
         # deviation of the predicted value and true value in a meaningful format
