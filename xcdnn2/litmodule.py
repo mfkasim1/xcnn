@@ -87,7 +87,7 @@ class LitDFTXC(pl.LightningModule):
             nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip).to(torch.double)
             model_nnlda = HybridXC(hparams["libxc"], nnmodel,
                                    ninpmode=hparams["ninpmode"],
-                                   sinpmode=hparams["sinpmode"],
+                                   sinpmode=hparams.get("sinpmode", 1),
                                    outmultmode=hparams["outmultmode"])
             return XCDNNEvaluator(model_nnlda, weights)
         else:
