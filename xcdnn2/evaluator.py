@@ -64,23 +64,29 @@ class XCDNNEvaluator(BaseEvaluator):
         # get the entry object
         entry = Entry.create(entry_raw)
 
-        with warnings.catch_warnings():
+        with warnings.catch_warnings(record=True) as ws:
             warnings.simplefilter("always", xt.MathWarning)
-            warnings.simplefilter("error", xt.ConvergenceWarning)
+            warnings.simplefilter("always", xt.ConvergenceWarning)
 
-            try:
-                # evaluate the command
-                qcs = [self.run(syst) for syst in entry.get_systems()]
-                val = entry.get_val(qcs)
+            # evaluate the command
+            qcs = [self.run(syst) for syst in entry.get_systems()]
+            val = entry.get_val(qcs)
 
-                # compare the calculated value with the true value
-                true_val = entry.get_true_val()
-                loss = fcn(entry, val, true_val)
+            # compare the calculated value with the true value
+            true_val = entry.get_true_val()
+            loss = fcn(entry, val, true_val)
 
-            except xt.ConvergenceWarning:
+        # if there is a warning, show all of them
+        if len(ws) > 0:
+            convergence_warning = False
+            for w in ws:
+                warnings.warn(w.message, category=w.category)
+                if issubclass(w.category, xt.ConvergenceWarning):
+                    convergence_warning = True
+            if convergence_warning:
                 # if there is a convergence warning, do not propagate the gradient,
                 # but preserve the value
-                loss = sum(p.sum() * 0 for p in self.xc.parameters())
+                loss = sum(p.sum() * 0 for p in self.xc.parameters()) + loss.detach()
                 print("Evaluation of '%s' is not converged" % entry["name"])
 
         return loss
