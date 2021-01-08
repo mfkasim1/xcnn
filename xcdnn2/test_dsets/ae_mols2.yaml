@@ -283,6 +283,29 @@
     https://cccbdb.nist.gov/exp2x.asp?casno=7803512&charge=0 for positions and
     https://cccbdb.nist.gov/ea2.asp?casno=7803512&charge=0 for the atomization energy
 
+- name: Atomization energy of PF3
+  type: ae
+  cmd: energy(systems[2]) + 3 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.5714339684409
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: P 0 0 0.8697; F 0 2.5659 -0.4832; F 2.2221 -1.2829 -0.4832; F -2.2221 -1.2829 -0.4832
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: F 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: P 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7783553&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7783553&charge=0 for the atomization energy
+
 - name: Atomization energy of SH2
   type: ae
   cmd: energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
