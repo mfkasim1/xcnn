@@ -26,6 +26,7 @@ def get_program_argparse() -> argparse.ArgumentParser:
                         help="The training version, if exists, then resume the training")
     parser.add_argument("--logdir", type=str, default="logs",
                         help="The log directory relative to this file's path")
+    parser.add_argument("--seed", type=int, default=123, help="Random seed")
 
     # hparams not used for the actual training
     # (only for different execution modes of this file)
@@ -221,13 +222,14 @@ def optimize_hparams(hparams: Dict):
     print("Best config:", analysis.get_best_config(metric="val_loss", mode="min"))
 
 if __name__ == "__main__":
-    torch.manual_seed(123)
-
     # parsing the hyperparams
     parser = get_program_argparse()
     parser = LitDFTXC.get_trainer_argparse(parser)
     # parser = pl.Trainer.add_argparse_args(parser)
     args = parser.parse_args()
+
+    # set the random seed
+    torch.manual_seed(args.seed)
 
     # putting all the hyperparameters in a dictionary
     hparams = vars(args)
