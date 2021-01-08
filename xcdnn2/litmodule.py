@@ -57,7 +57,8 @@ class LitDFTXC(pl.LightningModule):
         nn_with_skip = hparams.get("nn_with_skip", False)
 
         # prepare the nn xc model
-        family = get_xc(libxc).family
+        libxc_dqc = libxc.replace(",", "+")
+        family = get_xc(libxc_dqc).family
         if family == 1:
             ninp = 2
         elif family == 2:
