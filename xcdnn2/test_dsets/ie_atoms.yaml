@@ -26,6 +26,7 @@
       moldesc: He 0 0 0
       basis: 6-311+G**
       charge: 1
+      spin: 1
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
 
 - name: Ionization energy of Li
@@ -59,6 +60,7 @@
       moldesc: Be 0 0 0
       basis: 6-311++G**
       charge: 1
+      spin: 1
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
 
 - name: Ionization energy of B
@@ -164,4 +166,5 @@
       moldesc: Ne 0 0 0
       basis: 6-311++G**
       charge: 1
+      spin: 1
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
