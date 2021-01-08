@@ -81,7 +81,7 @@ class LitDFTXC(pl.LightningModule):
         self.weights = weights
         self.type_indices = {x: i for i, x in enumerate(self.weights.keys())}
 
-        self.use_pyscf = hparams["pyscf"]
+        self.use_pyscf = hparams.get("pyscf", False)
         if not self.use_pyscf:
             # setup the xc nn model
             nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip).to(torch.double)
