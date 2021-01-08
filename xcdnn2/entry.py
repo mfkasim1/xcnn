@@ -9,11 +9,11 @@ import numpy as np
 import torch
 from pyscf import gto, cc, scf
 from pyscf.dft import numint
-from dqc.qccalc.base_qccalc import BaseQCCalc
 from dqc.utils.datastruct import SpinParam
 from dqc.system.mol import Mol
 from dqc.system.base_system import BaseSystem
 from dqc.grid.base_grid import BaseGrid
+from xcdnn2.kscalc import BaseKSCalc
 from xcdnn2.xcmodels import BaseNNXC
 from xcdnn2.utils import eval_and_save
 
@@ -52,7 +52,9 @@ class System(dict):
         systype = self["type"]
         if systype == "mol":
             kwargs = self["kwargs"]
-            return gto.M(atom=kwargs["moldesc"], basis=kwargs["basis"], spin=kwargs.get("spin", 0), unit="Bohr")
+            return gto.M(atom=kwargs["moldesc"], basis=kwargs["basis"],
+                         spin=kwargs.get("spin", 0), unit="Bohr",
+                         charge=kwargs.get("charge", 0))
         else:
             raise RuntimeError("Unknown system type: %s" % systype)
 
@@ -153,7 +155,7 @@ class Entry(dict):
         pass
 
     @abstractmethod
-    def get_val(self, qcs: List[BaseQCCalc]) -> torch.Tensor:
+    def get_val(self, qcs: List[BaseKSCalc]) -> torch.Tensor:
         """
         Calculate the value of the entry given post-run QC objects.
         """
@@ -184,7 +186,7 @@ class EntryIE(Entry):
     def _get_true_val(self) -> torch.Tensor:
         return torch.as_tensor(self["true_val"], dtype=self.dtype, device=self.device)
 
-    def get_val(self, qcs: List[BaseQCCalc]) -> torch.Tensor:
+    def get_val(self, qcs: List[BaseKSCalc]) -> torch.Tensor:
         glob = {
             "systems": qcs,
             "energy": self.energy
@@ -197,7 +199,7 @@ class EntryIE(Entry):
     def get_deviation(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
         return torch.mean((val - true_val).abs()) * 627.5  # MAE in kcal/mol
 
-    def energy(self, qc: BaseQCCalc) -> torch.Tensor:
+    def energy(self, qc: BaseKSCalc) -> torch.Tensor:
         return qc.energy()
 
 class EntryAE(EntryIE):
@@ -222,12 +224,8 @@ class EntryDM(Entry):
         system = self.get_systems()[0]
         return self.calc_pyscf_dm_tot(system)
 
-    def get_val(self, qcs: List[BaseQCCalc]) -> torch.Tensor:
-        dm = qcs[0].aodm()
-        if isinstance(dm, SpinParam):
-            return dm.u + dm.d
-        else:
-            return dm
+    def get_val(self, qcs: List[BaseKSCalc]) -> torch.Tensor:
+        return qcs[0].aodmtot()
 
     def get_loss(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
         return torch.mean((val - true_val) ** 2)
@@ -237,7 +235,7 @@ class EntryDM(Entry):
 
     @classmethod
     def calc_pyscf_dm_tot(cls, system: System):
-        # run the PySCF's CCSD calculation
+        # run the PySCF's CCSD calculation (for the true value calculation)
         mol = system.get_pyscf_system()
         mf  = scf.UHF(mol).run()
         mcc = cc.UCCSD(mf)
@@ -279,21 +277,15 @@ class EntryDens(Entry):
         dens = numint.eval_rho(mol, ao, dm)  # (*BG, ngrid)
         return torch.as_tensor(dens, dtype=self.dtype, device=self.device)
 
-    def get_val(self, qcs: List[BaseQCCalc]) -> torch.Tensor:
-        # extract the dm from the qc
+    def get_val(self, qcs: List[BaseKSCalc]) -> torch.Tensor:
         qc = qcs[0]
-        dm = qc.aodm()
-        if isinstance(dm, SpinParam):
-            dmtot = dm.u + dm.d
-        else:
-            dmtot = dm
 
         # get the integration grid infos
         grid = self._get_integration_grid()
         rgrid = grid.get_rgrid()
 
         # get the density profile
-        return qc.get_system().get_hamiltonian().aodm2dens(dmtot, rgrid)
+        return qc.dens(rgrid)
 
     def get_loss(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
         # integration of squared difference at all spaces

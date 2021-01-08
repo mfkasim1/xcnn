@@ -1,9 +1,10 @@
 import os
+import itertools
 import pytest
 import torch
-from xcdnn2.evaluator import XCDNNEvaluator as Evaluator
+from xcdnn2.evaluator import XCDNNEvaluator, PySCFEvaluator
 from xcdnn2.dataset import DFTDataset
-# from xcdnn2.dft_dataset import Evaluator, DFTDataset
+# from xcdnn2.dft_dataset import XCDNNEvaluator, DFTDataset
 from xcdnn2.xcmodels import HybridXC
 
 dtype = torch.float64
@@ -56,17 +57,17 @@ def test_evaluator_nn_grad(dset_type):
 
     def get_loss(w1, w2):
         nn = SimpleNN(w1, w2)
-        evl = Evaluator(HybridXC("lda_x", nn, aweight0=1.0), weights)
+        evl = XCDNNEvaluator(HybridXC("lda_x", nn, aweight0=1.0), weights)
         res = evl.calc_loss_function(entry)
         return res
 
     torch.autograd.gradcheck(get_loss, (w1, w2), eps=1e-3, atol=1e-4)
 
 @pytest.mark.parametrize(
-    "dset_type",
-    dset_types
+    "dset_type,use_pyscf",
+    itertools.product(dset_types, [False, True][1:])
 )
-def test_evaluator_nn(dset_type):
+def test_evaluator_nn(dset_type, use_pyscf):
     # check the value of get_loss
 
     # torch.manual_seed(125)  # should not really depend on the random seed
@@ -87,10 +88,13 @@ def test_evaluator_nn(dset_type):
         "dm": 1e3,
         "dens": 1e3,
     }
-    w1 = torch.nn.Parameter(torch.randn(2, 2, dtype=dtype))
-    w2 = torch.nn.Parameter(torch.randn(2, 1, dtype=dtype))
-    nn = SimpleNN(w1, w2)
-    evl = Evaluator(HybridXC("lda_x", nn, aweight0=0.0), weights)
+    if not use_pyscf:
+        w1 = torch.nn.Parameter(torch.randn(2, 2, dtype=dtype))
+        w2 = torch.nn.Parameter(torch.randn(2, 1, dtype=dtype))
+        nn = SimpleNN(w1, w2)
+        evl = XCDNNEvaluator(HybridXC("lda_x", nn, aweight0=0.0), weights)
+    else:
+        evl = PySCFEvaluator("lda_x", weights)
 
     # calculate the loss function
     lossval = evl.calc_loss_function(entry)

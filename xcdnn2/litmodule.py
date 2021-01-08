@@ -5,7 +5,7 @@ import torch
 import pytorch_lightning as pl
 from dqc.api.getxc import get_xc
 from xcdnn2.xcmodels import HybridXC
-from xcdnn2.evaluator import XCDNNEvaluator as Evaluator
+from xcdnn2.evaluator import XCDNNEvaluator, PySCFEvaluator
 
 # file containing the lightning module and the neural network
 
@@ -65,13 +65,7 @@ class LitDFTXC(pl.LightningModule):
         else:
             raise RuntimeError("Unimplemented nn for xc family %d" % family)
 
-        # setup the xc nn model
-        nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip).to(torch.double)
-        model_nnlda = HybridXC(hparams["libxc"], nnmodel,
-                               ninpmode=hparams["ninpmode"],
-                               sinpmode=hparams["sinpmode"],
-                               outmultmode=hparams["outmultmode"])
-
+        # set the weights
         weights = {
             "ie": hparams["iew"],
             "ae": hparams["aew"],
@@ -86,7 +80,18 @@ class LitDFTXC(pl.LightningModule):
         }
         self.weights = weights
         self.type_indices = {x: i for i, x in enumerate(self.weights.keys())}
-        return Evaluator(model_nnlda, weights)
+
+        if not hparams["pyscf"]:
+            # setup the xc nn model
+            nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip).to(torch.double)
+            model_nnlda = HybridXC(hparams["libxc"], nnmodel,
+                                   ninpmode=hparams["ninpmode"],
+                                   sinpmode=hparams["sinpmode"],
+                                   outmultmode=hparams["outmultmode"])
+            return XCDNNEvaluator(model_nnlda, weights)
+        else:
+            # if using pyscf, no neural network is constructed
+            return PySCFEvaluator(hparams["libxc"], weights)
 
     def configure_optimizers(self):
         params = list(self.parameters())
@@ -155,6 +160,8 @@ class LitDFTXC(pl.LightningModule):
                             help="The mode to decide the Eks from NN output")
         parser.add_argument("--nnxcmode", type=int,
                             help="The mode to decide how to compute Exc from NN output (deprecated, do not use)")
+        parser.add_argument("--pyscf", action="store_const", const=True, default=False,
+                            help="Using pyscf calculation. If activated, the nn-related arguments are ignored.")
 
         # hparams for the loss function
         parser.add_argument("--iew", type=float, default=440.0,

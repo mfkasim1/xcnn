@@ -14,6 +14,7 @@
       moldesc: He 0 0 0
       basis: 6-311+G**
       charge: 1
+      spin: 1
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
 
 # atomization energy
