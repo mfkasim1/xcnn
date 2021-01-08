@@ -1,0 +1,447 @@
+---
+# atomization energies of molecules containing atoms Na-Ar
+- name: Atomization energy of NaH
+  type: ae
+  cmd: energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.07526185
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0; H 0 0 3.5667
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7646697&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7646697&charge=0 for the atomization energy
+
+- name: Atomization energy of NaF
+  type: ae
+  cmd: energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.1804989386417
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0; F 0 0 3.6394
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: F 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7681494&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7681494&charge=0 for the atomization energy
+
+- name: Atomization energy of Na2
+  type: ae
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.1804989386417
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0; Na 0 0 5.8183
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=6381926&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=6381926&charge=0 for the atomization energy
+
+- name: Atomization energy of Si2
+  type: ae
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.11856788267389999
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Si 0 0 0; Si 0 0 4.2443
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: Si 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=12597352&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=12597352&charge=0 for the atomization energy
+
+- name: Atomization energy of P2
+  type: ae
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.18491714435649997
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: P 0 0 0; P 0 0 3.5780
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: P 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=12185090&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=12185090&charge=0 for the atomization energy
+
+- name: Atomization energy of S2
+  type: ae
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.1605789249448
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0; S 0 0 3.5701
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=23550450&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=23550450&charge=0 for the atomization energy
+
+- name: Atomization energy of Cl2
+  type: ae
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.0911445368579
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0; Cl 0 0 3.7566
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7782505&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7782505&charge=0 for the atomization energy
+
+- name: Atomization energy of NaCl
+  type: ae
+  cmd: energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.1551704317422
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0; Cl 0 0 4.4613
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7647145&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7647145&charge=0 for the atomization energy
+
+- name: Atomization energy of NaOH
+  type: ae
+  cmd: energy(systems[3]) + energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.28870689067399996
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 -1.9377; Na 0 0 1.7472; H 0 0 -3.7167
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=1310732&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=1310732&charge=0 for the atomization energy
+
+- name: Atomization energy of SiH3
+  type: ae
+  cmd: energy(systems[2]) + 3 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.33814508910339997
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Si 0 0 0.1548; H 0 2.6320 -0.7219; H 2.2794 -1.3160 -0.7219; H -2.2794 -1.3160 -0.7219
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Si 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=13765441&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=13765441&charge=0 for the atomization energy
+
+- name: Atomization energy of SiH4
+  type: ae
+  cmd: energy(systems[2]) + 4 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.4821557426177
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Si 0 0 0; H 1.6146 1.6146 1.6146; H -1.6146 -1.6146 1.6146; H -1.6146 1.6146 -1.6146; H 1.6146 -1.6146 -1.6146
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Si 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7803625&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7803625&charge=0 for the atomization energy
+
+- name: Atomization energy of PH2
+  type: ae
+  cmd: energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.23778326101289995
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: P 0 0 0; H 0 1.9330 1.8829; H 0 -1.9330 1.8829
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: P 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp for positions and
+    https://cccbdb.nist.gov/ea2.asp for the atomization energy
+
+- name: Atomization energy of PH3
+  type: ae
+  cmd: energy(systems[2]) + 3 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.36198816477119994
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: P 0 0 0; H 0 -2.2548 -1.4583; H 1.9527 1.1274 -1.4583; H -1.9527 1.1274 -1.4583
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: P 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7803512&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7803512&charge=0 for the atomization energy
+
+- name: Atomization energy of SH2
+  type: ae
+  cmd: energy(systems[2]) + 2 * energy(systems[1]) - energy(systems[0])
+  true_val: 0.2760235932341
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0.1946; H 0 1.8172 -1.5569; H 0 -1.8172 -1.5569
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=778306&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=778306&charge=0 for the atomization energy
+
+- name: Atomization energy of ClH
+  type: ae
+  cmd: energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.1629403797234
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0; H 0 0 2.4086
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7647010&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7647010&charge=0 for the atomization energy
+
+- name: Atomization energy of SiO
+  type: ae
+  cmd: energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.3024566515623
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Si 0 0 0; O 0 0 2.8529
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: Si 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=10097286&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=10097286&charge=0 for the atomization energy
+
+- name: Atomization energy of CS
+  type: ae
+  cmd: energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.27152921155869997
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0; C 0 0 2.9005
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=2944050&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=2944050&charge=0 for the atomization energy
+
+- name: Atomization energy of SO
+  type: ae
+  cmd: energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.19680059421010002
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0; O 0 0 2.7989
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=13827322&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=13827322&charge=0 for the atomization energy
+
+- name: Atomization energy of ClO
+  type: ae
+  cmd: energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.10100932375559998
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0; O 0 0 2.9661
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=14989301&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=14989301&charge=0 for the atomization energy
+
+- name: Atomization energy of FCl
+  type: ae
+  cmd: energy(systems[2]) + energy(systems[1]) - energy(systems[0])
+  true_val: 0.09411539932129999
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0; F 0 0 3.0770
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: F 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  ref: >
+    https://cccbdb.nist.gov/exp2x.asp?casno=7790898&charge=0 for positions and
+    https://cccbdb.nist.gov/ea2.asp?casno=7790898&charge=0 for the atomization energy

@@ -29,18 +29,20 @@ class DFTDataset(Dataset):
 
 
 if __name__ == "__main__":
-    from xcdnn2.evaluator import XCDNNEvaluator as Evaluator
+    from xcdnn2.evaluator import XCDNNEvaluator, PySCFEvaluator
     from dqc.api.getxc import get_libxc
     import numpy as np
 
-    dset = DFTDataset()
+    # dset = DFTDataset()
+    dset = DFTDataset("test_dsets/ae_mols2.yaml")
     weights = {
         "ie": 1.0,
         "ae": 1.0,
         "dm": 1.0,
         "dens": 1.0,
     }
-    evl = Evaluator(get_libxc("lda_x"), weights)
+    # evl = XCDNNEvaluator(get_libxc("lda_x"), weights)
+    evl = PySCFEvaluator("lda_x", weights)
 
     # run the datasets loss evaluation
     losses = {}
