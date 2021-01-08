@@ -49,7 +49,7 @@ class LitDFTXC(pl.LightningModule):
         self.evl = self._construct_model(hparams)
         self.hparams = hparams
 
-    def _construct_model(self, hparams: Dict) -> Evaluator:
+    def _construct_model(self, hparams: Dict) -> XCDNNEvaluator:
         # model-specific hyperparams
         libxc = hparams["libxc"]
         nhid = hparams["nhid"]
