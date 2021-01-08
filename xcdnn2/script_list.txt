@@ -1,0 +1,7 @@
+# to run benchmark using pyscf
+python train.py --record --logdir logs/raw_calcs --version lda_x --libxc "lda_x" --pyscf
+python train.py --record --logdir logs/raw_calcs --version pbe_xc --libxc "gga_x_pbe,gga_c_pbe" --pyscf
+
+# to compare the trained results with benchmark
+python infer.py --dataset test_dsets/ae_mols.yaml --chkpts logs/raw_calcs/default/lda_x/checkpoints/last.ckpt \
+      logs/[checkpoint-path].ckpt
