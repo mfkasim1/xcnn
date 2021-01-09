@@ -90,7 +90,9 @@ class LitDFTXC(pl.LightningModule):
                                    ninpmode=hparams["ninpmode"],
                                    sinpmode=hparams.get("sinpmode", 1),
                                    outmultmode=hparams["outmultmode"])
-            return XCDNNEvaluator(model_nnlda, weights)
+            always_attach = hparams.get("always_attach", False)
+            return XCDNNEvaluator(model_nnlda, weights,
+                                  always_attach=always_attach)
         else:
             # if using pyscf, no neural network is constructed
             # dummy parameter required just to make it run without error
@@ -169,6 +171,8 @@ class LitDFTXC(pl.LightningModule):
                             help="The mode to decide how to compute Exc from NN output (deprecated, do not use)")
         parser.add_argument("--pyscf", action="store_const", const=True, default=False,
                             help="Using pyscf calculation. If activated, the nn-related arguments are ignored.")
+        parser.add_argument("--always_attach", action="store_const", const=True, default=False,
+                            help="Always propagate gradient even if the iteration does not converge")
 
         # hparams for the loss function
         parser.add_argument("--iew", type=float, default=440.0,

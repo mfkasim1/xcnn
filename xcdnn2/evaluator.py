@@ -43,10 +43,12 @@ class XCDNNEvaluator(BaseEvaluator):
     """
     Kohn-Sham model where the XC functional is replaced by a neural network
     """
-    def __init__(self, xc: BaseNNXC, weights: Dict[str, float]):
+    def __init__(self, xc: BaseNNXC, weights: Dict[str, float],
+                 always_attach: bool = False):
         super().__init__()
         self.xc = xc
         self.weights = weights
+        self.always_attach = always_attach  # always attach even if the iteration does not converge
 
     def calc_loss_function(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
         # calculate the loss function of the entry
@@ -86,7 +88,8 @@ class XCDNNEvaluator(BaseEvaluator):
             if convergence_warning:
                 # if there is a convergence warning, do not propagate the gradient,
                 # but preserve the value
-                loss = sum(p.sum() * 0 for p in self.xc.parameters()) + loss.detach()
+                if not self.always_attach:
+                    loss = sum(p.sum() * 0 for p in self.xc.parameters()) + loss.detach()
                 print("Evaluation of '%s' is not converged" % entry["name"])
 
         return loss
