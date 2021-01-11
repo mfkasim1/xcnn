@@ -103,7 +103,15 @@ class LitDFTXC(pl.LightningModule):
         params = list(self.parameters())
 
         # making optimizer for every type of datasets (to stabilize the gradients)
-        opts = [torch.optim.Adam(params, lr=self.hparams["%slr" % tpe]) for tpe in self.weights]
+        opt_str = self.hparams.get("optimizer", "adam").lower()
+        if opt_str == "adam":
+            opt_cls = torch.optim.Adam
+        elif opt_str == "radam":
+            from radam import RAdam
+            opt_cls = RAdam
+        else:
+            raise RuntimeError("Unknown optimizer %s" % opt_str)
+        opts = [opt_cls(params, lr=self.hparams["%slr" % tpe]) for tpe in self.weights]
         return opts
 
     def forward(self, x: Dict) -> torch.Tensor:
@@ -185,6 +193,8 @@ class LitDFTXC(pl.LightningModule):
                             help="Weight of density profile loss")
 
         # hparams for optimizer
+        parser.add_argument("--optimizer", type=str, default="adam",
+                            help="Optimizer algorithm")
         parser.add_argument("--split_opt", action="store_const", default=False, const=True,
                             help="Flag to split optimizer based on the dataset type")
         parser.add_argument("--ielr", type=float, default=1e-4,

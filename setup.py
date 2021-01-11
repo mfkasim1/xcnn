@@ -19,6 +19,7 @@ setup(
         "pytorch_lightning",
         "ray[tune]"
         # "pytorch>=1.8.0",
+        # "radam"
     ],
     classifiers=[
         "Development Status :: 3 - Alpha",
