@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
     # get the mean
     all_losses = np.array(all_losses)
-    print("     Mean absolute error (MAE): %s" % list2str(np.mean(all_losses, axis=0)))
+    print("     Mean absolute error (MAE): %s" % list2str(np.mean(np.abs(all_losses), axis=0)))
     print("Root mean squared error (RMSE): %s" % list2str(np.sqrt(np.mean(all_losses ** 2, axis=0))))
 
     # show the plot

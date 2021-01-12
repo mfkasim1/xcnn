@@ -197,7 +197,8 @@ class EntryIE(Entry):
         return torch.mean((val - true_val) ** 2)
 
     def get_deviation(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
-        return torch.mean((val - true_val).abs()) * 627.5  # MAE in kcal/mol
+        return (val - true_val) * 627.5  # MAE in kcal/mol
+        # return torch.mean((val - true_val).abs()) * 627.5  # MAE in kcal/mol
 
     def energy(self, qc: BaseKSCalc) -> torch.Tensor:
         return qc.energy()
@@ -231,7 +232,8 @@ class EntryDM(Entry):
         return torch.mean((val - true_val) ** 2)
 
     def get_deviation(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
-        return torch.mean((val - true_val).abs())  # MAE
+        return (val - true_val) * 627.5  # MAE in kcal/mol
+        # return torch.mean((val - true_val).abs())  # MAE
 
     @classmethod
     def calc_pyscf_dm_tot(cls, system: System):
