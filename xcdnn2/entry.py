@@ -63,7 +63,7 @@ class System(dict):
 
         systype = self["type"]
         if systype == "mol":
-            return Mol(**self["kwargs"])
+            return Mol(**self["kwargs"], grid=4)  # for backward-compatibility with DDFT's changing default grid
         else:
             raise RuntimeError("Unknown system type: %s" % systype)
 
