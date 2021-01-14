@@ -63,7 +63,7 @@ class System(dict):
 
         systype = self["type"]
         if systype == "mol":
-            return Mol(**self["kwargs"], grid=4)  # for backward-compatibility with DDFT's changing default grid
+            return Mol(**self["kwargs"])
         else:
             raise RuntimeError("Unknown system type: %s" % systype)
 
@@ -307,7 +307,7 @@ class EntryDens(Entry):
                 orig_grid_level = system["grid"]
 
             # get the dqc grid
-            system["grid"] = 2
+            system["grid"] = "sg2"
             dqc_mol = system.get_dqc_system()
             dqc_mol.setup_grid()
             grid = dqc_mol.get_grid()
