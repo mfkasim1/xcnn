@@ -1,6 +1,7 @@
 import os
 import copy
 import math
+import itertools
 import numpy as np
 from typing import Dict, Optional
 import argparse
@@ -140,9 +141,16 @@ def get_trainer(hparams: Dict):
     return trainer, chkpt_val
 
 def run_training(hparams: Dict):
-    # create the lightning module and the datasets
-    plsystem = LitDFTXC(hparams)
     dloader_train, dloader_val = get_datasets(hparams)
+
+    # optional step to inform the model what entries are so that it can
+    # prepare specific buffer for each entries / systems
+    entries = []
+    for dct in itertools.chain(dloader_train, dloader_val):
+        entries.append(dct)
+
+    # create the lightning module and the datasets
+    plsystem = LitDFTXC(hparams, entries)
     trainer, chkpt_val = get_trainer(hparams)
     trainer.fit(plsystem,
                 train_dataloader=dloader_train,

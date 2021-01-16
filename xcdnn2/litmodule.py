@@ -1,6 +1,6 @@
 import argparse
 import warnings
-from typing import Dict
+from typing import Dict, List
 import torch
 import pytorch_lightning as pl
 from dqc.api.getxc import get_xc
@@ -11,7 +11,7 @@ from xcdnn2.evaluator import XCDNNEvaluator, PySCFEvaluator
 
 ###################### training module ######################
 class LitDFTXC(pl.LightningModule):
-    def __init__(self, hparams: Dict):
+    def __init__(self, hparams: Dict, entries: List[Dict] = []):
         # hparams contains ():
         # * libxc: str
         # * nhid: int
@@ -46,10 +46,10 @@ class LitDFTXC(pl.LightningModule):
         else:
             raise RuntimeError("Invalid value of nnxcmode: %s" % str(nnxcmode))
 
-        self.evl = self._construct_model(hparams)
+        self.evl = self._construct_model(hparams, entries)
         self.hparams = hparams
 
-    def _construct_model(self, hparams: Dict) -> XCDNNEvaluator:
+    def _construct_model(self, hparams: Dict, entries: List[Dict] = []) -> XCDNNEvaluator:
         # model-specific hyperparams
         libxc = hparams["libxc"]
         nhid = hparams["nhid"]
@@ -92,7 +92,8 @@ class LitDFTXC(pl.LightningModule):
                                    outmultmode=hparams["outmultmode"])
             always_attach = hparams.get("always_attach", False)
             return XCDNNEvaluator(model_nnlda, weights,
-                                  always_attach=always_attach)
+                                  always_attach=always_attach,
+                                  entries=entries)
         else:
             # if using pyscf, no neural network is constructed
             # dummy parameter required just to make it run without error

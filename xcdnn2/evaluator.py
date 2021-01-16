@@ -1,6 +1,6 @@
 from __future__ import annotations
 from abc import abstractmethod
-from typing import Dict, Union
+from typing import Dict, Union, List, Optional
 import warnings
 import torch
 import xitorch as xt
@@ -11,6 +11,7 @@ from pyscf import dft
 from xcdnn2.entry import Entry, System
 from xcdnn2.kscalc import BaseKSCalc, DQCKSCalc, PySCFKSCalc
 from xcdnn2.xcmodels import BaseNNXC
+from xcdnn2.utils import hashstr
 
 class BaseEvaluator(torch.nn.Module):
     """
@@ -44,11 +45,15 @@ class XCDNNEvaluator(BaseEvaluator):
     Kohn-Sham model where the XC functional is replaced by a neural network
     """
     def __init__(self, xc: BaseNNXC, weights: Dict[str, float],
-                 always_attach: bool = False):
+                 always_attach: bool = False,
+                 entries: List[Dict] = []):
         super().__init__()
         self.xc = xc
         self.weights = weights
         self.always_attach = always_attach  # always attach even if the iteration does not converge
+
+        # register system-specific buffer
+        self._init_dm_buffer(entries)
 
     def calc_loss_function(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
         # calculate the loss function of the entry
@@ -97,9 +102,8 @@ class XCDNNEvaluator(BaseEvaluator):
     def run(self, system: System) -> BaseKSCalc:
         # run the Kohn Sham DFT for the system
 
-        # check the cache
-        system_str = str(system)
-        dm0 = system.get_cache("dm0")
+        # check the buffer for the initial density matrix
+        dm0, buffer_name = self._get_dm0_buffer(system)
 
         # run ks
         syst = system.get_dqc_system()
@@ -108,11 +112,63 @@ class XCDNNEvaluator(BaseEvaluator):
 
         # save the cache
         if isinstance(dm, SpinParam):
-            dm_cache = SpinParam(u=dm.u.detach(), d=dm.d.detach())
+            dm_cache = torch.cat((dm.u.detach().unsqueeze(0), dm.d.detach().unsqueeze(0)), dim=0)
+            # dm_cache = SpinParam(u=dm.u.detach(), d=dm.d.detach())
         else:
             dm_cache = dm.detach()
-        system.set_cache("dm0", dm_cache)
+
+        # save the buffer
+        # Do not saving buffer which didn't exist before so that when the model
+        # is loaded from a checkpoint, there is no new buffer (which will raise
+        # error of unknown key)
+        if buffer_name is not None:
+            self.register_buffer(buffer_name, dm_cache)
+        # system.set_cache("dm0", dm_cache)
         return DQCKSCalc(qc)
+
+    def _dm0_buffer_name(self, obj) -> str:
+        # returns the buffer name
+        return "dm0_" + hashstr(str(obj))
+
+    def _init_dm_buffer(self, entries: List[Dict]) -> None:
+        # initialize the dm0 cache for each system in the entries as buffer
+        for entry_dct in entries:
+            entry = Entry.create(entry_dct)
+            systems = entry.get_systems()
+            for syst in systems:
+                buffer_name = self._dm0_buffer_name(syst)
+                dqc_syst = syst.get_dqc_system()
+                dqc_hamilt = dqc_syst.get_hamiltonian()
+                dqc_hamilt.build()
+                nao = dqc_hamilt.nao
+                if dqc_syst.spin != 0:
+                    shape = (2, nao, nao)
+                else:
+                    shape = (nao, nao)
+                val = torch.zeros(shape, dtype=torch.double)
+                self.register_buffer(buffer_name, val)
+
+    def _get_dm0_buffer(self, system: System) -> \
+        Tuple[Union[None, torch.Tensor, SpinParam[torch.Tensor]], Optional[str]]:
+        # get the dm0 cache from the buffer
+
+        # Returns a tuple of the dm0 which is a tensor if it has been written or
+        # None if no dm0 has been stored before
+        # and the buffer name if the buffer is created during initialization or
+        # None otherwise
+        buffer_name = self._dm0_buffer_name(system)
+        dm0: Optional[torch.Tensor] = getattr(self, buffer_name, None)
+
+        buffer_exists = dm0 is not None
+        buffer_written = buffer_exists and torch.any(dm0 != 0.0)
+        if not buffer_written:
+            dm0_res: Union[None, torch.Tensor, SpinParam[torch.Tensor]] = None
+        elif system.get_dqc_system().spin != 0:
+            dm0_res = SpinParam(u=dm0[0].detach(), d=dm0[1].detach())
+        else:
+            dm0_res = dm0
+
+        return dm0_res, (buffer_name if buffer_exists else None)
 
 class PySCFEvaluator(BaseEvaluator):
     """
