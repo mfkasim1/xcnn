@@ -44,7 +44,7 @@ def eval_and_save(fcn: Callable):
         s += ";" + (";".join(["%s=%s" % (k, v) for (k, v) in kwargs.items()]))
 
         # get the file name to store the evaluated values
-        fname = str(hashlib.blake2s(str.encode(s)).hexdigest()) + ".pkl"
+        fname = hashstr(s) + ".pkl"
         fdir = os.path.join(filedir, ".datasets")
         if not os.path.exists(fdir):
             os.mkdir(fdir)
@@ -65,6 +65,10 @@ def eval_and_save(fcn: Callable):
                 pickle.dump(res, fb)
         return res
     return new_fcn
+
+def hashstr(s: str) -> str:
+    # encode the string into hashed format
+    return str(hashlib.blake2s(str.encode(s)).hexdigest())
 
 def get_exp_version(version: Optional[str]) -> Optional[str]:
     # get the experiment version based on the input from the user's hparams
