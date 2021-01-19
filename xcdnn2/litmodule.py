@@ -112,7 +112,8 @@ class LitDFTXC(pl.LightningModule):
             opt_cls = RAdam
         else:
             raise RuntimeError("Unknown optimizer %s" % opt_str)
-        opts = [opt_cls(params, lr=self.hparams["%slr" % tpe]) for tpe in self.weights]
+        wdecay = self.hparams.get("wdecay", 0.0)
+        opts = [opt_cls(params, lr=self.hparams["%slr" % tpe], weight_decay=wdecay) for tpe in self.weights]
         return opts
 
     def forward(self, x: Dict) -> torch.Tensor:
@@ -196,6 +197,8 @@ class LitDFTXC(pl.LightningModule):
         # hparams for optimizer
         parser.add_argument("--optimizer", type=str, default="adam",
                             help="Optimizer algorithm")
+        parser.add_argument("--wdecay", type=float, default=0.0,
+                            help="Weight decay of the algorithm (i.e. L2 regularization)")
         parser.add_argument("--split_opt", action="store_const", default=False, const=True,
                             help="Flag to split optimizer based on the dataset type")
         parser.add_argument("--ielr", type=float, default=1e-4,
