@@ -71,7 +71,8 @@ if __name__ == "__main__":
     hparams = vars(args)
 
     # load the model and the dataset
-    models = [LitDFTXC.load_from_checkpoint(checkpoint_path=chkpt) for chkpt in hparams["chkpts"]]
+    models = [LitDFTXC.load_from_checkpoint(checkpoint_path=chkpt, strict=False)
+              for chkpt in hparams["chkpts"]]
     dset = DFTDataset(hparams["dataset"])
 
     # calculate the losses for all entries and models
