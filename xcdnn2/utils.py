@@ -1,5 +1,5 @@
 import re
-from typing import List, Callable, Optional
+from typing import List, Callable, Optional, Union
 import hashlib
 import os
 import pickle
