@@ -54,6 +54,8 @@ def get_infer_argparse() -> argparse.ArgumentParser:
                         help="Checkpoints where the models are loaded from")
     parser.add_argument("--writeto", type=str,
                         help="If specified, then write the results into the file")
+    parser.add_argument("--showparams", action="store_const", default=False, const=True,
+                        help="If enabled, then show the parameters of loaded checkpoints")
 
     # plot options
     parser.add_argument("--plot", action="store_const", default=False, const=True,
@@ -95,11 +97,14 @@ if __name__ == "__main__":
 
     # load the model and the dataset
     models = []
+    writer.write("# Checkpoints: %s" % ("|".join(hparams["chkpts"])))
     for chkpt in hparams["chkpts"]:
         # if chkpt is a file, the load the checkpoint
         if os.path.exists(chkpt):
             mdl = LitDFTXC.load_from_checkpoint(checkpoint_path=chkpt, strict=False)
-            print(list(mdl.parameters()))
+            if hparams["showparams"]:
+                print("Parameters for %s:" % chkpt)
+                print(list(mdl.parameters()))
         # otherwise, it is assumed as libxc string for pyscf
         else:
             mhparams = {
