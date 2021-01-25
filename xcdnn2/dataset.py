@@ -12,7 +12,7 @@ filedir = os.path.dirname(os.path.realpath(__file__))
 class DFTDataset(Dataset):
     def __init__(self, fpath: Optional[str] = None):
         if fpath is None:
-            fpath = os.path.join(filedir, "dft_dataset.yaml")
+            fpath = os.path.join(filedir, "train_dsets", "dft_dataset1.yaml")
 
         with open(fpath, "r") as f:
             self.obj = [Entry.create(a) for a in yaml.safe_load(f)]
