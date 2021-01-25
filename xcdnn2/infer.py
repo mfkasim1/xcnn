@@ -54,6 +54,8 @@ def get_infer_argparse() -> argparse.ArgumentParser:
                         help="Checkpoints where the models are loaded from")
     parser.add_argument("--writeto", type=str,
                         help="If specified, then write the results into the file")
+    parser.add_argument("--startline", type=int, default=None,
+                        help="The starting entry (in int) of the dataset file to evaluate")
     parser.add_argument("--showparams", action="store_const", default=False, const=True,
                         help="If enabled, then show the parameters of loaded checkpoints")
 
@@ -67,18 +69,21 @@ def list2str(x: List[float], fmt: str = "%.4e", sep: str = ", ") -> str:
     return sep.join([fmt % xx for xx in x])
 
 class Writer(object):
-    def __init__(self, writeto: Optional[str]):
+    def __init__(self, writeto: Optional[str], startline: Optional[int]):
         self.writeto = writeto
+        self.startline = startline
 
     def open(self):
         if self.writeto is not None:
-            self.f = open(self.writeto, "w")
+            mode = "w" if self.startline is None else "a"
+            self.f = open(self.writeto, mode)
         return self
 
     def write(self, s: str):
         print(s)
         if self.writeto is not None:
             self.f.write(s + "\n")
+            self.f.flush()
 
     def close(self):
         if self.writeto is not None:
@@ -92,11 +97,13 @@ if __name__ == "__main__":
 
     # putting all the hyperparameters in a dictionary
     hparams = vars(args)
-    writer = Writer(hparams["writeto"]).open()
+    startline = hparams["startline"]
+    writer = Writer(hparams["writeto"], startline).open()
 
     # load the model and the dataset
     models = []
-    writer.write("# Checkpoints: %s" % ("|".join(hparams["chkpts"])))
+    if startline is None:
+        writer.write("# Checkpoints: %s" % ("|".join(hparams["chkpts"])))
     for chkpt in hparams["chkpts"]:
         # if chkpt is a file, the load the checkpoint
         if os.path.exists(chkpt):
@@ -116,7 +123,10 @@ if __name__ == "__main__":
 
     # calculate the losses for all entries and models
     all_losses = []
+    istart = 1 if startline is None else startline
     for i in range(len(dset)):
+        if i + 1 < istart:
+            continue
         losses = [float(model.deviation(dset[i]).item()) for model in models]
         losses_str = list2str(losses)
         writer.write("%d out of %d: %s: (%s)" % (i + 1, len(dset), dset[i]["name"], losses_str))
