@@ -168,3 +168,143 @@
       charge: 1
       spin: 1
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
+
+- name: Ionization energy of Na
+  type: ie
+  cmd: energy(systems[1]) - energy(systems[0])
+  true_val: 0.18885750637
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Na 0 0 0
+      basis: 6-311++G**
+      charge: 1
+  ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
+
+- name: Ionization energy of Mg
+  type: ie
+  cmd: energy(systems[1]) - energy(systems[0])
+  true_val: 0.2809938585
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Mg 0 0 0
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: Mg 0 0 0
+      basis: 6-311++G**
+      charge: 1
+      spin: 1
+  ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
+
+- name: Ionization energy of Al
+  type: ie
+  cmd: energy(systems[1]) - energy(systems[0])
+  true_val: 0.2199728503
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Al 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Al 0 0 0
+      basis: 6-311++G**
+      charge: 1
+  ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
+
+- name: Ionization energy of Si
+  type: ie
+  cmd: energy(systems[1]) - energy(systems[0])
+  true_val: 0.299568574
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Si 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: Si 0 0 0
+      basis: 6-311++G**
+      charge: 1
+      spin: 1
+  ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
+
+- name: Ionization energy of P
+  type: ie
+  cmd: energy(systems[1]) - energy(systems[0])
+  true_val: 0.38537842174
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: P 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  - type: mol
+    kwargs:
+      moldesc: P 0 0 0
+      basis: 6-311++G**
+      charge: 1
+      spin: 2
+  ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
+
+- name: Ionization energy of S
+  type: ie
+  cmd: energy(systems[1]) - energy(systems[0])
+  true_val: 0.3807231668
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0
+      basis: 6-311++G**
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0
+      basis: 6-311++G**
+      charge: 1
+      spin: 3
+  ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
+
+- name: Ionization energy of Cl
+  type: ie
+  cmd: energy(systems[1]) - energy(systems[0])
+  true_val: 0.47655149961
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0
+      basis: 6-311++G**
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: Cl 0 0 0
+      basis: 6-311++G**
+      charge: 1
+      spin: 2
+  ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
+
+- name: Ionization energy of Ar
+  type: ie
+  cmd: energy(systems[1]) - energy(systems[0])
+  true_val: 0.579154783626
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: Ar 0 0 0
+      basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: Ar 0 0 0
+      basis: 6-311++G**
+      charge: 1
+      spin: 1
+  ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
