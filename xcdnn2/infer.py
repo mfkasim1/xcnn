@@ -72,18 +72,17 @@ class Writer(object):
 
     def open(self):
         if self.writeto is not None:
-            self.all_s = ""
+            self.f = open(self.writeto, "w")
         return self
 
     def write(self, s: str):
         print(s)
         if self.writeto is not None:
-            self.all_s += s + "\n"
+            self.f.write(s + "\n")
 
     def close(self):
         if self.writeto is not None:
-            with open(self.writeto, "w") as f:
-                f.write(self.all_s)
+            self.f.close()
 
 if __name__ == "__main__":
     parser = get_infer_argparse()
