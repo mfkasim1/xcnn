@@ -1,3 +1,4 @@
+import re
 from typing import List, Callable, Optional
 import hashlib
 import os
@@ -6,8 +7,8 @@ import functools
 
 filedir = os.path.dirname(os.path.realpath(__file__))
 
-def subs_present(cs: List[str], s: str, at_start: bool = False) -> bool:
-    # find the characters/substrings in the string
+def subs_present(cs: List[str], s: Union[str, List[str]], at_start: bool = False) -> bool:
+    # find the characters/substrings in the string or list of string
     # return True if at least one of the substring present in the string s
     for c in cs:
         if not at_start:
@@ -17,6 +18,11 @@ def subs_present(cs: List[str], s: str, at_start: bool = False) -> bool:
             if c == s[:len(c)]:
                 return True
     return False
+
+def get_atoms(s: str) -> List[str]:
+    # returns the atoms in the given molecule's name (e.g. NH2 will return ["N", "H"])
+    pattern = r"([A-Z][a-z]*)"
+    return re.findall(pattern, s)
 
 def print_active_tensors(printout: bool = True) -> int:
     # NOTE: This function does not work if imported, so you have to copy and paste

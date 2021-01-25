@@ -41,6 +41,8 @@ def get_program_argparse() -> argparse.ArgumentParser:
                         help="Clip gradients with norm above this value. 0 means no clipping.")
     parser.add_argument("--max_epochs", type=int, default=1000,
                         help="Maximum number of epochs")
+    parser.add_argument("--trainingfile", type=str,
+                        help="The training dataset file")
     parser.add_argument("--tvset", type=int, default=2,
                         help="Training/validation set")
     parser.add_argument("--exclude_types", type=str, nargs="*", default=[],
@@ -72,22 +74,22 @@ def convert_to_tune_config(hparams: Dict) -> Dict:
 
 ######################## dataset and training part ########################
 def get_datasets(hparams: Dict):
-    from xcdnn2.utils import subs_present
+    from xcdnn2.utils import subs_present, get_atoms
     # load the datasets and returns the dataloader for training and validation
 
     # load the dataset and split into train and val
-    dset = DFTDataset()
+    dset = DFTDataset(fpath = hparams.get("trainingfile", None))
     tvset = hparams["tvset"]
     if tvset == 1:
         # train_atoms = ["H", "He", "Li", "Be", "B", "C"]
         val_atoms = ["N", "O", "F", "Ne"]
     elif tvset == 2:  # randomly selected
         # train_atoms = ["H", "Li", "B", "C", "O", "Ne"]
-        val_atoms = ["He", "Be", "N", "F"]
+        val_atoms = ["He", "Be", "N", "F", "P", "S"]
 
     general_filter = lambda obj: obj["type"] not in hparams["exclude_types"]
     all_idxs = dset.get_indices(general_filter)
-    val_filter = lambda obj: subs_present(val_atoms, obj["name"].split()[-1]) and general_filter(obj)
+    val_filter = lambda obj: subs_present(val_atoms, get_atoms(obj["name"].split()[-1])) and general_filter(obj)
     val_idxs = dset.get_indices(val_filter)
     train_idxs = list(set(all_idxs) - set(val_idxs))
     if hparams["tiny_dset"]:
