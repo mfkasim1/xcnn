@@ -1,3 +1,4 @@
+import os
 import argparse
 from typing import List, Dict
 import torch
@@ -51,6 +52,8 @@ def get_infer_argparse() -> argparse.ArgumentParser:
                         help="The dataset where the inference is taking place")
     parser.add_argument("--chkpts", type=str, nargs="+",
                         help="Checkpoints where the models are loaded from")
+    parser.add_argument("--writeto", type=str,
+                        help="If specified, then write the results into the file")
 
     # plot options
     parser.add_argument("--plot", action="store_const", default=False, const=True,
@@ -61,6 +64,25 @@ def list2str(x: List[float], fmt: str = "%.4e", sep: str = ", ") -> str:
     # convert a list of float into a string
     return sep.join([fmt % xx for xx in x])
 
+class Writer(object):
+    def __init__(self, writeto: Optional[str]):
+        self.writeto = writeto
+
+    def open(self):
+        if self.writeto is not None:
+            self.all_s = ""
+        return self
+
+    def write(self, s: str):
+        print(s)
+        if self.writeto is not None:
+            self.all_s += s + "\n"
+
+    def close(self):
+        if self.writeto is not None:
+            with open(self.writeto, "w") as f:
+                f.write(self.all_s)
+
 if __name__ == "__main__":
     parser = get_infer_argparse()
     parser = Plotter.get_plot_argparse(parser)
@@ -69,12 +91,22 @@ if __name__ == "__main__":
 
     # putting all the hyperparameters in a dictionary
     hparams = vars(args)
+    writer = Writer(hparams["writeto"]).open()
 
     # load the model and the dataset
     models = []
     for chkpt in hparams["chkpts"]:
-        mdl = LitDFTXC.load_from_checkpoint(checkpoint_path=chkpt, strict=False)
-        print(list(mdl.parameters()))
+        # if chkpt is a file, the load the checkpoint
+        if os.path.exists(chkpt):
+            mdl = LitDFTXC.load_from_checkpoint(checkpoint_path=chkpt, strict=False)
+            print(list(mdl.parameters()))
+        # otherwise, it is assumed as libxc string for pyscf
+        else:
+            mhparams = {
+                "libxc": chkpt,
+                "pyscf": True,
+            }
+            mdl = LitDFTXC(mhparams)
         models.append(mdl)
     dset = DFTDataset(hparams["dataset"])
 
@@ -83,13 +115,14 @@ if __name__ == "__main__":
     for i in range(len(dset)):
         losses = [float(model.deviation(dset[i]).item()) for model in models]
         losses_str = list2str(losses)
-        print("%d out of %d: %s (%s)" % (i + 1, len(dset), dset[i]["name"], losses_str))
+        writer.write("%d out of %d: %s: (%s)" % (i + 1, len(dset), dset[i]["name"], losses_str))
         all_losses.append(losses)
 
     # get the mean
     all_losses = np.array(all_losses)
-    print("     Mean absolute error (MAE): %s" % list2str(np.mean(np.abs(all_losses), axis=0)))
-    print("Root mean squared error (RMSE): %s" % list2str(np.sqrt(np.mean(all_losses ** 2, axis=0))))
+    writer.write("     Mean absolute error (MAE): %s" % list2str(np.mean(np.abs(all_losses), axis=0)))
+    writer.write("Root mean squared error (RMSE): %s" % list2str(np.sqrt(np.mean(all_losses ** 2, axis=0))))
+    writer.close()
 
     # show the plot
     if hparams["plot"]:

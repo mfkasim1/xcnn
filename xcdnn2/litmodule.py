@@ -29,7 +29,7 @@ class LitDFTXC(pl.LightningModule):
         # handle deprecated option: nnxcmode
         # if specified, then prioritize it over ninpmode and outmultmode and set
         # those parameters according to the value of nnxcmode specified
-        nnxcmode = hparams["nnxcmode"]
+        nnxcmode = hparams.get("nnxcmode", None)
         if nnxcmode is not None:
             warnings.warn("--nnxcmode flag is deprecated, please use --ninpmode and --outmultmode")
         if nnxcmode is None:
@@ -52,9 +52,6 @@ class LitDFTXC(pl.LightningModule):
     def _construct_model(self, hparams: Dict, entries: List[Dict] = []) -> XCDNNEvaluator:
         # model-specific hyperparams
         libxc = hparams["libxc"]
-        nhid = hparams["nhid"]
-        ndepths = hparams["ndepths"]
-        nn_with_skip = hparams.get("nn_with_skip", False)
 
         # prepare the nn xc model
         libxc_dqc = libxc.replace(",", "+")
@@ -68,10 +65,10 @@ class LitDFTXC(pl.LightningModule):
 
         # set the weights
         weights = {
-            "ie": hparams["iew"],
-            "ae": hparams["aew"],
-            "dm": hparams["dmw"],
-            "dens": hparams["densw"],
+            "ie": hparams.get("iew", 440.),
+            "ae": hparams.get("aew", 1340.),
+            "dm": hparams.get("dmw", 220.),
+            "dens": hparams.get("densw", 170.),
         }
         self.dweights = {  # weights from the dataset
             "ie": 440.0,
@@ -85,6 +82,10 @@ class LitDFTXC(pl.LightningModule):
         self.use_pyscf = hparams.get("pyscf", False)
         if not self.use_pyscf:
             # setup the xc nn model
+            nhid = hparams["nhid"]
+            ndepths = hparams["ndepths"]
+            nn_with_skip = hparams.get("nn_with_skip", False)
+
             nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip).to(torch.double)
             model_nnlda = HybridXC(hparams["libxc"], nnmodel,
                                    ninpmode=hparams["ninpmode"],
