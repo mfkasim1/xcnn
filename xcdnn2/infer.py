@@ -1,6 +1,6 @@
 import os
 import argparse
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Union
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
@@ -56,6 +56,8 @@ def get_infer_argparse() -> argparse.ArgumentParser:
                         help="If specified, then write the results into the file")
     parser.add_argument("--startline", type=int, default=None,
                         help="The starting entry (in int) of the dataset file to evaluate")
+    parser.add_argument("--maxentries", type=int, default=None,
+                        help="The number of entries to be inferred from the dataset file")
     parser.add_argument("--showparams", action="store_const", default=False, const=True,
                         help="If enabled, then show the parameters of loaded checkpoints")
 
@@ -124,13 +126,18 @@ if __name__ == "__main__":
     # calculate the losses for all entries and models
     all_losses = []
     istart = 1 if startline is None else startline
+    maxentries = hparams.get("maxentries", None) or (len(dset) + 100)
+    entries = 0
     for i in range(len(dset)):
         if i + 1 < istart:
             continue
+        if entries >= maxentries:
+            break
         losses = [float(model.deviation(dset[i]).item()) for model in models]
         losses_str = list2str(losses)
         writer.write("%d out of %d: %s: (%s)" % (i + 1, len(dset), dset[i]["name"], losses_str))
         all_losses.append(losses)
+        entries += 1
 
     # get the mean
     all_losses = np.array(all_losses)
