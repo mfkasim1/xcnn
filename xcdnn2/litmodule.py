@@ -50,18 +50,6 @@ class LitDFTXC(pl.LightningModule):
         self.hparams = hparams
 
     def _construct_model(self, hparams: Dict, entries: List[Dict] = []) -> XCDNNEvaluator:
-        # model-specific hyperparams
-        libxc = hparams["libxc"]
-
-        # prepare the nn xc model
-        libxc_dqc = libxc.replace(",", "+")
-        family = get_xc(libxc_dqc).family
-        if family == 1:
-            ninp = 2
-        elif family == 2:
-            ninp = 3
-        else:
-            raise RuntimeError("Unimplemented nn for xc family %d" % family)
 
         # set the weights
         weights = {
@@ -81,6 +69,16 @@ class LitDFTXC(pl.LightningModule):
 
         self.use_pyscf = hparams.get("pyscf", False)
         if not self.use_pyscf:
+            # prepare the nn xc model
+            libxc_dqc = hparams["libxc"].replace(",", "+")
+            family = get_xc(libxc_dqc).family
+            if family == 1:
+                ninp = 2
+            elif family == 2:
+                ninp = 3
+            else:
+                raise RuntimeError("Unimplemented nn for xc family %d" % family)
+
             # setup the xc nn model
             nhid = hparams["nhid"]
             ndepths = hparams["ndepths"]
