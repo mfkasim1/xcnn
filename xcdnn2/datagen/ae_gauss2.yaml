@@ -2,7 +2,7 @@
   type: ae
   true_val: 0.08873737580399998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7580678&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -22,7 +22,7 @@
   type: ae
   true_val: 0.08257093184199998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13597972&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -42,7 +42,7 @@
   type: ae
   true_val: 0.12749189545399997
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=3315375&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -63,7 +63,7 @@
   type: ae
   true_val: 0.2866387110859999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2465567&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -84,7 +84,7 @@
   type: ae
   true_val: 0.460601750938
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2229074&charge=0
-  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -106,7 +106,7 @@
   type: ae
   true_val: 0.6253970140039999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74828&charge=0
-  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -127,7 +127,7 @@
   type: ae
   true_val: 0.125103779108
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13774920&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -148,7 +148,7 @@
   type: ae
   true_val: 0.27187200124
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13770406&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -169,7 +169,7 @@
   type: ae
   true_val: 0.4410169116219999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7664417&charge=0
-  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -190,7 +190,7 @@
   type: ae
   true_val: 0.16216719244599997
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=3352576&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -211,7 +211,7 @@
   type: ae
   true_val: 0.34957909803599996
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7732185&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -231,7 +231,7 @@
   type: ae
   true_val: 0.215791259488
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7664393&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -251,7 +251,7 @@
   type: ae
   true_val: 0.22957529944999994
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13825906&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -271,7 +271,7 @@
   type: ae
   true_val: 0.3381412776419999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13765441&charge=0
-  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -293,7 +293,7 @@
   type: ae
   true_val: 0.4821595476179999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7803625&charge=0
-  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -314,7 +314,7 @@
   type: ae
   true_val: 0.23779849433199998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13765430&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -335,7 +335,7 @@
   type: ae
   true_val: 0.36198054432399995
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7803512&charge=0
-  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -356,7 +356,7 @@
   type: ae
   true_val: 0.276015973464
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7783064&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -376,7 +376,7 @@
   type: ae
   true_val: 0.16294037843999998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7647010&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -396,7 +396,7 @@
   type: ae
   true_val: 0.038084171202
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=14452596&charge=0
-  cmd: 2 * energy(systems[1]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -411,7 +411,7 @@
   type: ae
   true_val: 0.21922679528400002
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7789244&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -431,7 +431,7 @@
   type: ae
   true_val: 0.6195009946999999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74862&charge=0
-  cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -452,7 +452,7 @@
   type: ae
   true_val: 0.8476670388899998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74851&charge=0
-  cmd: 2 * energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -473,7 +473,7 @@
   type: ae
   true_val: 1.0615120026
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74840&charge=0
-  cmd: 2 * energy(systems[1]) + 6 * energy(systems[2]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -495,7 +495,7 @@
   type: ae
   true_val: 0.28375925979799993
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2074875&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -516,7 +516,7 @@
   type: ae
   true_val: 0.4820681364659999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74908&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -541,7 +541,7 @@
   type: ae
   true_val: 0.408242204832
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=630080&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -561,7 +561,7 @@
   type: ae
   true_val: 0.569403874606
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=8001783&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -587,7 +587,7 @@
   type: ae
   true_val: 0.569403874606
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=50000&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -613,7 +613,7 @@
   type: ae
   true_val: 0.7664482303379999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=67561&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 4 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -640,7 +640,7 @@
   type: ae
   true_val: 0.35865165487199996
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7727379&charge=0
-  cmd: 2 * energy(systems[1]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -655,7 +655,7 @@
   type: ae
   true_val: 0.569403874606
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7803578&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -681,7 +681,7 @@
   type: ae
   true_val: 0.23885734017599997
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10102439&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -702,7 +702,7 @@
   type: ae
   true_val: 0.188032739664
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7782447&charge=0
-  cmd: 2 * energy(systems[1]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -718,7 +718,7 @@
   type: ae
   true_val: 0.40201862889999995
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7722841&charge=0
-  cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -739,7 +739,7 @@
   type: ae
   true_val: 0.058861164291999994
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7782414&charge=0
-  cmd: 2 * energy(systems[1]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -754,7 +754,7 @@
   type: ae
   true_val: 0.608649729198
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=124389&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -774,7 +774,7 @@
   type: ae
   true_val: 0.569403874606
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=6381926&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -800,7 +800,7 @@
   type: ae
   true_val: 0.118583116932
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=12597352&charge=0
-  cmd: 2 * energy(systems[1]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -816,7 +816,7 @@
   type: ae
   true_val: 0.18491714290000003
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=12185090&charge=0
-  cmd: 2 * energy(systems[1]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -831,7 +831,7 @@
   type: ae
   true_val: 0.16055987969000002
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=23550450&charge=0
-  cmd: 2 * energy(systems[1]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -847,7 +847,7 @@
   type: ae
   true_val: 0.091129300948
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7782505&charge=0
-  cmd: 2 * energy(systems[1]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -862,7 +862,7 @@
   type: ae
   true_val: 0.155162812924
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7647145&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -882,7 +882,7 @@
   type: ae
   true_val: 0.302452840382
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10097286&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -902,7 +902,7 @@
   type: ae
   true_val: 0.27152920942000003
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2944050&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -922,7 +922,7 @@
   type: ae
   true_val: 0.196812019054
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13827322&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -943,7 +943,7 @@
   type: ae
   true_val: 0.100997896566
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=14989301&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -964,7 +964,7 @@
   type: ae
   true_val: 0.09411539858
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7790898&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -984,7 +984,7 @@
   type: ae
   true_val: 0.569403874606
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=463043&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1010,7 +1010,7 @@
   type: ae
   true_val: 0.5914606238239999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74873&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1036,7 +1036,7 @@
   type: ae
   true_val: 0.7092553195699999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74931&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 4 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1063,7 +1063,7 @@
   type: ae
   true_val: 0.24909919799799998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7790923&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1089,7 +1089,7 @@
   type: ae
   true_val: 0.40483713942
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7446095&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1109,7 +1109,7 @@
   type: ae
   true_val: 0.733159335818
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7637072&charge=0
-  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1130,7 +1130,7 @@
   type: ae
   true_val: 0.50306603984
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10294345&charge=0
-  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1151,7 +1151,7 @@
   type: ae
   true_val: 0.672264273394
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7784181&charge=0
-  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1172,7 +1172,7 @@
   type: ae
   true_val: 0.483473582928
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7446700&charge=0
-  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1193,7 +1193,7 @@
   type: ae
   true_val: 0.7417634104999999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75730&charge=0
-  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1214,7 +1214,7 @@
   type: ae
   true_val: 0.48869163618799993
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=56235&charge=0
-  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1235,7 +1235,7 @@
   type: ae
   true_val: 0.523629740242
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=463581&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1260,7 +1260,7 @@
   type: ae
   true_val: 0.436153076576
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75150&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1280,7 +1280,7 @@
   type: ae
   true_val: 0.6599009150859999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=353504&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1306,7 +1306,7 @@
   type: ae
   true_val: 0.900491258352
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7783611&charge=0
-  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1327,7 +1327,7 @@
   type: ae
   true_val: 0.603416440746
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10026047&charge=0
-  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1348,7 +1348,7 @@
   type: ae
   true_val: 0.42028181531
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10024972&charge=0
-  cmd: 2 * energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1368,7 +1368,7 @@
   type: ae
   true_val: 0.29811081066199996
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2696926&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1394,7 +1394,7 @@
   type: ae
   true_val: 0.3157493542
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7783542&charge=0
-  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1415,7 +1415,7 @@
   type: ae
   true_val: 0.22703102238599998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10028156&charge=0
-  cmd: 3 * energy(systems[1]) - energy[systems[0]]
+  cmd: 3 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1430,7 +1430,7 @@
   type: ae
   true_val: 0.142688999474
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7783417&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1450,7 +1450,7 @@
   type: ae
   true_val: 0.9093657576920001
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=116143&charge=0
-  cmd: 2 * energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1471,7 +1471,7 @@
   type: ae
   true_val: 0.569403874606
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=105879138&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1497,7 +1497,7 @@
   type: ae
   true_val: 1.0687982331739998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74997&charge=0
-  cmd: 3 * energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: 3 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1519,7 +1519,7 @@
   type: ae
   true_val: 1.0662082505339998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=463490&charge=0
-  cmd: 3 * energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: 3 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1541,7 +1541,7 @@
   type: ae
   true_val: 1.0329193560139998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2781853&charge=0
-  cmd: 3 * energy(systems[1]) + 4 * energy(systems[2]) - energy[systems[0]]
+  cmd: 3 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1563,7 +1563,7 @@
   type: ae
   true_val: 1.2795314089179997
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75194&charge=0
-  cmd: 3 * energy(systems[1]) + 6 * energy(systems[2]) - energy[systems[0]]
+  cmd: 3 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1586,7 +1586,7 @@
   type: ae
   true_val: 1.5023003863419997
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74986&charge=0
-  cmd: 3 * energy(systems[1]) + 8 * energy(systems[2]) - energy[systems[0]]
+  cmd: 3 * energy(systems[1]) + 8 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1609,7 +1609,7 @@
   type: ae
   true_val: 1.5166633635999998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=503173&charge=0
-  cmd: 4 * energy(systems[1]) + 6 * energy(systems[2]) - energy[systems[0]]
+  cmd: 4 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1632,7 +1632,7 @@
   type: ae
   true_val: 1.4948389510599998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=6142730&charge=0
-  cmd: 4 * energy(systems[1]) + 6 * energy(systems[2]) - energy[systems[0]]
+  cmd: 4 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1655,7 +1655,7 @@
   type: ae
   true_val: 1.5110263425599997
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=822355&charge=0
-  cmd: 4 * energy(systems[1]) + 6 * energy(systems[2]) - energy[systems[0]]
+  cmd: 4 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1678,7 +1678,7 @@
   type: ae
   true_val: 0.569403874606
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=17247584&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1704,7 +1704,7 @@
   type: ae
   true_val: 1.9468899504879997
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75285&charge=0
-  cmd: 4 * energy(systems[1]) + 10 * energy(systems[2]) - energy[systems[0]]
+  cmd: 4 * energy(systems[1]) + 10 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1728,7 +1728,7 @@
   type: ae
   true_val: 2.080738729804
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=71432&charge=0
-  cmd: 6 * energy(systems[1]) + 6 * energy(systems[2]) - energy[systems[0]]
+  cmd: 6 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1751,7 +1751,7 @@
   type: ae
   true_val: 0.6636297283279999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75105&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1777,7 +1777,7 @@
   type: ae
   true_val: 0.7041629566439999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75467&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1803,7 +1803,7 @@
   type: ae
   true_val: 0.560152304264
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75092&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1829,7 +1829,7 @@
   type: ae
   true_val: 0.527164304786
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=67663&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1855,7 +1855,7 @@
   type: ae
   true_val: 0.9407045476359999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75058&charge=0
-  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1881,7 +1881,7 @@
   type: ae
   true_val: 0.764981843108
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=64186&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1908,7 +1908,7 @@
   true_val: 1.310698802952
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=60355&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + energy(systems[3]) + 5 * energy(systems[4])
-    - energy[systems[0]]
+    - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1941,7 +1941,7 @@
   type: ae
   true_val: 1.07823262582
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=151564&charge=0
-  cmd: energy(systems[1]) + 5 * energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 5 * energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1968,7 +1968,7 @@
   type: ae
   true_val: 0.7834202342259999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=460195&charge=0
-  cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -1989,7 +1989,7 @@
   type: ae
   true_val: 1.2959359019039998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=124403&charge=0
-  cmd: energy(systems[1]) + 7 * energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 7 * energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2017,7 +2017,7 @@
   type: ae
   true_val: 0.569403874606
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=557664&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2043,7 +2043,7 @@
   type: ae
   true_val: 0.8172956836379999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=463514&charge=0
-  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2069,7 +2069,7 @@
   type: ae
   true_val: 0.9801941652999999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75218&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 4 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2097,7 +2097,7 @@
   true_val: 0.9729726842919999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=107222&charge=0
   cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) -
-    energy[systems[0]]
+    energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2123,7 +2123,7 @@
   type: ae
   true_val: 1.212165198692
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=64175&charge=0
-  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 6 * energy(systems[3]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 6 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2151,7 +2151,7 @@
   type: ae
   true_val: 1.1929383863879999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=115106&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 6 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 6 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2178,7 +2178,7 @@
   type: ae
   true_val: 0.9801941652999999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75218&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 4 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2205,7 +2205,7 @@
   type: ae
   true_val: 1.1513006066519997
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75081&charge=0
-  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 6 * energy(systems[3]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 6 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2233,7 +2233,7 @@
   type: ae
   true_val: 0.8684021352019999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75025&charge=0
-  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2260,7 +2260,7 @@
   type: ae
   true_val: 1.0359587768179999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75003&charge=0
-  cmd: 2 * energy(systems[1]) + 5 * energy(systems[2]) + energy(systems[3]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + 5 * energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2288,7 +2288,7 @@
   true_val: 1.076751003398
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=557993&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + energy(systems[3]) + 3 * energy(systems[4])
-    - energy[systems[0]]
+    - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2321,7 +2321,7 @@
   true_val: 1.017242343446
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75365&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + energy(systems[3]) + 3 * energy(systems[4])
-    - energy[systems[0]]
+    - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2353,7 +2353,7 @@
   type: ae
   true_val: 1.476549103064
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=540545&charge=0
-  cmd: 3 * energy(systems[1]) + energy(systems[2]) + 7 * energy(systems[3]) - energy[systems[0]]
+  cmd: 3 * energy(systems[1]) + energy(systems[2]) + 7 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2381,7 +2381,7 @@
   type: ae
   true_val: 0.569403874606
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=1002671&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2407,7 +2407,7 @@
   type: ae
   true_val: 1.514896081328
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=110009&charge=0
-  cmd: energy(systems[1]) + 4 * energy(systems[2]) + 4 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 4 * energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2434,7 +2434,7 @@
   type: ae
   true_val: 1.626730008204
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=109977&charge=0
-  cmd: energy(systems[1]) + 5 * energy(systems[2]) + 4 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 5 * energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2462,7 +2462,7 @@
   type: ae
   true_val: 0.16457054398399998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=1333740&charge=0
-  cmd: 2 * energy(systems[1]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2477,7 +2477,7 @@
   type: ae
   true_val: 0.13368500100199998
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13940211&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2498,7 +2498,7 @@
   type: ae
   true_val: 0.408843994916
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2122487&charge=0
-  cmd: 2 * energy(systems[1]) + energy(systems[2]) - energy[systems[0]]
+  cmd: 2 * energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2519,7 +2519,7 @@
   type: ae
   true_val: 0.6009331044499999
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2143682&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy[systems[0]]
+  cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
@@ -2546,7 +2546,7 @@
   type: ae
   true_val: 0.35334980805599997
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10102440&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy[systems[0]]
+  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:

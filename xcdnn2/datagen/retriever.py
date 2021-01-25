@@ -164,7 +164,7 @@ class AtomConf(object):
             else:
                 cmd_list.append("%d * energy(systems[%d])" % (count, i + 1))
         cmd = " + ".join(cmd_list)
-        cmd = cmd + " - energy[systems[0]]"
+        cmd = cmd + " - energy(systems[0])"
         res["cmd"] = cmd
 
         # construct the systems
