@@ -1,6 +1,6 @@
 import os
 import argparse
-from typing import List, Dict
+from typing import List, Dict, Optional
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
