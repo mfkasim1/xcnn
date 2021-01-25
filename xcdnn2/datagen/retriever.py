@@ -236,7 +236,7 @@ class System(object):
 if __name__ == "__main__":
     obj = AtomConf("2781-85-3").retrieve_cccbdb()
     ae = obj.ae_db()
-    print(ae)
+    print(yaml.dump([ae], sort_keys=False))
 
     # casno_file = "gauss2-casno.txt"
     # write_to = "ae_gauss2.yaml"

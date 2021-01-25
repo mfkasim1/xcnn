@@ -25,17 +25,17 @@ C2H6:74-84-0
 CN:2074-87-5
 HCN:74-90-8
 CO:630-08-0
-HCO:8001-78-3
+HCO:2597-44-6
 H2CO:50-00-0
 H3COH:67-56-1
 N2:7727-37-9
-H2NNH2:7803-57-8
+H2NNH2:302-01-2
 NO:10102-43-9
 O2:7782-44-7
 HOOH:7722-84-1
 F2:7782-41-4
 CO2:124-38-9
-Na2:6381926
+Na2:6381-92-6
 Si2:12597352
 P2:12185090
 S2:23550450
@@ -46,7 +46,7 @@ SC:2944050
 SO:13827322
 ClO:14989301
 FCl:7790898
-Si2H6:463043
+Si2H6:1590-87-0
 CH3Cl:74-87-3
 H3CSH:74-93-1
 HOCl:7790-92-3
@@ -71,7 +71,7 @@ F2O:7783-41-7
 ClF3:7790-91-2
 C2F4:116-14-3
 C2Cl4:127-18-4
-CF3CN:105879-13-8
+CF3CN:353-85-5
 propyne:74-99-7
 allene:463-49-0
 cyclopropene:2781-85-3
@@ -83,7 +83,7 @@ butadiene:106-99-0
 methylenecyclopropane:6142-73-0
 bicyclobutane:157-33-5
 cyclobutene:822-35-5
-cyclobutane:17247-58-4
+cyclobutane:287-23-0
 isobutene:115-11-7
 butane:106-97-8
 isobutane:75-28-5
@@ -104,7 +104,7 @@ acetamide:60-35-5
 aziridine:151-56-4
 cyanogen:460-19-5
 dimethylamine:124-40-3
-ethylamine:557-66-4
+ethylamine:75-04-7
 ketene:463-51-4
 oxirane:75-21-8
 acetaldehyde:75-07-0

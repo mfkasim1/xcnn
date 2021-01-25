@@ -557,22 +557,17 @@
       moldesc: O 0 0 0
       basis: 6-311++G**
       spin: 2
-- name: Atomization energy of H2CO (Formaldehyde)
+- name: Atomization energy of HCO (Formyl radical)
   type: ae
-  true_val: 0.569403874606
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=8001783&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
+  true_val: 0.431323520712
+  ref: https://cccbdb.nist.gov/exp2x.asp?casno=2597446&charge=0
+  cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
+      moldesc: C 0.0000 0.0000 0.0000; H 2.0409 0.0000 0.0000; O -1.1147 1.9704 0.0000
       basis: 6-311++G**
-  - type: mol
-    kwargs:
-      moldesc: O 0 0 0
-      basis: 6-311++G**
-      spin: 2
+      spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
@@ -583,6 +578,11 @@
       moldesc: H 0 0 0
       basis: 6-311++G**
       spin: 1
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G**
+      spin: 2
 - name: Atomization energy of H2CO (Formaldehyde)
   type: ae
   true_val: 0.569403874606
@@ -651,27 +651,23 @@
       moldesc: N 0 0 0
       basis: 6-311++G**
       spin: 3
-- name: Atomization energy of H2CO (Formaldehyde)
+- name: Atomization energy of N2H4 (Hydrazine)
   type: ae
-  true_val: 0.569403874606
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=7803578&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
+  true_val: 0.6461473455079999
+  ref: https://cccbdb.nist.gov/exp2x.asp?casno=302012&charge=0
+  cmd: 2 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
+      moldesc: N 0.0000 1.3663 -0.2122; N 0.0000 -1.3663 -0.2122; H -0.8447 1.8956
+        1.4290; H 0.8447 -1.8956 1.4290; H 1.8260 1.8956 0.0569; H -1.8260 -1.8956
+        0.0569
       basis: 6-311++G**
   - type: mol
     kwargs:
-      moldesc: O 0 0 0
+      moldesc: N 0 0 0
       basis: 6-311++G**
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G**
-      spin: 2
+      spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
@@ -770,30 +766,19 @@
       moldesc: O 0 0 0
       basis: 6-311++G**
       spin: 2
-- name: Atomization energy of H2CO (Formaldehyde)
+- name: Atomization energy of Na2 (Disodium)
   type: ae
-  true_val: 0.569403874606
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=6381926&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
+  true_val: 0.1804989386417
+  ref: https://cccbdb.nist.gov/exp2x.asp
+  cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
+      moldesc: Na 0 0 0; Na 0 0 5.8183
       basis: 6-311++G**
   - type: mol
     kwargs:
-      moldesc: O 0 0 0
-      basis: 6-311++G**
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G**
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: H 0 0 0
+      moldesc: Na 0 0 0
       basis: 6-311++G**
       spin: 1
 - name: Atomization energy of Si2 (Silicon diatomic)
@@ -980,25 +965,21 @@
       moldesc: Cl 0 0 0
       basis: 6-311++G**
       spin: 1
-- name: Atomization energy of H2CO (Formaldehyde)
+- name: Atomization energy of Si2H6 (disilane)
   type: ae
-  true_val: 0.569403874606
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=463043&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
+  true_val: 0.8026203849439998
+  ref: https://cccbdb.nist.gov/exp2x.asp?casno=1590870&charge=0
+  cmd: 2 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
+      moldesc: Si 0.0000 0.0000 2.1921; Si 0.0000 0.0000 -2.1921; H 0.0000 2.6201
+        3.1148; H -2.2692 -1.3101 3.1148; H 2.2692 -1.3101 3.1148; H 0.0000 -2.6201
+        -3.1148; H -2.2692 1.3101 -3.1148; H 2.2692 1.3101 -3.1148
       basis: 6-311++G**
   - type: mol
     kwargs:
-      moldesc: O 0 0 0
-      basis: 6-311++G**
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
+      moldesc: Si 0 0 0
       basis: 6-311++G**
       spin: 2
   - type: mol
@@ -1467,22 +1448,17 @@
       moldesc: F 0 0 0
       basis: 6-311++G**
       spin: 1
-- name: Atomization energy of H2CO (Formaldehyde)
+- name: Atomization energy of CF3CN (Acetonitrile, trifluoro-)
   type: ae
-  true_val: 0.569403874606
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=105879138&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
+  true_val: 0.9966177022760001
+  ref: https://cccbdb.nist.gov/exp2x.asp?casno=353855&charge=0
+  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
+      moldesc: C 0.0000 0.0000 -0.6436; C 0.0000 0.0000 2.1766; N 0.0000 0.0000 4.3566;
+        F 0.0000 2.3697 -1.4702; F 2.0522 -1.1849 -1.4702; F -2.0522 -1.1849 -1.4702
       basis: 6-311++G**
-  - type: mol
-    kwargs:
-      moldesc: O 0 0 0
-      basis: 6-311++G**
-      spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
@@ -1490,7 +1466,12 @@
       spin: 2
   - type: mol
     kwargs:
-      moldesc: H 0 0 0
+      moldesc: N 0 0 0
+      basis: 6-311++G**
+      spin: 3
+  - type: mol
+    kwargs:
+      moldesc: F 0 0 0
       basis: 6-311++G**
       spin: 1
 - name: Atomization energy of CH3CCH (propyne)
@@ -1664,32 +1645,6 @@
         H 1.6981 2.3480 -2.1227; H -1.6981 -2.3480 -2.1227; H -1.6981 2.3480 -2.1227;
         H 1.6981 -2.3480 -2.1227
       basis: 6-311++G**
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G**
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: H 0 0 0
-      basis: 6-311++G**
-      spin: 1
-- name: Atomization energy of H2CO (Formaldehyde)
-  type: ae
-  true_val: 0.569403874606
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=17247584&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
-      basis: 6-311++G**
-  - type: mol
-    kwargs:
-      moldesc: O 0 0 0
-      basis: 6-311++G**
-      spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
@@ -2013,32 +1968,6 @@
       moldesc: C 0 0 0
       basis: 6-311++G**
       spin: 2
-- name: Atomization energy of H2CO (Formaldehyde)
-  type: ae
-  true_val: 0.569403874606
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=557664&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
-      basis: 6-311++G**
-  - type: mol
-    kwargs:
-      moldesc: O 0 0 0
-      basis: 6-311++G**
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G**
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: H 0 0 0
-      basis: 6-311++G**
-      spin: 1
 - name: Atomization energy of CH2CO (Ketene)
   type: ae
   true_val: 0.8172956836379999
@@ -2372,32 +2301,6 @@
       moldesc: Cl 0 0 0
       basis: 6-311++G**
       spin: 1
-  - type: mol
-    kwargs:
-      moldesc: H 0 0 0
-      basis: 6-311++G**
-      spin: 1
-- name: Atomization energy of H2CO (Formaldehyde)
-  type: ae
-  true_val: 0.569403874606
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=1002671&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
-      basis: 6-311++G**
-  - type: mol
-    kwargs:
-      moldesc: O 0 0 0
-      basis: 6-311++G**
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G**
-      spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
