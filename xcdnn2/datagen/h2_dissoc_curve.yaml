@@ -1,180 +1,280 @@
 - name: Total energy of H2 at 0.5000
   type: ae
-  true_val: -0.510143407206231
-  cmd: energy(systems[0])
+  true_val: 0.4898565927937677
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 0.5000
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 0.6842
   type: ae
-  true_val: -0.8906742405533061
-  cmd: energy(systems[0])
+  true_val: 0.10932575944669254
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 0.6842
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 0.8684
   type: ae
-  true_val: -1.0576079307152217
-  cmd: energy(systems[0])
+  true_val: -0.05760793071522308
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 0.8684
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 1.0526
   type: ae
-  true_val: -1.1322511812712905
-  cmd: energy(systems[0])
+  true_val: -0.13225118127128965
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.0526
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 1.2368
   type: ae
-  true_val: -1.16193739383046
-  cmd: energy(systems[0])
+  true_val: -0.16193739383046113
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.2368
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 1.4211
   type: ae
-  true_val: -1.1683281845467268
-  cmd: energy(systems[0])
+  true_val: -0.1683281845467257
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.4211
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 1.6053
   type: ae
-  true_val: -1.162361273469797
-  cmd: energy(systems[0])
+  true_val: -0.162361273469797
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.6053
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 1.7895
   type: ae
-  true_val: -1.1499576882423592
-  cmd: energy(systems[0])
+  true_val: -0.14995768824235967
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.7895
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 1.9737
   type: ae
-  true_val: -1.1344872415339633
-  cmd: energy(systems[0])
+  true_val: -0.1344872415339624
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.9737
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 2.1579
   type: ae
-  true_val: -1.1179371421169155
-  cmd: energy(systems[0])
+  true_val: -0.11793714211691841
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 2.1579
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 2.3421
   type: ae
-  true_val: -1.101500747681059
-  cmd: energy(systems[0])
+  true_val: -0.10150074768105943
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 2.3421
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 2.5263
   type: ae
-  true_val: -1.0858988037603519
-  cmd: energy(systems[0])
+  true_val: -0.08589880376035075
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 2.5263
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 2.7105
   type: ae
-  true_val: -1.0715599960498685
-  cmd: energy(systems[0])
+  true_val: -0.07155999604986962
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 2.7105
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 2.8947
   type: ae
-  true_val: -1.058723501159804
-  cmd: energy(systems[0])
+  true_val: -0.058723501159802405
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 2.8947
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 3.0789
   type: ae
-  true_val: -1.0474973758021355
-  cmd: energy(systems[0])
+  true_val: -0.04749737580213531
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 3.0789
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 3.2632
   type: ae
-  true_val: -1.0378872414383482
-  cmd: energy(systems[0])
+  true_val: -0.037887241438347985
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 3.2632
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 3.4474
   type: ae
-  true_val: -1.029837752205368
-  cmd: energy(systems[0])
+  true_val: -0.029837752205394974
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 3.4474
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 3.6316
   type: ae
-  true_val: -1.0232201015061115
-  cmd: energy(systems[0])
+  true_val: -0.0232201015061122
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 3.6316
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 3.8158
   type: ae
-  true_val: -1.0178736915809254
-  cmd: energy(systems[0])
+  true_val: -0.017873691580926998
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 3.8158
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1
 - name: Total energy of H2 at 4.0000
   type: ae
-  true_val: -1.013620399563908
-  cmd: energy(systems[0])
+  true_val: -0.01362039956390726
+  cmd: energy(systems[0]) - 2 * energy(systems[1])
   systems:
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 4.0000
       basis: 6-311++G**
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G**
+      spin: 1

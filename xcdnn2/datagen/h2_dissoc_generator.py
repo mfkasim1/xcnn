@@ -14,14 +14,17 @@ def get_h2_dissoc_entries(dists: List[float], basis: str = "6-311++G**") -> List
 
         res = {}
         res["name"] = "Total energy of H2 at %.4f" % dist
-        res["type"] = "te"
-        res["true_val"] = get_ccsd_energy(moldesc, basis)
+        res["type"] = "ae"
+        res["true_val"] = get_ccsd_energy(moldesc, basis) + 1.0
 
         # construct the command
-        res["cmd"] = "energy(systems[0])"
+        res["cmd"] = "energy(systems[0]) - 2 * energy(systems[1])"
 
         # construct the system
-        res["systems"] = [System.create("mol", moldesc, numel0=2, basis=basis)]
+        res["systems"] = [
+            System.create("mol", moldesc, numel0=2, basis=basis),
+            System.create("mol", "H 0 0 0", numel0=1, basis=basis),
+        ]
         all_res.append(res)
     return all_res
 
