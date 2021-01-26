@@ -768,7 +768,7 @@
       spin: 2
 - name: Atomization energy of Na2 (Disodium)
   type: ae
-  true_val: 0.1804989386417
+  true_val: 0.027012
   ref: https://cccbdb.nist.gov/exp2x.asp
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
