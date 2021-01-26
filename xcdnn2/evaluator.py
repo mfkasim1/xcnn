@@ -7,7 +7,7 @@ import xitorch as xt
 from dqc.system.mol import Mol
 from dqc.qccalc.ks import KS
 from dqc.utils.datastruct import SpinParam
-from pyscf import dft
+from pyscf import dft, scf, cc
 from xcdnn2.entry import Entry, System
 from xcdnn2.kscalc import BaseKSCalc, DQCKSCalc, PySCFKSCalc
 from xcdnn2.xcmodels import BaseNNXC
@@ -179,6 +179,13 @@ class PySCFEvaluator(BaseEvaluator):
         self.xc = xc
         self.weights = weights
 
+        # decide the calculation to be performed
+        xclow = xc.lower()
+        if xclow == "ccsd":
+            self.calc = "ccsd"
+        else:
+            self.calc = "ksdft"
+
     def calc_loss_function(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
         # calculate the loss function of the entry
         fcn = lambda entry, val, true_val: self.weights[entry["type"]] * entry.get_loss(val, true_val)
@@ -210,11 +217,21 @@ class PySCFEvaluator(BaseEvaluator):
 
         # run ks in pyscf
         syst = system.get_pyscf_system()
-        if syst.spin == 0:
-            qc = dft.RKS(syst)
-        else:
-            qc = dft.UKS(syst)
-        qc.xc = self.xc
+        if self.calc == "ksdft":
+            # KS-DFT calculation
+            if syst.spin == 0:
+                qc = dft.RKS(syst)
+            else:
+                qc = dft.UKS(syst)
+            qc.xc = self.xc
+        elif self.calc == "ccsd":
+            # CCSD calculation
+            if syst.spin == 0:
+                mqc = scf.RHF(syst).run()
+                qc = cc.RCCSD(mqc)
+            else:
+                mqc = scf.UHF(syst).run()
+                qc = cc.UCCSD(mqc)
         qc.kernel()
 
         return PySCFKSCalc(qc, syst)
