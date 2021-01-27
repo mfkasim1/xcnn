@@ -226,6 +226,10 @@ class PySCFEvaluator(BaseEvaluator):
             qc.xc = self.xc
         elif self.calc == "ccsd":
             # CCSD calculation
+            # change the basis to cc-pvqz
+            syst.basis = "cc-pvqz"
+            syst.build()
+
             if syst.spin == 0:
                 mqc = scf.RHF(syst).run()
                 qc = cc.RCCSD(mqc)
