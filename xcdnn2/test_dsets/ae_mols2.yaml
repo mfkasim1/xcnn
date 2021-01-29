@@ -49,7 +49,7 @@
 - name: Atomization energy of Na2
   type: ae
   cmd: 2 * energy(systems[1]) - energy(systems[0])
-  true_val: 0.1804989386417
+  true_val: 0.027012
   systems:
   - type: mol
     kwargs:
