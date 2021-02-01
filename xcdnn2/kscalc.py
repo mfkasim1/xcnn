@@ -61,8 +61,11 @@ class PySCFKSCalc(BaseKSCalc):
     def energy(self) -> torch.Tensor:
         e_tot = self.qc.e_tot
         if self.with_t_corr:
-            e_corr = self.qc.ccsd_t()
-            e_tot = e_tot + e_corr
+            try:
+                e_corr = self.qc.ccsd_t()
+                e_tot = e_tot + e_corr
+            except ZeroDivisionError:  # pyscf error on systems where there are only < 2 electrons
+                pass
         return torch.as_tensor(e_tot)
 
     def aodmtot(self) -> torch.Tensor:
