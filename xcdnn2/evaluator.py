@@ -184,7 +184,7 @@ class PySCFEvaluator(BaseEvaluator):
         if xclow == "ccsd":
             self.calc = "ccsd"
         elif xclow == "ccsdt" or xclow == "ccsd-t" or xclow == "ccsd(t)" or xclow == "ccsd_t":
-            self.calc == "ccsdt"
+            self.calc = "ccsdt"
         else:
             self.calc = "ksdft"
 
