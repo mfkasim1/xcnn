@@ -52,13 +52,18 @@ class PySCFKSCalc(BaseKSCalc):
     """
     Interface to PySCF's KS calculation
     """
-    def __init__(self, qc, mol):
+    def __init__(self, qc, mol, with_t_corr=False):
         self.qc = qc
         self.mol = mol
         self.polarized = mol.spin != 0
+        self.with_t_corr = with_t_corr  # with triplet correction, only for CCSD object
 
     def energy(self) -> torch.Tensor:
-        return torch.as_tensor(self.qc.e_tot)
+        e_tot = self.qc.e_tot
+        if self.with_t_corr:
+            e_corr = self.qc.ccsd_t()
+            e_tot = e_tot + e_corr
+        return torch.as_tensor(e_tot)
 
     def aodmtot(self) -> torch.Tensor:
         dm = self.qc.make_rdm1()

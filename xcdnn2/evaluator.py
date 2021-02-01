@@ -183,6 +183,8 @@ class PySCFEvaluator(BaseEvaluator):
         xclow = xc.lower()
         if xclow == "ccsd":
             self.calc = "ccsd"
+        elif xclow == "ccsdt" or xclow == "ccsd-t" or xclow == "ccsd(t)" or xclow == "ccsd_t":
+            self.calc == "ccsdt"
         else:
             self.calc = "ksdft"
 
@@ -224,7 +226,9 @@ class PySCFEvaluator(BaseEvaluator):
             else:
                 qc = dft.UKS(syst)
             qc.xc = self.xc
-        elif self.calc == "ccsd":
+            qc.kernel()
+            return PySCFKSCalc(qc, syst)
+        elif self.calc == "ccsd" or self.calc == "ccsdt":
             # CCSD calculation
             # change the basis to cc-pvqz
             syst.basis = "cc-pvqz"
@@ -236,6 +240,6 @@ class PySCFEvaluator(BaseEvaluator):
             else:
                 mqc = scf.UHF(syst).run()
                 qc = cc.UCCSD(mqc)
-        qc.kernel()
-
-        return PySCFKSCalc(qc, syst)
+            qc.kernel()
+            with_ccsdt = self.calc == "ccsdt"
+            return PySCFKSCalc(qc, syst, with_ccsdt)
