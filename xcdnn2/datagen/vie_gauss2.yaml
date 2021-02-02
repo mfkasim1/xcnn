@@ -16,24 +16,6 @@
         H -1.0195 1.7658 0.0000
       basis: 6-311++G**
       charge: 1
-- name: Vertical ionization energy of CH3 (Methyl radical)
-  type: ie
-  true_val: 0.36161316071783994
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=2229074&charge=0
-  cmd: energy(systems[1]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: C 0.0000 0.0000 0.0000; H 2.0390 0.0000 0.0000; H -1.0195 -1.7658 0.0000;
-        H -1.0195 1.7658 0.0000
-      basis: 6-311++G**
-      spin: 1
-  - type: mol
-    kwargs:
-      moldesc: C 0.0000 0.0000 0.0000; H 2.0390 0.0000 0.0000; H -1.0195 -1.7658 0.0000;
-        H -1.0195 1.7658 0.0000
-      basis: 6-311++G**
-      charge: 1
 - name: Vertical ionization energy of CH4 (Methane)
   type: ie
   true_val: 0.49979054733359995
@@ -447,24 +429,6 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; O 0.0000 0.0000 2.1961; O 0.0000 0.0000 -2.1961
-      basis: 6-311++G**
-      charge: 1
-      spin: 1
-- name: Vertical ionization energy of H2CO (Formaldehyde)
-  type: ie
-  true_val: 0.40001618439163494
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=6381926&charge=0
-  cmd: energy(systems[1]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
-      basis: 6-311++G**
-  - type: mol
-    kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
       basis: 6-311++G**
       charge: 1
       spin: 1
@@ -1563,24 +1527,6 @@
         0.0000; Cl 3.2834 0.2623 0.0000; H -0.3097 2.3053 -1.7110; H -0.3097 2.3053
         1.7110; H -1.2544 -2.3824 1.6907; H -1.2544 -2.3824 -1.6907; H -5.6943 -2.1983
         0.0000; H -4.9772 0.6535 1.7004; H -4.9772 0.6535 -1.7004
-      basis: 6-311++G**
-      charge: 1
-      spin: 1
-- name: Vertical ionization energy of H2CO (Formaldehyde)
-  type: ie
-  true_val: 0.40001618439163494
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=1002671&charge=0
-  cmd: energy(systems[1]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
-      basis: 6-311++G**
-  - type: mol
-    kwargs:
-      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
-        H 0.0000 -1.7818 -1.1104
       basis: 6-311++G**
       charge: 1
       spin: 1
