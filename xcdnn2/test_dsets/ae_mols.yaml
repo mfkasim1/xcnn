@@ -8,16 +8,16 @@
   - type: mol
     kwargs:
       moldesc: Be 0 0 0; H -2.5065 0 0; H 2.5065 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Be 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7787522&charge=0 for positions and
     https://cccbdb.nist.gov/ea2.asp?casno=7787522&charge=0 for the atomization energy
@@ -30,16 +30,16 @@
   - type: mol
     kwargs:
       moldesc: B 0 0 0; H 0 2.2488 0; H 1.9476 -1.1244 0; H -1.9476 -1.1244 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: B 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=13283313&charge=0 for positions and
@@ -53,16 +53,16 @@
   - type: mol
     kwargs:
       moldesc: C 0 0 0; H 1.1860 1.1860 1.1860; H 1.1860 -1.1860 -1.1860; H -1.1860 1.1860 -1.1860; H -1.1860 -1.1860 1.1860
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=74828&charge=0 for positions and
@@ -76,16 +76,16 @@
   - type: mol
     kwargs:
       moldesc: N 0 0 0; H 0 -1.7720 -0.7211; H 1.5346 0.8861 -0.7211; H -1.5346 0.8861 -0.7211
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7664417&charge=0 for positions and
@@ -99,16 +99,16 @@
   - type: mol
     kwargs:
       moldesc: O 0 0 0.2217; H 0 1.4309 -0.8867; H 0 -1.4309 -0.8867
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7732185&charge=0 for positions and
@@ -123,16 +123,16 @@
   - type: mol
     kwargs:
       moldesc: C 0 0 0; O 0 0 2.1961; O 0 0 -2.1961
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=124389&charge=0 for positions and
@@ -146,17 +146,17 @@
   - type: mol
     kwargs:
       moldesc: N 0 0 0; O 0 2.0766 0.8793; O 0 -2.0766 0.8793
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=10102440&charge=0 for positions and
@@ -170,16 +170,16 @@
   - type: mol
     kwargs:
       moldesc: N 0 0 -2.2673; N 0 0 -0.1353; O 0 0 2.1025
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=10024972&charge=0 for positions and
@@ -193,11 +193,11 @@
   - type: mol
     kwargs:
       moldesc: O 0 0 0; O 0 2.0570 1.2655; O 0 -2.0570 1.2655
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=10028156&charge=0 for positions and
@@ -211,16 +211,16 @@
   - type: mol
     kwargs:
       moldesc: O 0 0 1.1431; F 0 2.0793 -0.5080; F 0 -2.0793 -0.5080
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7783417&charge=0 for positions and
@@ -235,21 +235,21 @@
   - type: mol
     kwargs:
       moldesc: C 0 0 0; H 0 0 2.0107; N 0 0 -2.1845
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=74908&charge=0 for positions and
@@ -263,21 +263,21 @@
   - type: mol
     kwargs:
       moldesc: C 0 0 -1.3993; N 0 0 0.8166; H 0 0 2.6802
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=6914074&charge=0 for positions and
@@ -291,21 +291,21 @@
   - type: mol
     kwargs:
       moldesc: N 0 0.2931 0; O -0.5053 -2.3155 0; O 2.2193 0.8511 0; O -1.8602 1.5866 0; H 1.1701 -3.0306 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7697372&charge=0 for positions and
@@ -319,21 +319,21 @@
   - type: mol
     kwargs:
       moldesc: C 0 0.7975 0; O -1.9536 -0.8226 0; O 2.1896 0.1931 0; H -0.6637 2.7613 0; H -1.2249 -2.5088 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=64186&charge=0 for positions and
@@ -348,16 +348,16 @@
   - type: mol
     kwargs:
       moldesc: C 0 0 1.1363; C 0 0 -1.1363; H 0 0 3.1453; H 0 0 -3.1453
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=74862&charge=0 for positions and
@@ -371,16 +371,16 @@
   - type: mol
     kwargs:
       moldesc: C 0 0 1.2652; C 0 0 -1.2652; H 0 1.7554 2.3283; H 0 -1.7554 2.3283; H 0 1.7554 -2.3283; H 0 -1.7554 -2.3283
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=74851&charge=0 for positions and
@@ -394,16 +394,16 @@
   - type: mol
     kwargs:
       moldesc: C 0 0 1.4513; C 0 0 -1.4513; H -1.9260 0 2.1870; H 0.9630 1.6679 2.1870; H 0.9630 -1.6679 2.1870; H 1.9260 0 -2.1870; H -0.9630 -1.6679 -2.1870; H -0.9630 1.6679 -2.1870
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=74840&charge=0 for positions and

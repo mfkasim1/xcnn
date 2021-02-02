@@ -4,7 +4,7 @@ from typing import List, Dict
 from pyscf import cc, scf, gto
 from xcdnn2.datagen.retriever import System
 
-def get_h2_dissoc_entries(dists: List[float], basis: str = "6-311++G**") -> List[Dict]:
+def get_h2_dissoc_entries(dists: List[float], basis: str = "6-311++G(3df,3pd)") -> List[Dict]:
     # get entries for dissociation curve
 
     all_res = []

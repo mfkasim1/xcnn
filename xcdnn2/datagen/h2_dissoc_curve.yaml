@@ -6,11 +6,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 0.5000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 0.6842
   type: ae
@@ -20,11 +20,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 0.6842
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 0.8684
   type: ae
@@ -34,11 +34,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 0.8684
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 1.0526
   type: ae
@@ -48,11 +48,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.0526
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 1.2368
   type: ae
@@ -62,11 +62,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.2368
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 1.4211
   type: ae
@@ -76,11 +76,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.4211
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 1.6053
   type: ae
@@ -90,11 +90,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.6053
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 1.7895
   type: ae
@@ -104,11 +104,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.7895
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 1.9737
   type: ae
@@ -118,11 +118,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 1.9737
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 2.1579
   type: ae
@@ -132,11 +132,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 2.1579
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 2.3421
   type: ae
@@ -146,11 +146,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 2.3421
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 2.5263
   type: ae
@@ -160,11 +160,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 2.5263
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 2.7105
   type: ae
@@ -174,11 +174,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 2.7105
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 2.8947
   type: ae
@@ -188,11 +188,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 2.8947
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 3.0789
   type: ae
@@ -202,11 +202,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 3.0789
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 3.2632
   type: ae
@@ -216,11 +216,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 3.2632
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 3.4474
   type: ae
@@ -230,11 +230,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 3.4474
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 3.6316
   type: ae
@@ -244,11 +244,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 3.6316
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 3.8158
   type: ae
@@ -258,11 +258,11 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 3.8158
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Total energy of H2 at 4.0000
   type: ae
@@ -272,9 +272,9 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0; H 0 0 4.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1

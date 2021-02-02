@@ -7,16 +7,16 @@
   - type: mol
     kwargs:
       moldesc: Li 0.0000 0.0000 0.0000; H 0.0000 0.0000 3.0139
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Li 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of BeH (beryllium monohydride)
   type: ae
@@ -27,16 +27,16 @@
   - type: mol
     kwargs:
       moldesc: Be 0.0000 0.0000 0.0000; H 0.0000 0.0000 2.5371
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Be 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH (Methylidyne)
   type: ae
@@ -47,17 +47,17 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; H 0.0000 0.0000 2.1163
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH2 (Methylene)
   type: ae
@@ -68,17 +68,17 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.1941; H 0.0000 1.8977 -0.5822; H 0.0000 -1.8977 -0.5822
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3 (Methyl radical)
   type: ae
@@ -90,17 +90,17 @@
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; H 2.0390 0.0000 0.0000; H -1.0195 -1.7658 0.0000;
         H -1.0195 1.7658 0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH4 (Methane)
   type: ae
@@ -112,16 +112,16 @@
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; H 1.1860 1.1860 1.1860; H 1.1860 -1.1860 -1.1860;
         H -1.1860 1.1860 -1.1860; H -1.1860 -1.1860 1.1860
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of NH (Imidogen)
   type: ae
@@ -132,17 +132,17 @@
   - type: mol
     kwargs:
       moldesc: N 0.0000 0.0000 0.0000; H 0.0000 0.0000 1.9581
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of NH2 (Amino radical)
   type: ae
@@ -153,17 +153,17 @@
   - type: mol
     kwargs:
       moldesc: N 0.0000 0.0000 0.0000; H 0.0000 1.5186 1.1994; H 0.0000 -1.5186 1.1994
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of NH3 (Ammonia)
   type: ae
@@ -175,16 +175,16 @@
     kwargs:
       moldesc: N 0.0000 0.0000 0.0000; H 0.0000 -1.7720 -0.7211; H 1.5346 0.8861 -0.7211;
         H -1.5346 0.8861 -0.7211
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of OH (Hydroxyl radical)
   type: ae
@@ -195,17 +195,17 @@
   - type: mol
     kwargs:
       moldesc: O 0.0000 0.0000 0.0000; H 0.0000 0.0000 1.8325
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of H2O (Water)
   type: ae
@@ -216,16 +216,16 @@
   - type: mol
     kwargs:
       moldesc: O 0.0000 0.0000 0.2217; H 0.0000 1.4309 -0.8867; H 0.0000 -1.4309 -0.8867
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of HF (Hydrogen fluoride)
   type: ae
@@ -236,16 +236,16 @@
   - type: mol
     kwargs:
       moldesc: F 0.0000 0.0000 0.0000; H 0.0000 0.0000 1.7325
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of SiH2 (silicon dihydride)
   type: ae
@@ -256,16 +256,16 @@
   - type: mol
     kwargs:
       moldesc: Si 0.0000 0.0000 0.0000; H 0.0000 0.0000 -2.8612; H 0.0000 2.8595 0.0998
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of SiH3 (Silyl radical)
   type: ae
@@ -277,17 +277,17 @@
     kwargs:
       moldesc: Si 0.0000 0.0000 0.1548; H 0.0000 2.6320 -0.7219; H 2.2794 -1.3160
         -0.7219; H -2.2794 -1.3160 -0.7219
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of SiH4 (Silane)
   type: ae
@@ -299,16 +299,16 @@
     kwargs:
       moldesc: Si 0.0000 0.0000 0.0000; H 1.6146 1.6146 1.6146; H -1.6146 -1.6146
         1.6146; H -1.6146 1.6146 -1.6146; H 1.6146 -1.6146 -1.6146
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of PH2 (Phosphino radical)
   type: ae
@@ -319,17 +319,17 @@
   - type: mol
     kwargs:
       moldesc: P 0.0000 0.0000 0.0000; H 0.0000 1.9330 1.8829; H 0.0000 -1.9330 1.8829
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: P 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of PH3 (Phosphine)
   type: ae
@@ -341,16 +341,16 @@
     kwargs:
       moldesc: P 0.0000 0.0000 0.0000; H 0.0000 -2.2548 -1.4583; H 1.9527 1.1274 -1.4583;
         H -1.9527 1.1274 -1.4583
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: P 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of H2S (Hydrogen sulfide)
   type: ae
@@ -361,16 +361,16 @@
   - type: mol
     kwargs:
       moldesc: S 0.0000 0.0000 0.1946; H 0.0000 1.8172 -1.5569; H 0.0000 -1.8172 -1.5569
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of HCl (Hydrogen chloride)
   type: ae
@@ -381,16 +381,16 @@
   - type: mol
     kwargs:
       moldesc: Cl 0.0000 0.0000 0.0000; H 0.0000 0.0000 2.4086
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of Li2 (Lithium diatomic)
   type: ae
@@ -401,11 +401,11 @@
   - type: mol
     kwargs:
       moldesc: Li 0.0000 0.0000 0.0000; Li 0.0000 0.0000 5.0512
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Li 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of LiF (lithium fluoride)
   type: ae
@@ -416,16 +416,16 @@
   - type: mol
     kwargs:
       moldesc: F 0.0000 0.0000 0.0000; Li 0.0000 0.0000 2.9553
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Li 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C2H2 (Acetylene)
   type: ae
@@ -437,16 +437,16 @@
     kwargs:
       moldesc: C 0.0000 0.0000 1.1363; C 0.0000 0.0000 -1.1363; H 0.0000 0.0000 3.1453;
         H 0.0000 0.0000 -3.1453
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C2H4 (Ethylene)
   type: ae
@@ -458,16 +458,16 @@
     kwargs:
       moldesc: C 0.0000 0.0000 1.2652; C 0.0000 0.0000 -1.2652; H 0.0000 1.7554 2.3283;
         H 0.0000 -1.7554 2.3283; H 0.0000 1.7554 -2.3283; H 0.0000 -1.7554 -2.3283
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C2H6 (Ethane)
   type: ae
@@ -480,16 +480,16 @@
       moldesc: C 0.0000 0.0000 1.4513; C 0.0000 0.0000 -1.4513; H -1.9260 0.0000 2.1870;
         H 0.9630 1.6679 2.1870; H 0.9630 -1.6679 2.1870; H 1.9260 0.0000 -2.1870;
         H -0.9630 -1.6679 -2.1870; H -0.9630 1.6679 -2.1870
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CN (Cyano radical)
   type: ae
@@ -500,17 +500,17 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; N 0.0000 0.0000 2.2144
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
 - name: Atomization energy of HCN (Hydrogen cyanide)
   type: ae
@@ -521,21 +521,21 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; H 0.0000 0.0000 2.0107; N 0.0000 0.0000 -2.1845
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
 - name: Atomization energy of CO (Carbon monoxide)
   type: ae
@@ -546,16 +546,16 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; O 0.0000 0.0000 2.1320
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of HCO (Formyl radical)
   type: ae
@@ -566,22 +566,22 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; H 2.0409 0.0000 0.0000; O -1.1147 1.9704 0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of H2CO (Formaldehyde)
   type: ae
@@ -593,21 +593,21 @@
     kwargs:
       moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
         H 0.0000 -1.7818 -1.1104
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3OH (Methyl alcohol)
   type: ae
@@ -620,21 +620,21 @@
       moldesc: C -0.0951 1.2633 0.0000; O -0.0951 -1.4334 0.0000; H -2.0422 1.9685
         0.0000; H 0.8787 1.9685 1.6864; H 0.8787 1.9685 -1.6864; H 1.6146 -2.0177
         0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of N2 (Nitrogen diatomic)
   type: ae
@@ -645,11 +645,11 @@
   - type: mol
     kwargs:
       moldesc: N 0.0000 0.0000 1.0371; N 0.0000 0.0000 -1.0371
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
 - name: Atomization energy of N2H4 (Hydrazine)
   type: ae
@@ -662,16 +662,16 @@
       moldesc: N 0.0000 1.3663 -0.2122; N 0.0000 -1.3663 -0.2122; H -0.8447 1.8956
         1.4290; H 0.8447 -1.8956 1.4290; H 1.8260 1.8956 0.0569; H -1.8260 -1.8956
         0.0569
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of NO (Nitric oxide)
   type: ae
@@ -682,17 +682,17 @@
   - type: mol
     kwargs:
       moldesc: O 0.0000 0.0000 0.0000; N 0.0000 0.0000 2.1747
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
 - name: Atomization energy of O2 (Oxygen diatomic)
   type: ae
@@ -703,12 +703,12 @@
   - type: mol
     kwargs:
       moldesc: O 0.0000 0.0000 0.0000; O 0.0000 0.0000 2.2818
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of H2O2 (Hydrogen peroxide)
   type: ae
@@ -720,16 +720,16 @@
     kwargs:
       moldesc: O 0.0000 1.3937 -0.0998; O 0.0000 -1.3937 -0.0998; H 1.5477 1.5439
         0.7975; H -1.5477 -1.5439 0.7975
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of F2 (Fluorine diatomic)
   type: ae
@@ -740,11 +740,11 @@
   - type: mol
     kwargs:
       moldesc: F 0.0000 0.0000 0.0000; F 0.0000 0.0000 2.6681
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CO2 (Carbon dioxide)
   type: ae
@@ -755,16 +755,16 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; O 0.0000 0.0000 2.1961; O 0.0000 0.0000 -2.1961
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of Na2 (Disodium)
   type: ae
@@ -775,11 +775,11 @@
   - type: mol
     kwargs:
       moldesc: Na 0 0 0; Na 0 0 5.8183
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Na 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of Si2 (Silicon diatomic)
   type: ae
@@ -790,12 +790,12 @@
   - type: mol
     kwargs:
       moldesc: Si 0.0000 0.0000 0.0000; Si 0.0000 0.0000 4.2443
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of P2 (Phosphorus diatomic)
   type: ae
@@ -806,11 +806,11 @@
   - type: mol
     kwargs:
       moldesc: P 0.0000 0.0000 0.0000; P 0.0000 0.0000 3.5780
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: P 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
 - name: Atomization energy of S2 (Sulfur diatomic)
   type: ae
@@ -821,12 +821,12 @@
   - type: mol
     kwargs:
       moldesc: S 0.0000 0.0000 0.0000; S 0.0000 0.0000 3.5701
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of Cl2 (Chlorine diatomic)
   type: ae
@@ -837,11 +837,11 @@
   - type: mol
     kwargs:
       moldesc: Cl 0.0000 0.0000 0.0000; Cl 0.0000 0.0000 3.7566
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of NaCl (Sodium Chloride)
   type: ae
@@ -852,16 +852,16 @@
   - type: mol
     kwargs:
       moldesc: Na 0.0000 0.0000 0.0000; Cl 0.0000 0.0000 4.4613
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Na 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of SiO (Silicon monoxide)
   type: ae
@@ -872,16 +872,16 @@
   - type: mol
     kwargs:
       moldesc: Si 0.0000 0.0000 0.0000; O 0.0000 0.0000 2.8529
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of CS (carbon monosulfide)
   type: ae
@@ -892,16 +892,16 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; S 0.0000 0.0000 2.9005
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of SO (Sulfur monoxide)
   type: ae
@@ -912,17 +912,17 @@
   - type: mol
     kwargs:
       moldesc: S 0.0000 0.0000 0.0000; O 0.0000 0.0000 2.7989
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of ClO (Monochlorine monoxide)
   type: ae
@@ -933,17 +933,17 @@
   - type: mol
     kwargs:
       moldesc: O 0.0000 0.0000 0.0000; Cl 0.0000 0.0000 2.9661
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of ClF (Chlorine monofluoride)
   type: ae
@@ -954,16 +954,16 @@
   - type: mol
     kwargs:
       moldesc: F 0.0000 0.0000 0.0000; Cl 0.0000 0.0000 3.0770
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of Si2H6 (disilane)
   type: ae
@@ -976,16 +976,16 @@
       moldesc: Si 0.0000 0.0000 2.1921; Si 0.0000 0.0000 -2.1921; H 0.0000 2.6201
         3.1148; H -2.2692 -1.3101 3.1148; H 2.2692 -1.3101 3.1148; H 0.0000 -2.6201
         -3.1148; H -2.2692 1.3101 -3.1148; H 2.2692 1.3101 -3.1148
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3Cl (Methyl chloride)
   type: ae
@@ -997,21 +997,21 @@
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; Cl 0.0000 0.0000 3.3656; H 1.9699 0.0000 -0.7372;
         H -0.9849 1.7059 -0.7372; H -0.9849 -1.7059 -0.7372
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3SH (Methanethiol)
   type: ae
@@ -1024,21 +1024,21 @@
       moldesc: C -1.6063 -0.0650 -0.3779; S 1.7008 -0.9685 -0.2304; H 2.6870 1.0925
         0.8031; H -1.7775 1.6418 -1.5532; H -2.6870 -1.6418 -1.2225; H -2.2735 0.3129
         1.5532
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of HOCl (hypochlorous acid)
   type: ae
@@ -1050,21 +1050,21 @@
     kwargs:
       moldesc: O 0.0684 2.0719 0.0000; H -1.7098 2.4646 0.0000; Cl 0.0684 -1.1200
         0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of SO2 (Sulfur dioxide)
   type: ae
@@ -1075,16 +1075,16 @@
   - type: mol
     kwargs:
       moldesc: S 0.0000 0.0000 0.0000; O 0.0000 2.3378 1.3634; O 0.0000 -2.3378 1.3634
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of BF3 (Borane, trifluoro-)
   type: ae
@@ -1096,16 +1096,16 @@
     kwargs:
       moldesc: B 0.0000 0.0000 0.0000; F 0.0000 2.4699 0.0000; F 2.1390 -1.2349 0.0000;
         F -2.1390 -1.2349 0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: B 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of BCl3 (Borane, trichloro-)
   type: ae
@@ -1117,16 +1117,16 @@
     kwargs:
       moldesc: B 0.0000 0.0000 0.0000; Cl 0.0000 3.2921 0.0000; Cl 2.8510 -1.6461
         0.0000; Cl -2.8510 -1.6461 0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: B 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of AlF3 (Aluminum trifluoride)
   type: ae
@@ -1138,16 +1138,16 @@
     kwargs:
       moldesc: Al 0.0000 0.0000 0.0000; F 0.0000 3.0803 0.0000; F 2.6675 -1.5401 0.0000;
         F -2.6675 -1.5401 0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Al 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of AlCl3 (Aluminum trichloride)
   type: ae
@@ -1159,16 +1159,16 @@
     kwargs:
       moldesc: Al 0.0000 0.0000 0.0000; Cl 0.0000 3.8928 0.0000; Cl 3.3713 -1.9464
         0.0000; Cl -3.3713 -1.9464 0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Al 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CF4 (Carbon tetrafluoride)
   type: ae
@@ -1180,16 +1180,16 @@
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; F 1.4349 1.4349 1.4349; F -1.4349 -1.4349 1.4349;
         F -1.4349 1.4349 -1.4349; F 1.4349 -1.4349 -1.4349
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CCl4 (Carbon tetrachloride)
   type: ae
@@ -1201,16 +1201,16 @@
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; Cl 1.9279 1.9279 1.9279; Cl -1.9279 -1.9279
         1.9279; Cl -1.9279 1.9279 -1.9279; Cl 1.9279 -1.9279 -1.9279
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of OCS (Carbonyl sulfide)
   type: ae
@@ -1221,21 +1221,21 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; O 0.0000 0.0000 2.1921; S 0.0000 0.0000 -2.9480
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of CS2 (Carbon disulfide)
   type: ae
@@ -1246,16 +1246,16 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; S 0.0000 0.0000 2.9366; S 0.0000 0.0000 -2.9366
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of CF2O (Carbonic difluoride)
   type: ae
@@ -1267,21 +1267,21 @@
     kwargs:
       moldesc: O 0.0000 0.0000 2.4837; C 0.0000 0.0000 0.2651; F 0.0000 2.0058 -1.1922;
         F 0.0000 -2.0058 -1.1922
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of SiF4 (Silicon tetrafluoride)
   type: ae
@@ -1293,16 +1293,16 @@
     kwargs:
       moldesc: Si 0.0000 0.0000 0.0000; F 1.6955 1.6955 1.6955; F -1.6955 -1.6955
         1.6955; F -1.6955 1.6955 -1.6955; F 1.6955 -1.6955 -1.6955
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of SiCl4 (Silane, tetrachloro-)
   type: ae
@@ -1314,16 +1314,16 @@
     kwargs:
       moldesc: Si 0.0000 0.0000 0.0000; Cl 2.2029 2.2029 2.2029; Cl -2.2029 -2.2029
         2.2029; Cl -2.2029 2.2029 -2.2029; Cl 2.2029 -2.2029 -2.2029
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of N2O (Nitrous oxide)
   type: ae
@@ -1334,16 +1334,16 @@
   - type: mol
     kwargs:
       moldesc: N 0.0000 0.0000 -2.2673; N 0.0000 0.0000 -0.1353; O 0.0000 0.0000 2.1025
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of ClNO (Nitrosyl chloride)
   type: ae
@@ -1355,21 +1355,21 @@
     kwargs:
       moldesc: Cl -1.0038 -1.7571 0.0000; N 0.0000 1.8376 0.0000; O 2.1329 2.1259
         0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of NF3 (Nitrogen trifluoride)
   type: ae
@@ -1381,16 +1381,16 @@
     kwargs:
       moldesc: N 0.0000 0.0000 0.8940; F 0.0000 2.3204 -0.2317; F 2.0095 -1.1603 -0.2317;
         F -2.0095 -1.1603 -0.2317
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of O3 (Ozone)
   type: ae
@@ -1401,11 +1401,11 @@
   - type: mol
     kwargs:
       moldesc: O 0.0000 0.0000 0.0000; O 0.0000 2.0570 1.2655; O 0.0000 -2.0570 1.2655
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of F2O (Difluorine monoxide)
   type: ae
@@ -1416,16 +1416,16 @@
   - type: mol
     kwargs:
       moldesc: O 0.0000 0.0000 1.1431; F 0.0000 2.0793 -0.5080; F 0.0000 -2.0793 -0.5080
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C2F4 (Tetrafluoroethylene)
   type: ae
@@ -1437,16 +1437,16 @@
     kwargs:
       moldesc: C 0.0000 0.0000 1.2387; C 0.0000 0.0000 -1.2387; F 0.0000 2.0713 2.6254;
         F 0.0000 -2.0713 2.6254; F 0.0000 -2.0713 -2.6254; F 0.0000 2.0713 -2.6254
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CF3CN (Acetonitrile, trifluoro-)
   type: ae
@@ -1458,21 +1458,21 @@
     kwargs:
       moldesc: C 0.0000 0.0000 -0.6436; C 0.0000 0.0000 2.1766; N 0.0000 0.0000 4.3566;
         F 0.0000 2.3697 -1.4702; F 2.0522 -1.1849 -1.4702; F -2.0522 -1.1849 -1.4702
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3CCH (propyne)
   type: ae
@@ -1485,16 +1485,16 @@
       moldesc: C 0.0000 0.0000 -2.3537; C 0.0000 0.0000 0.4035; C 0.0000 0.0000 2.6825;
         H 0.0000 0.0000 4.6780; H 0.0000 1.9776 -3.0241; H 1.7127 -0.9887 -3.0241;
         H -1.7127 -0.9887 -3.0241
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH2CCH2 (allene)
   type: ae
@@ -1507,16 +1507,16 @@
       moldesc: C 0.0000 0.0000 0.0000; C 0.0000 0.0000 2.4718; C 0.0000 0.0000 -2.4718;
         H 0.0000 1.7625 3.5266; H 0.0000 -1.7625 3.5266; H 1.7625 0.0000 -3.5266;
         H -1.7625 0.0000 -3.5266
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C3H4 (Cyclopropene)
   type: ae
@@ -1529,16 +1529,16 @@
       moldesc: C 0.0000 0.0000 1.6305; C 0.0000 1.2238 -0.9451; C 0.0000 -1.2238 -0.9451;
         H 0.0000 2.9754 -1.9627; H 0.0000 -2.9754 -1.9627; H 1.7299 0.0000 2.7418;
         H -1.7299 0.0000 2.7418
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C3H6 (Cyclopropane)
   type: ae
@@ -1552,16 +1552,16 @@
         0.0000; H 0.0000 2.7448 1.7212; H 2.3771 -1.3723 1.7212; H -2.3771 -1.3723
         1.7212; H 0.0000 2.7448 -1.7212; H 2.3771 -1.3723 -1.7212; H -2.3771 -1.3723
         -1.7212
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C3H8 (Propane)
   type: ae
@@ -1575,16 +1575,16 @@
         -0.0000; H 0.0000 2.3525 1.6554; H -0.0006 2.3533 -1.6550; H -4.0773 0.7071
         0.0000; H 4.0773 0.7073 -0.0000; H -2.5079 -1.7034 1.6630; H -2.5079 -1.7034
         -1.6630; H 2.5079 -1.7034 -1.6630; H 2.5080 -1.7034 1.6630
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3CCCH3 (2-Butyne)
   type: ae
@@ -1598,16 +1598,16 @@
         C 0.0000 0.0000 -3.9212; H 0.0000 1.9729 4.6667; H -1.7085 -0.9864 4.6667;
         H 1.7085 -0.9864 4.6667; H 0.0000 1.9729 -4.6667; H 1.7085 -0.9864 -4.6667;
         H -1.7085 -0.9864 -4.6667
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C4H6 (Methylenecyclopropane)
   type: ae
@@ -1621,16 +1621,16 @@
         H 0.0000 -1.7272 4.1993; C 0.0000 1.4570 -1.7694; C 0.0000 -1.4570 -1.7694;
         H 1.7240 2.4678 -2.2682; H -1.7240 2.4678 -2.2682; H -1.7240 -2.4678 -2.2682;
         H 1.7240 -2.4678 -2.2682
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C4H6 (Cyclobutene)
   type: ae
@@ -1644,16 +1644,16 @@
         C 0.0000 -1.4780 -1.3272; H 0.0000 2.6768 3.0164; H 0.0000 -2.6768 3.0164;
         H 1.6981 2.3480 -2.1227; H -1.6981 -2.3480 -2.1227; H -1.6981 2.3480 -2.1227;
         H 1.6981 -2.3480 -2.1227
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3CH(CH3)CH3 (Isobutane)
   type: ae
@@ -1668,16 +1668,16 @@
         H 2.4330 -1.4046 -2.2546; H -2.4330 -1.4046 -2.2546; H 1.6896 3.6991 0.5331;
         H -1.6896 3.6991 0.5331; H 2.3588 -3.3127 0.5331; H 4.0482 -0.3864 0.5331;
         H -4.0482 -0.3864 0.5331; H -2.3588 -3.3127 0.5331
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C6H6 (Benzene)
   type: ae
@@ -1691,16 +1691,16 @@
         C 0.0000 -2.6399 0.0000; C -2.2862 -1.3200 0.0000; C -2.2862 1.3200 0.0000;
         H 0.0000 4.6884 0.0000; H 4.0603 2.3442 0.0000; H 4.0603 -2.3442 0.0000; H
         0.0000 -4.6884 0.0000; H -4.0603 -2.3442 0.0000; H -4.0603 2.3442 0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH2F2 (Methane, difluoro-)
   type: ae
@@ -1712,21 +1712,21 @@
     kwargs:
       moldesc: C 0.0000 0.0000 0.9454; H -1.7062 0.0000 2.0791; H 1.7062 0.0000 2.0791;
         F 0.0000 2.0715 -0.5461; F 0.0000 -2.0715 -0.5461
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CHF3 (Methane, trifluoro-)
   type: ae
@@ -1738,21 +1738,21 @@
     kwargs:
       moldesc: C 0.0000 0.0000 0.5832; H 0.0000 0.0000 2.6581; F 0.0000 2.3828 -0.2281;
         F 2.0636 -1.1915 -0.2281; F -2.0636 -1.1915 -0.2281
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH2Cl2 (Methylene chloride)
   type: ae
@@ -1764,21 +1764,21 @@
     kwargs:
       moldesc: C 0.0000 0.0000 1.4666; H -1.6732 0.0000 2.5953; H 1.6732 0.0000 2.5953;
         Cl 0.0000 2.7732 -0.4116; Cl 0.0000 -2.7732 -0.4116
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CHCl3 (Chloroform)
   type: ae
@@ -1790,21 +1790,21 @@
     kwargs:
       moldesc: C 0.0000 0.0000 0.9885; H 0.0000 0.0000 3.0162; Cl 0.0000 3.1298 -0.1754;
         Cl 2.7104 -1.5649 -0.1754; Cl -2.7104 -1.5649 -0.1754
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3CN (Acetonitrile)
   type: ae
@@ -1816,21 +1816,21 @@
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; C 0.0000 0.0000 2.7552; N 0.0000 0.0000 4.9416;
         H 0.0000 -1.9672 -0.6945; H 1.7038 0.9836 -0.6945; H 1.7038 -0.9836 -0.6945
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of HCOOH (Formic acid)
   type: ae
@@ -1842,21 +1842,21 @@
     kwargs:
       moldesc: C 0.0000 0.7975 0.0000; O -1.9536 -0.8226 0.0000; O 2.1896 0.1931 0.0000;
         H -0.6637 2.7613 0.0000; H -1.2249 -2.5088 0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3CONH2 (Acetamide)
   type: ae
@@ -1871,26 +1871,26 @@
         -0.0616; O 0.7041 2.5277 0.0108; H -3.9034 1.0363 -0.1157; H -2.9151 -1.9048
         -1.6592; H -2.9705 -1.7174 1.7820; H 3.7889 -1.0724 0.1342; H 1.4840 -3.4476
         0.2103
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C2H5N (Aziridine)
   type: ae
@@ -1903,21 +1903,21 @@
       moldesc: N -0.0070 1.6174 -0.3655; H -0.0265 2.6532 1.2510; C -1.3946 -0.7640
         0.0493; C 1.4031 -0.7468 0.0718; H -2.4107 -0.8477 1.8240; H -2.3304 -1.6329
         -1.5526; H 2.4226 -1.4332 -1.5647; H 2.3440 -0.9959 1.8742
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of C2N2 (Cyanogen)
   type: ae
@@ -1929,16 +1929,16 @@
     kwargs:
       moldesc: C 0.0000 0.0000 1.3134; C 0.0000 0.0000 -1.3134; N 0.0000 0.0000 3.4865;
         N 0.0000 0.0000 -3.4865
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
 - name: Atomization energy of CH3NHCH3 (Dimethylamine)
   type: ae
@@ -1952,21 +1952,21 @@
         2.2939; C -0.0416 0.4826 -2.2939; H -1.7425 1.6692 2.3503; H -1.7425 1.6692
         -2.3503; H 1.5949 1.7550 2.3828; H 1.5949 1.7550 -2.3828; H -0.0261 -0.7387
         3.9388; H -0.0261 -0.7387 -3.9388
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of CH2CO (Ketene)
   type: ae
@@ -1978,21 +1978,21 @@
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; C 0.0000 0.0000 2.4850; O 0.0000 0.0000 4.6771;
         H 0.0000 1.7860 -0.9838; H 0.0000 -1.7860 -0.9838
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C2H4O (Ethylene oxide)
   type: ae
@@ -2005,21 +2005,21 @@
       moldesc: O 0.0000 0.0000 1.6095; C 0.0000 1.3789 -0.7039; C 0.0000 -1.3789 -0.7039;
         H -1.7442 2.3744 -1.1072; H 1.7442 2.3744 -1.1072; H 1.7442 -2.3744 -1.1072;
         H -1.7442 -2.3744 -1.1072
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C2H2O2 (Ethanedial)
   type: ae
@@ -2032,21 +2032,21 @@
     kwargs:
       moldesc: C 0.0000 1.4419 0.0000; C 0.0000 -1.4419 0.0000; H 1.9806 2.2501 0.0000;
         H -1.9806 -2.2501 0.0000; O -1.9591 2.6282 0.0000; O 1.9591 -2.6282 0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of CH3CH2OH (Ethanol)
   type: ae
@@ -2060,21 +2060,21 @@
         0.0000; H -3.6353 0.7275 0.0000; H 3.9656 0.4358 0.0000; H 2.1135 -1.9073
         1.6760; H 2.1135 -1.9073 -1.6760; H -0.0429 2.2321 1.6728; H -0.0429 2.2321
         -1.6728
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3OCH3 (Dimethyl ether)
   type: ae
@@ -2087,21 +2087,21 @@
       moldesc: O 0.0000 0.0000 1.1248; C 0.0000 2.2051 -0.3710; C 0.0000 -2.2051 -0.3710;
         H 0.0000 3.8719 0.8583; H 0.0000 -3.8719 0.8583; H 1.6913 2.2274 -1.5660;
         H -1.6913 2.2274 -1.5660; H -1.6913 -2.2274 -1.5660; H 1.6913 -2.2274 -1.5660
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C2H4O (Ethylene oxide)
   type: ae
@@ -2114,21 +2114,21 @@
       moldesc: O 0.0000 0.0000 1.6095; C 0.0000 1.3789 -0.7039; C 0.0000 -1.3789 -0.7039;
         H -1.7442 2.3744 -1.1072; H 1.7442 2.3744 -1.1072; H 1.7442 -2.3744 -1.1072;
         H -1.7442 -2.3744 -1.1072
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3CH2SH (ethanethiol)
   type: ae
@@ -2142,21 +2142,21 @@
         0.0000; H -5.0401 0.2383 0.0000; H -3.0549 -1.8994 1.6711; H -3.0549 -1.8994
         -1.6711; H -1.2427 2.4799 1.6762; H -1.2427 2.4799 -1.6762; H 3.3433 1.7438
         0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH2CHF (Ethene, fluoro-)
   type: ae
@@ -2169,21 +2169,21 @@
       moldesc: C 0.0000 0.8458 0.0000; C 2.2444 -0.2810 0.0000; F -2.1460 -0.5233
         0.0000; H -0.4439 2.8418 0.0000; H 2.3283 -2.3334 0.0000; H 3.9620 0.8107
         0.0000
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3CH2Cl (Ethyl chloride)
   type: ae
@@ -2196,21 +2196,21 @@
       moldesc: C 3.0139 -0.6733 -0.0000; C 0.8989 1.2412 -0.0008; H 4.8239 0.3114
         0.0000; H 2.9009 -1.8744 -1.6683; H 2.9002 -1.8740 1.6683; Cl -2.1176 -0.2844
         -0.0009; H 0.9617 2.4463 -1.6611; H 0.9352 2.4181 1.6805
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3COF (Acetyl fluoride)
   type: ae
@@ -2224,26 +2224,26 @@
       moldesc: C 0.0000 0.3598 0.0000; C 1.8678 -1.7799 0.0000; O 0.4078 2.5540 0.0000;
         F -2.3811 -0.5456 0.0000; H 3.7838 -1.0552 0.0000; H 1.5876 -2.9724 1.6418;
         H 1.5876 -2.9724 -1.6418
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3COCl (Acetyl Chloride)
   type: ae
@@ -2257,26 +2257,26 @@
       moldesc: C 0.0000 0.9963 0.0000; C 2.8272 1.3217 0.0000; O -1.5777 2.5908 0.0000;
         Cl -0.8816 -2.2851 0.0000; H 3.3242 3.3497 0.0000; H 3.6598 0.4318 1.6957;
         H 3.6598 0.4318 -1.6957
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH2ClCH2CH3 (Propane, 1-chloro-)
   type: ae
@@ -2290,21 +2290,21 @@
         0.0000; Cl 3.2834 0.2623 0.0000; H -0.3097 2.3053 -1.7110; H -0.3097 2.3053
         1.7110; H -1.2544 -2.3824 1.6907; H -1.2544 -2.3824 -1.6907; H -5.6943 -2.1983
         0.0000; H -4.9772 0.6535 1.7004; H -4.9772 0.6535 -1.7004
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C4H4O (Furan)
   type: ae
@@ -2317,21 +2317,21 @@
       moldesc: O 0.0000 0.0000 2.1970; C 0.0000 2.0636 0.6589; C 0.0000 -2.0636 0.6589;
         C 0.0000 1.3547 -1.8134; C 0.0000 -1.3547 -1.8134; H 0.0000 3.8688 1.5947;
         H 0.0000 -3.8688 1.5947; H 0.0000 2.5528 -3.4563; H 0.0000 -2.5528 -3.4563
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C4H5N (Pyrrole)
   type: ae
@@ -2345,21 +2345,21 @@
         C 0.0000 -2.1182 0.6314; C 0.0000 1.3372 -1.8608; C 0.0000 -1.3372 -1.8608;
         H 0.0000 3.9843 1.4388; H 0.0000 -3.9843 1.4388; H 0.0000 2.5636 -3.4826;
         H 0.0000 -2.5636 -3.4826
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 - name: Atomization energy of H2 (Hydrogen diatomic)
   type: ae
@@ -2370,11 +2370,11 @@
   - type: mol
     kwargs:
       moldesc: H 0.0000 0.0000 0.0000; H 0.0000 0.0000 1.4010
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of HS (Mercapto radical)
   type: ae
@@ -2385,17 +2385,17 @@
   - type: mol
     kwargs:
       moldesc: S 0.0000 0.0000 0.0000; H 0.0000 0.0000 2.5339
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of C2H (Ethynyl radical)
   type: ae
@@ -2406,17 +2406,17 @@
   - type: mol
     kwargs:
       moldesc: C 0.0000 0.0000 0.0000; C 0.0000 0.0000 -2.2989; H 0.0000 0.0000 1.9776
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of CH3O (Methoxy radical)
   type: ae
@@ -2428,22 +2428,22 @@
     kwargs:
       moldesc: C 0.0000 0.0000 -1.1147; O 0.0000 0.0000 1.5403; H 0.0000 1.9578 -1.8780;
         H 1.6955 -0.9789 -1.8780; H -1.6955 -0.9789 -1.8780
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 - name: Atomization energy of NO2 (Nitrogen dioxide)
   type: ae
@@ -2454,15 +2454,15 @@
   - type: mol
     kwargs:
       moldesc: N 0.0000 0.0000 0.0000; O 0.0000 2.0766 0.8793; O 0.0000 -2.0766 0.8793
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
