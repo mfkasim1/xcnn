@@ -49,21 +49,51 @@ class AtomConf(object):
         return atoms, all_poss
 
     @staticmethod
-    def _get_enthalpy(soup) -> Tuple[float, float]:
+    def _get_enthalpy(soup) -> Tuple[Optional[float], Optional[float]]:
         # retrieve the enthalpy of formations at 0K and 298K
 
-        def __get_enthalpy_val(s: str) -> float:
-            td = soup.find(text=re.compile(s)).parent
-            val_obj = td.findNext("td")
-            val = float(val_obj.get_text())
-            unit = val_obj.findNext("td").findNext("td").get_text()
-            # convert the energy to Hartree
-            val = energy2hartree(val, unit)
+        def __get_enthalpy_val(s: str) -> Optional[float]:
+            try:
+                td = soup.find(text=re.compile(s)).parent
+                val_obj = td.findNext("td")
+                val = float(val_obj.get_text())
+                unit = val_obj.findNext("td").findNext("td").get_text()
+                # convert the energy to Hartree
+                val: Optional[float] = energy2hartree(val, unit)
+            except:
+                val = None
             return val
 
         val0 = __get_enthalpy_val(r"Hfg\(0K\)")
         val298 = __get_enthalpy_val(r"Hfg\(298\.15K\)")
         return val0, val298
+
+    @staticmethod
+    def _get_ionization(soup) -> Tuple[Optional[float], Optional[float]]:
+        # retrieve the ionization energy and the vertical ionization energy
+        table_found = False
+        for sp in soup.find_all("span"):
+            if sp.get_text().strip() == "Ionization Energies (eV)":
+                table_found = True
+                ie_table = sp.findNext("table")
+
+        if not table_found:
+            return None, None
+
+        # convert the string of the entries into energy in hartree
+        s2ene = lambda s: energy2hartree(float(s), "eV") if s else None
+
+        ie: Optional[float] = None
+        vie: Optional[float] = None
+        for i, row in enumerate(ie_table.find_all("tr")):
+            if i == 0:
+                continue  # skip the first row
+            for j, col in enumerate(row.find_all("td")):
+                if j == 0:  # ionization energy
+                    ie = s2ene(col.get_text().strip())
+                elif j == 2:  # vertical ionization energy
+                    vie = s2ene(col.get_text().strip())
+        return ie, vie
 
     @staticmethod
     def _get_name(soup) -> str:
@@ -94,6 +124,7 @@ class AtomConf(object):
                 print(self.casno, self.name)
                 self.atoms, self.all_poss = AtomConf._get_atompos_cccbdb(soup)
                 self.enthalpy_0k, self.enthalpy_298k = AtomConf._get_enthalpy(soup)
+                self.ie, self.vie = AtomConf._get_ionization(soup)
                 self.cccbdb_retrieved = True
                 break
             except Exception as e:  # RuntimeError, AttributeError:
@@ -131,11 +162,13 @@ class AtomConf(object):
         c = Counter(self.atoms)
         return list(c.keys()), list(c.values())
 
-    def ae0(self) -> float:
+    def ae0(self) -> Optional[float]:
         # calculate the non-relativistic atomization energy from the enthalpy
         # of formation at 0K in hartree
         # ref: eq (1) from https://aip.scitation.org/doi/pdf/10.1063/1.473182
         assert self.cccbdb_retrieved
+        if self.enthalpy_0k is None:
+            return None
 
         atom_dHf0 = 0.0
         for atom in self.atoms:
@@ -143,9 +176,13 @@ class AtomConf(object):
         return atom_dHf0 - self.enthalpy_0k
 
     ############### database writer ###############
-    def ae_db(self, basis: str = "6-311++G**") -> Dict:
-        # return the database entry for atomization energy
+    def ae_db(self, basis: str = "6-311++G**") -> Optional[Dict]:
+        # return the database entry for atomization energy,
+        # or None if no data is available from CCCBDB
         assert self.cccbdb_retrieved
+        ae0 = self.ae0()
+        if ae0 is None:
+            return None
 
         res = {}
         res["name"] = "Atomization energy of %s" % self.name
@@ -173,6 +210,30 @@ class AtomConf(object):
             systems.append(System.create("mol", "%s 0 0 0" % atom, numel0=get_atomz(atom), basis=basis))
         res["systems"] = systems
         return res
+
+    def vie_db(self, basis: str = "6-311++G**") -> Optional[Dict]:
+        # return the database entry for vertical ionization energy,
+        # or None if no data is available from CCCBDB
+        assert self.cccbdb_retrieved
+        if self.vie is None:
+            return None
+
+        res = {}
+        res["name"] = "Vertical ionization energy of %s" % self.name
+        res["type"] = "ie"
+        res["true_val"] = self.vie
+        res["ref"] = AtomConf.cccbdb_url(self.casno)
+
+        # construct the command
+        res["cmd"] = "energy(systems[1]) - energy(systems[0])"
+
+        # construct the systems
+        res["systems"] = [
+            System.create("mol", self.s(), numel0=self.numel(), basis=basis),
+            System.create("mol", self.s(), numel0=self.numel(), basis=basis, charge=1),
+        ]
+        return res
+
 
 class System(object):
     caches = {}
@@ -234,13 +295,16 @@ class System(object):
         return best_spin
 
 if __name__ == "__main__":
+    dbfunc = lambda obj: obj.vie_db()  # for vertical ionization energy entries
+    # dbfunc = lambda obj: obj.ae_db()  # for atomization energy entries
+
     obj = AtomConf("2781-85-3").retrieve_cccbdb()
-    ae = obj.ae_db()
-    print(yaml.dump([ae], sort_keys=False))
+    entry = dbfunc(obj)
+    print(yaml.dump([entry], sort_keys=False))
 
     # casno_file = "gauss2-casno.txt"
-    # write_to = "ae_gauss2.yaml"
-    # dbfunc = lambda obj: obj.ae_db()
+    # write_to = "vie_gauss2.yaml"
+    # start_from = 1
     #
     # casnos = []
     # with open(casno_file, "r") as f:
@@ -249,16 +313,19 @@ if __name__ == "__main__":
     #             continue
     #         casnos.append(line.split(":")[1])
     #
-    # aes = []
     # skipped = []
-    # for i, casno in enumerate(casnos):
-    #     print(i + 1)
-    #     obj = AtomConf(casno).retrieve_cccbdb()
-    #     if not obj.cccbdb_retrieved:
-    #         skipped.append(casno)
-    #     else:
-    #         aes.append(dbfunc(obj))
+    # with open(write_to, "a") as f:
+    #     for i, casno in enumerate(casnos):
+    #         if i + 1 < start_from:
+    #             continue
+    #         print(i + 1)
+    #         obj = AtomConf(casno).retrieve_cccbdb()
+    #         if not obj.cccbdb_retrieved:
+    #             skipped.append(casno)
+    #         else:
+    #             dbobj = dbfunc(obj)
+    #             if dbobj is not None:
+    #                 f.write(yaml.dump([dbobj], sort_keys=False))
+    #                 f.flush()
     #
-    # with open(write_to, "w") as f:
-    #     f.write(yaml.dump(aes, sort_keys=False))
     # print(skipped)
