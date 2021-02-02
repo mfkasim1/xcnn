@@ -8,12 +8,12 @@
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       charge: 1
       spin: 2
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
@@ -26,12 +26,12 @@
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       charge: 1
       spin: 3
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
@@ -44,12 +44,12 @@
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       charge: 1
       spin: 2
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
@@ -62,11 +62,11 @@
   - type: mol
     kwargs:
       moldesc: Ne 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Ne 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       charge: 1
       spin: 1
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
@@ -79,12 +79,12 @@
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       charge: 1
       spin: 1
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
@@ -97,12 +97,12 @@
   - type: mol
     kwargs:
       moldesc: P 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: P 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       charge: 1
       spin: 2
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
@@ -115,12 +115,12 @@
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       charge: 1
       spin: 3
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
@@ -133,12 +133,12 @@
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       charge: 1
       spin: 2
   ref: https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html
@@ -152,11 +152,11 @@
   - type: mol
     kwargs:
       moldesc: H 0.7005 0 0; H -0.7005 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=1333740&charge=0 for bond length and
@@ -171,11 +171,11 @@
 #   - type: mol
 #     kwargs:
 #       moldesc: Li 2.52562 0 0; Li -2.52562 0 0
-#       basis: 6-311++G**
+#       basis: 6-311++G(3df,3pd)
 #   - type: mol
 #     kwargs:
 #       moldesc: Li 0 0 0
-#       basis: 6-311++G**
+#       basis: 6-311++G(3df,3pd)
 #       spin: 1
 #   ref: >
 #     https://cccbdb.nist.gov/exp2x.asp?casno=14452596&charge=0 for bond length and
@@ -189,16 +189,16 @@
   - type: mol
     kwargs:
       moldesc: Li 1.5070 0 0; H -1.5070 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Li 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7580678&charge=0 for bond length and
@@ -213,12 +213,12 @@
 #   - type: mol
 #     kwargs:
 #       moldesc: B 1.5023 0 0; B -1.5023 0 0
-#       basis: 6-311++G**
+#       basis: 6-311++G(3df,3pd)
 #       spin: 2
 #   - type: mol
 #     kwargs:
 #       moldesc: B 0 0 0
-#       basis: 6-311++G**
+#       basis: 6-311++G(3df,3pd)
 #       spin: 1
 #   ref: >
 #     https://cccbdb.nist.gov/exp2x.asp?casno=14452610&charge=0 for bond length and
@@ -232,11 +232,11 @@
   - type: mol
     kwargs:
       moldesc: N 1.0372 0 0; N -1.0372 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7727379&charge=0 for bond length and
@@ -250,12 +250,12 @@
   - type: mol
     kwargs:
       moldesc: O 1.1409 0 0; O -1.1409 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7782447&charge=0 for bond length and
@@ -269,17 +269,17 @@
   - type: mol
     kwargs:
       moldesc: N 1.0873 0 0; O -1.0873 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=10102439&charge=0 for bond length and
@@ -293,16 +293,16 @@
   - type: mol
     kwargs:
       moldesc: C 1.0660 0 0; O -1.0660 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: C 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=630080&charge=0 for bond length and
@@ -316,11 +316,11 @@
   - type: mol
     kwargs:
       moldesc: F 1.3341 0 0; F -1.3341 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7782414&charge=0 for bond length and
@@ -334,16 +334,16 @@
   - type: mol
     kwargs:
       moldesc: H 0.86625 0 0; F -0.86625 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: F 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   ref: >
     https://cccbdb.nist.gov/exp2x.asp?casno=7664393&charge=0 for bond length and
@@ -358,12 +358,12 @@
   - type: mol
     kwargs:
       moldesc: Si 0.0000 0.0000 0.0000; Si 0.0000 0.0000 4.2443
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 
 - name: Atomization energy of P2
@@ -375,11 +375,11 @@
   - type: mol
     kwargs:
       moldesc: P 0.0000 0.0000 0.0000; P 0.0000 0.0000 3.5780
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: P 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
 
 - name: Atomization energy of S2
@@ -391,12 +391,12 @@
   - type: mol
     kwargs:
       moldesc: S 0.0000 0.0000 0.0000; S 0.0000 0.0000 3.5701
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 
 - name: Atomization energy of Cl2
@@ -408,11 +408,11 @@
   - type: mol
     kwargs:
       moldesc: Cl 0.0000 0.0000 0.0000; Cl 0.0000 0.0000 3.7566
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 
 - name: Atomization energy of SiO
@@ -424,16 +424,16 @@
   - type: mol
     kwargs:
       moldesc: Si 0.0000 0.0000 0.0000; O 0.0000 0.0000 2.8529
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Si 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 
 - name: Atomization energy of HCl
@@ -445,16 +445,16 @@
   - type: mol
     kwargs:
       moldesc: Cl 0.0000 0.0000 0.0000; H 0.0000 0.0000 2.4086
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
   - type: mol
     kwargs:
       moldesc: Cl 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 
 - name: Atomization energy of SO
@@ -466,17 +466,17 @@
   - type: mol
     kwargs:
       moldesc: S 0.0000 0.0000 0.0000; O 0.0000 0.0000 2.7989
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: O 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 
 - name: Atomization energy of HS
@@ -488,17 +488,17 @@
   - type: mol
     kwargs:
       moldesc: S 0.0000 0.0000 0.0000; H 0.0000 0.0000 2.5339
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
   - type: mol
     kwargs:
       moldesc: S 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 
 # density profile
@@ -509,7 +509,7 @@
   - type: mol
     kwargs:
       moldesc: H 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 
 - name: Density profile of He
@@ -526,7 +526,7 @@
   - type: mol
     kwargs:
       moldesc: Li 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 1
 
 - name: Density profile of Be
@@ -535,7 +535,7 @@
   - type: mol
     kwargs:
       moldesc: Be 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of N
   type: dens
@@ -543,7 +543,7 @@
   - type: mol
     kwargs:
       moldesc: N 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 3
 
 - name: Density profile of Ne
@@ -552,7 +552,7 @@
   - type: mol
     kwargs:
       moldesc: Ne 0 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 ## density profile for diatomic molecules
 - name: Density profile of H2
@@ -561,7 +561,7 @@
   - type: mol
     kwargs:
       moldesc: H 0.7005 0 0; H -0.7005 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of Li2
   type: dens
@@ -569,7 +569,7 @@
   - type: mol
     kwargs:
       moldesc: Li 2.52562 0 0; Li -2.52562 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of LiH
   type: dens
@@ -577,7 +577,7 @@
   - type: mol
     kwargs:
       moldesc: Li 1.5070 0 0; H -1.5070 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of B2
   type: dens
@@ -585,7 +585,7 @@
   - type: mol
     kwargs:
       moldesc: B 1.5023 0 0; B -1.5023 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 
 - name: Density profile of N2
@@ -594,7 +594,7 @@
   - type: mol
     kwargs:
       moldesc: N 1.0372 0 0; N -1.0372 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of O2
   type: dens
@@ -602,7 +602,7 @@
   - type: mol
     kwargs:
       moldesc: O 1.1409 0 0; O -1.1409 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
       spin: 2
 
 - name: Density profile of CO
@@ -611,7 +611,7 @@
   - type: mol
     kwargs:
       moldesc: C 1.0660 0 0; O -1.0660 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of F2
   type: dens
@@ -619,7 +619,7 @@
   - type: mol
     kwargs:
       moldesc: F 1.3341 0 0; F -1.3341 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of HF
   type: dens
@@ -627,7 +627,7 @@
   - type: mol
     kwargs:
       moldesc: H 0.86625 0 0; F -0.86625 0 0
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of P2
   type: dens
@@ -636,7 +636,7 @@
   - type: mol
     kwargs:
       moldesc: P 0.0000 0.0000 0.0000; P 0.0000 0.0000 3.5780
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of Cl2
   type: dens
@@ -644,7 +644,7 @@
   - type: mol
     kwargs:
       moldesc: Cl 0.0000 0.0000 0.0000; Cl 0.0000 0.0000 3.7566
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of SiO
   type: dens
@@ -652,7 +652,7 @@
   - type: mol
     kwargs:
       moldesc: Si 0.0000 0.0000 0.0000; O 0.0000 0.0000 2.8529
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
 
 - name: Density profile of HCl
   type: dens
@@ -660,4 +660,4 @@
   - type: mol
     kwargs:
       moldesc: Cl 0.0000 0.0000 0.0000; H 0.0000 0.0000 2.4086
-      basis: 6-311++G**
+      basis: 6-311++G(3df,3pd)
