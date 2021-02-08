@@ -15,11 +15,12 @@ def parse_file(fname: str) -> Tuple[List[str], List[str], np.ndarray]:
     # returns: (1) list of headers, (2) list of groups of the entries,
     #          (3) the values per entries in 2D numpy array
     delim = ","
+    group_col = 2
     # load the header
     headers = list(np.loadtxt(fname, delimiter=delim, max_rows=1, dtype=str))
     ncols = len(headers)
-    groups = list(np.loadtxt(fname, delimiter=delim, skiprows=1, dtype=str, usecols=[0]).ravel())
-    content = np.abs(np.loadtxt(fname, delimiter=delim, skiprows=1, usecols=list(range(1, ncols))))
+    groups = list(np.loadtxt(fname, delimiter=delim, skiprows=1, dtype=str, usecols=[group_col]).ravel())
+    content = np.abs(np.loadtxt(fname, delimiter=delim, skiprows=1, usecols=list(range(group_col + 1, ncols))))
     return headers[1:], groups, content
 
 def main():
