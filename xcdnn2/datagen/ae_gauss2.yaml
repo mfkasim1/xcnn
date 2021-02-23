@@ -59,27 +59,6 @@
       moldesc: H 0 0 0
       basis: 6-311++G(3df,3pd)
       spin: 1
-- name: Atomization energy of CH2 (Methylene)
-  type: ae
-  true_val: 0.2866387110859999
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=2465567&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: C 0.0000 0.0000 0.1941; H 0.0000 1.8977 -0.5822; H 0.0000 -1.8977 -0.5822
-      basis: 6-311++G(3df,3pd)
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: H 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 1
 - name: Atomization energy of CH3 (Methyl radical)
   type: ae
   true_val: 0.48959052289757876
@@ -305,27 +284,6 @@
       moldesc: Si 0 0 0
       basis: 6-311++G(3df,3pd)
       spin: 2
-  - type: mol
-    kwargs:
-      moldesc: H 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 1
-- name: Atomization energy of PH2 (Phosphino radical)
-  type: ae
-  true_val: 0.23779849433199998
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=13765430&charge=0
-  cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: P 0.0000 0.0000 0.0000; H 0.0000 1.9330 1.8829; H 0.0000 -1.9330 1.8829
-      basis: 6-311++G(3df,3pd)
-      spin: 1
-  - type: mol
-    kwargs:
-      moldesc: P 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 3
   - type: mol
     kwargs:
       moldesc: H 0 0 0
@@ -1013,33 +971,6 @@
       moldesc: H 0 0 0
       basis: 6-311++G(3df,3pd)
       spin: 1
-- name: Atomization energy of CH3SH (Methanethiol)
-  type: ae
-  true_val: 0.7092553195699999
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=74931&charge=0
-  cmd: energy(systems[1]) + energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: C -1.6063 -0.0650 -0.3779; S 1.7008 -0.9685 -0.2304; H 2.6870 1.0925
-        0.8031; H -1.7775 1.6418 -1.5532; H -2.6870 -1.6418 -1.2225; H -2.2735 0.3129
-        1.5532
-      basis: 6-311++G(3df,3pd)
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: S 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: H 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 1
 - name: Atomization energy of HOCl (hypochlorous acid)
   type: ae
   true_val: 0.26179405935847944
@@ -1586,29 +1517,6 @@
       moldesc: H 0 0 0
       basis: 6-311++G(3df,3pd)
       spin: 1
-- name: Atomization energy of CH3CCCH3 (2-Butyne)
-  type: ae
-  true_val: 1.5166633635999998
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=503173&charge=0
-  cmd: 4 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: C 0.0000 0.0000 1.1471; C 0.0000 0.0000 -1.1471; C 0.0000 0.0000 3.9212;
-        C 0.0000 0.0000 -3.9212; H 0.0000 1.9729 4.6667; H -1.7085 -0.9864 4.6667;
-        H 1.7085 -0.9864 4.6667; H 0.0000 1.9729 -4.6667; H 1.7085 -0.9864 -4.6667;
-        H -1.7085 -0.9864 -4.6667
-      basis: 6-311++G(3df,3pd)
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: H 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 1
 - name: Atomization energy of C4H6 (Methylenecyclopropane)
   type: ae
   true_val: 1.5770124578564417
@@ -1940,34 +1848,6 @@
       moldesc: N 0 0 0
       basis: 6-311++G(3df,3pd)
       spin: 3
-- name: Atomization energy of CH3NHCH3 (Dimethylamine)
-  type: ae
-  true_val: 1.2959359019039998
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=124403&charge=0
-  cmd: energy(systems[1]) + 7 * energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: N 0.1765 -1.0431 0.0000; H -1.2196 -2.3705 0.0000; C -0.0416 0.4826
-        2.2939; C -0.0416 0.4826 -2.2939; H -1.7425 1.6692 2.3503; H -1.7425 1.6692
-        -2.3503; H 1.5949 1.7550 2.3828; H 1.5949 1.7550 -2.3828; H -0.0261 -0.7387
-        3.9388; H -0.0261 -0.7387 -3.9388
-      basis: 6-311++G(3df,3pd)
-  - type: mol
-    kwargs:
-      moldesc: N 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 3
-  - type: mol
-    kwargs:
-      moldesc: H 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 1
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 2
 - name: Atomization energy of CH2CO (Ketene)
   type: ae
   true_val: 0.8478682377413238
@@ -2130,34 +2010,6 @@
       moldesc: H 0 0 0
       basis: 6-311++G(3df,3pd)
       spin: 1
-- name: Atomization energy of CH3CH2SH (ethanethiol)
-  type: ae
-  true_val: 1.1513006066519997
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=75081&charge=0
-  cmd: 2 * energy(systems[1]) + energy(systems[2]) + 6 * energy(systems[3]) - energy(systems[0])
-  systems:
-  - type: mol
-    kwargs:
-      moldesc: C -3.1948 -0.6964 0.0000; C -1.0979 1.2909 0.0000; S 1.9396 -0.3222
-        0.0000; H -5.0401 0.2383 0.0000; H -3.0549 -1.8994 1.6711; H -3.0549 -1.8994
-        -1.6711; H -1.2427 2.4799 1.6762; H -1.2427 2.4799 -1.6762; H 3.3433 1.7438
-        0.0000
-      basis: 6-311++G(3df,3pd)
-  - type: mol
-    kwargs:
-      moldesc: C 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: S 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 2
-  - type: mol
-    kwargs:
-      moldesc: H 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 1
 - name: Atomization energy of CH2CHF (Ethene, fluoro-)
   type: ae
   true_val: 0.9109332468843614
@@ -2278,29 +2130,27 @@
       moldesc: H 0 0 0
       basis: 6-311++G(3df,3pd)
       spin: 1
-- name: Atomization energy of CH2ClCH2CH3 (Propane, 1-chloro-)
+- name: Atomization energy of H2CO (Formaldehyde)
   type: ae
-  true_val: 1.476549103064
-  ref: https://cccbdb.nist.gov/exp2x.asp?casno=540545&charge=0
-  cmd: 3 * energy(systems[1]) + energy(systems[2]) + 7 * energy(systems[3]) - energy(systems[0])
+  true_val: 0.5951175527654522
+  ref: https://cccbdb.nist.gov/exp2x.asp?casno=1002671&charge=0
+  cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
   - type: mol
     kwargs:
-      moldesc: C 0.0000 1.1219 0.0000; C -1.6926 -1.2104 0.0000; C -4.4805 -0.4806
-        0.0000; Cl 3.2834 0.2623 0.0000; H -0.3097 2.3053 -1.7110; H -0.3097 2.3053
-        1.7110; H -1.2544 -2.3824 1.6907; H -1.2544 -2.3824 -1.6907; H -5.6943 -2.1983
-        0.0000; H -4.9772 0.6535 1.7004; H -4.9772 0.6535 -1.7004
+      moldesc: O 0.0000 0.0000 2.2771; C 0.0000 0.0000 0.0000; H 0.0000 1.7818 -1.1104;
+        H 0.0000 -1.7818 -1.1104
       basis: 6-311++G(3df,3pd)
+  - type: mol
+    kwargs:
+      moldesc: O 0 0 0
+      basis: 6-311++G(3df,3pd)
+      spin: 2
   - type: mol
     kwargs:
       moldesc: C 0 0 0
       basis: 6-311++G(3df,3pd)
       spin: 2
-  - type: mol
-    kwargs:
-      moldesc: Cl 0 0 0
-      basis: 6-311++G(3df,3pd)
-      spin: 1
   - type: mol
     kwargs:
       moldesc: H 0 0 0
