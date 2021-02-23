@@ -69,6 +69,32 @@ class AtomConf(object):
         return val0, val298
 
     @staticmethod
+    def _get_zpe(soup) -> Optional[float]:
+        # retrieve the zero point energy
+        th = soup.find(text="ZPE")
+        val: Optional[float] = None
+        if th is not None:
+            # retrieve from the experimental data
+            tr = th.parent.parent.parent
+            tr2 = tr.findNext("tr")
+            for i, td in enumerate(tr2.find_all("td")):
+                if i != 5:
+                    continue
+                val = float(td.get_text())
+                val = energy2hartree(val, "cm-1")
+        else:
+            # retrieve the zero point energy from the fundamental vibration
+            elmt = soup.find(text=re.compile("vibrational zero-point energy"))
+            if elmt is None:
+                return None
+            txt = str(elmt)
+            valstr, unit = txt.split(":")[-1].split()
+            val = float(valstr)
+            val = energy2hartree(val, unit)
+
+        return val
+
+    @staticmethod
     def _get_ionization(soup) -> Tuple[Optional[float], Optional[float]]:
         # retrieve the ionization energy and the vertical ionization energy
         table_found = False
@@ -125,6 +151,7 @@ class AtomConf(object):
                 self.atoms, self.all_poss = AtomConf._get_atompos_cccbdb(soup)
                 self.enthalpy_0k, self.enthalpy_298k = AtomConf._get_enthalpy(soup)
                 self.ie, self.vie = AtomConf._get_ionization(soup)
+                self.zpe = AtomConf._get_zpe(soup)
                 self.cccbdb_retrieved = True
                 break
             except Exception as e:  # RuntimeError, AttributeError:
@@ -169,11 +196,13 @@ class AtomConf(object):
         assert self.cccbdb_retrieved
         if self.enthalpy_0k is None:
             return None
+        if self.zpe is None:
+            return None
 
         atom_dHf0 = 0.0
         for atom in self.atoms:
             atom_dHf0 += get_atom_dHf0(atom)
-        return atom_dHf0 - self.enthalpy_0k
+        return atom_dHf0 - self.enthalpy_0k + self.zpe
 
     ############### database writer ###############
     def ae_db(self, basis: str = "6-311++G**") -> Optional[Dict]:

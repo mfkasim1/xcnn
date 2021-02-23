@@ -15,6 +15,8 @@ def energy2hartree(a: float, unit0: str):
         return a * 0.036749304951
     elif unit.startswith("mev"):
         return a * 0.000036749304951
+    elif unit.startswith("cm"):
+        return a * 0.0000045563352812
     else:
         raise RuntimeError("Unknown energy unit: %s" % unit0)
 
