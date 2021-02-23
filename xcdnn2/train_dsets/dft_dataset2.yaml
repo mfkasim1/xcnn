@@ -147,7 +147,7 @@
 - name: Atomization energy of H2
   type: ae
   cmd: 2 * energy(systems[1]) - energy(systems[0])
-  true_val: 0.164578
+  true_val: 0.17450765337
   systems:
   - type: mol
     kwargs:
@@ -184,7 +184,7 @@
 - name: Atomization energy of LiH
   type: ae
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
-  true_val: 0.088764
+  true_val: 0.09194410469
   systems:
   - type: mol
     kwargs:
@@ -227,7 +227,7 @@
 - name: Atomization energy of N2
   type: ae
   cmd: 2 * energy(systems[1]) - energy(systems[0])
-  true_val: 0.35872
+  true_val: 0.36407723878
   systems:
   - type: mol
     kwargs:
@@ -245,7 +245,7 @@
 - name: Atomization energy of O2
   type: ae
   cmd: 2 * energy(systems[1]) - energy(systems[0])
-  true_val: 0.188045
+  true_val: 0.19163256591
   systems:
   - type: mol
     kwargs:
@@ -264,7 +264,7 @@
 - name: Atomization energy of NO
   type: ae
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
-  true_val: 0.23885
+  true_val: 0.24317235243
   systems:
   - type: mol
     kwargs:
@@ -288,7 +288,7 @@
 - name: Atomization energy of CO
   type: ae
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
-  true_val: 0.408227
+  true_val: 0.41315580202
   systems:
   - type: mol
     kwargs:
@@ -311,7 +311,7 @@
 - name: Atomization energy of F2
   type: ae
   cmd: 2 * energy(systems[1]) - energy(systems[0])
-  true_val: 0.058804
+  true_val: 0.06087900885
   systems:
   - type: mol
     kwargs:
@@ -329,7 +329,7 @@
 - name: Atomization energy of HF
   type: ae
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
-  true_val: 0.2158065
+  true_val: 0.2251504957
   systems:
   - type: mol
     kwargs:
@@ -351,7 +351,7 @@
 
 - name: Atomization energy of Si2
   type: ae
-  true_val: 0.118583116932
+  true_val: 0.11974508403
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=12597352&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -368,7 +368,7 @@
 
 - name: Atomization energy of P2
   type: ae
-  true_val: 0.18491714290000003
+  true_val: 0.18669273719
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=12185090&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -384,7 +384,7 @@
 
 - name: Atomization energy of S2
   type: ae
-  true_val: 0.16055987969000002
+  true_val: 0.16221013419
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=23550450&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -401,7 +401,7 @@
 
 - name: Atomization energy of Cl2
   type: ae
-  true_val: 0.091129300948
+  true_val: 0.0924015309
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7782505&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -417,7 +417,7 @@
 
 - name: Atomization energy of SiO
   type: ae
-  true_val: 0.302452840382
+  true_val: 0.30527499891
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10097286&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -438,7 +438,7 @@
 
 - name: Atomization energy of HCl
   type: ae
-  true_val: 0.16294037843999998
+  true_val: 0.16970146058
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7647010&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -459,7 +459,7 @@
 
 - name: Atomization energy of SO
   type: ae
-  true_val: 0.196812019054
+  true_val: 0.19942712723
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13827322&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -481,7 +481,7 @@
 
 - name: Atomization energy of HS
   type: ae
-  true_val: 0.13368500100199998
+  true_val: 0.13977767786
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13940211&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:

@@ -75,7 +75,7 @@
 - name: Atomization energy of H2
   type: ae
   cmd: 2 * energy(systems[1]) - energy(systems[0])
-  true_val: 0.164578
+  true_val: 0.17450765337
   systems:
   - type: mol
     kwargs:
@@ -112,7 +112,7 @@
 - name: Atomization energy of LiH
   type: ae
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
-  true_val: 0.088764
+  true_val: 0.09194410469
   systems:
   - type: mol
     kwargs:
@@ -155,7 +155,7 @@
 - name: Atomization energy of N2
   type: ae
   cmd: 2 * energy(systems[1]) - energy(systems[0])
-  true_val: 0.35872
+  true_val: 0.36407723878
   systems:
   - type: mol
     kwargs:
@@ -173,7 +173,7 @@
 - name: Atomization energy of O2
   type: ae
   cmd: 2 * energy(systems[1]) - energy(systems[0])
-  true_val: 0.188045
+  true_val: 0.19163256591
   systems:
   - type: mol
     kwargs:
@@ -192,7 +192,7 @@
 - name: Atomization energy of NO
   type: ae
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
-  true_val: 0.23885
+  true_val: 0.24317235243
   systems:
   - type: mol
     kwargs:
@@ -216,7 +216,7 @@
 - name: Atomization energy of CO
   type: ae
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
-  true_val: 0.408227
+  true_val: 0.41315580202
   systems:
   - type: mol
     kwargs:
@@ -239,7 +239,7 @@
 - name: Atomization energy of F2
   type: ae
   cmd: 2 * energy(systems[1]) - energy(systems[0])
-  true_val: 0.058804
+  true_val: 0.06087900885
   systems:
   - type: mol
     kwargs:
@@ -257,7 +257,7 @@
 - name: Atomization energy of HF
   type: ae
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
-  true_val: 0.2158065
+  true_val: 0.2251504957
   systems:
   - type: mol
     kwargs:
