@@ -1,6 +1,6 @@
 - name: Atomization energy of LiH (Lithium Hydride)
   type: ae
-  true_val: 0.08873737580399998
+  true_val: 0.09191748049308467
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7580678&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -20,7 +20,7 @@
       spin: 1
 - name: Atomization energy of BeH (beryllium monohydride)
   type: ae
-  true_val: 0.08257093184199998
+  true_val: 0.08722856356917162
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13597972&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -40,7 +40,7 @@
       spin: 1
 - name: Atomization energy of CH (Methylidyne)
   type: ae
-  true_val: 0.12749189545399997
+  true_val: 0.13394400338098997
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=3315375&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -82,7 +82,7 @@
       spin: 1
 - name: Atomization energy of CH3 (Methyl radical)
   type: ae
-  true_val: 0.460601750938
+  true_val: 0.48959052289757876
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2229074&charge=0
   cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -104,7 +104,7 @@
       spin: 1
 - name: Atomization energy of CH4 (Methane)
   type: ae
-  true_val: 0.6253970140039999
+  true_val: 0.6685910724697759
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74828&charge=0
   cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -125,7 +125,7 @@
       spin: 1
 - name: Atomization energy of NH (Imidogen)
   type: ae
-  true_val: 0.125103779108
+  true_val: 0.1325012764861509
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13774920&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -146,7 +146,7 @@
       spin: 1
 - name: Atomization energy of NH2 (Amino radical)
   type: ae
-  true_val: 0.27187200124
+  true_val: 0.29013789374880267
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13770406&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -167,7 +167,7 @@
       spin: 1
 - name: Atomization energy of NH3 (Ammonia)
   type: ae
-  true_val: 0.4410169116219999
+  true_val: 0.4738885925082173
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7664417&charge=0
   cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -188,7 +188,7 @@
       spin: 1
 - name: Atomization energy of OH (Hydroxyl radical)
   type: ae
-  true_val: 0.16216719244599997
+  true_val: 0.17059954747489345
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=3352576&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -209,7 +209,7 @@
       spin: 1
 - name: Atomization energy of H2O (Water)
   type: ae
-  true_val: 0.34957909803599996
+  true_val: 0.37010083214252476
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7732185&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -229,7 +229,7 @@
       spin: 1
 - name: Atomization energy of HF (Hydrogen fluoride)
   type: ae
-  true_val: 0.215791259488
+  true_val: 0.2251352551926265
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7664393&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -249,7 +249,7 @@
       spin: 1
 - name: Atomization energy of SiH2 (silicon dihydride)
   type: ae
-  true_val: 0.22957529944999994
+  true_val: 0.2409383440077846
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13825906&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -269,7 +269,7 @@
       spin: 1
 - name: Atomization energy of SiH3 (Silyl radical)
   type: ae
-  true_val: 0.3381412776419999
+  true_val: 0.35882339475042296
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13765441&charge=0
   cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -291,7 +291,7 @@
       spin: 1
 - name: Atomization energy of SiH4 (Silane)
   type: ae
-  true_val: 0.4821595476179999
+  true_val: 0.5128054587193511
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7803625&charge=0
   cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -333,7 +333,7 @@
       spin: 1
 - name: Atomization energy of PH3 (Phosphine)
   type: ae
-  true_val: 0.36198054432399995
+  true_val: 0.38523380143160413
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7803512&charge=0
   cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -354,7 +354,7 @@
       spin: 1
 - name: Atomization energy of H2S (Hydrogen sulfide)
   type: ae
-  true_val: 0.276015973464
+  true_val: 0.29065092238721435
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7783064&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -374,7 +374,7 @@
       spin: 1
 - name: Atomization energy of HCl (Hydrogen chloride)
   type: ae
-  true_val: 0.16294037843999998
+  true_val: 0.16970146057507873
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7647010&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -394,7 +394,7 @@
       spin: 1
 - name: Atomization energy of Li2 (Lithium diatomic)
   type: ae
-  true_val: 0.038084171202
+  true_val: 0.03888164788529378
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=14452596&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -409,7 +409,7 @@
       spin: 1
 - name: Atomization energy of LiF (lithium fluoride)
   type: ae
-  true_val: 0.21922679528400002
+  true_val: 0.2212940392292286
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7789244&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -429,7 +429,7 @@
       spin: 1
 - name: Atomization energy of C2H2 (Acetylene)
   type: ae
-  true_val: 0.6195009946999999
+  true_val: 0.6452921305592325
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74862&charge=0
   cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -450,7 +450,7 @@
       spin: 1
 - name: Atomization energy of C2H4 (Ethylene)
   type: ae
-  true_val: 0.8476670388899998
+  true_val: 0.8968057479971575
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74851&charge=0
   cmd: 2 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -471,7 +471,7 @@
       spin: 1
 - name: Atomization energy of C2H6 (Ethane)
   type: ae
-  true_val: 1.0615120026
+  true_val: 1.1337458639805043
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74840&charge=0
   cmd: 2 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -493,7 +493,7 @@
       spin: 1
 - name: Atomization energy of CN (Cyano radical)
   type: ae
-  true_val: 0.28375925979799993
+  true_val: 0.28845744746550955
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2074875&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -514,7 +514,7 @@
       spin: 3
 - name: Atomization energy of HCN (Hydrogen cyanide)
   type: ae
-  true_val: 0.4820681364659999
+  true_val: 0.4976166306130949
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74908&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
@@ -539,7 +539,7 @@
       spin: 3
 - name: Atomization energy of CO (Carbon monoxide)
   type: ae
-  true_val: 0.408242204832
+  true_val: 0.4131710068534323
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=630080&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -559,7 +559,7 @@
       spin: 2
 - name: Atomization energy of HCO (Formyl radical)
   type: ae
-  true_val: 0.431323520712
+  true_val: 0.443587808388406
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2597446&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
@@ -585,7 +585,7 @@
       spin: 2
 - name: Atomization energy of H2CO (Formaldehyde)
   type: ae
-  true_val: 0.569403874606
+  true_val: 0.5951175527654522
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=50000&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -611,7 +611,7 @@
       spin: 1
 - name: Atomization energy of CH3OH (Methyl alcohol)
   type: ae
-  true_val: 0.7664482303379999
+  true_val: 0.8158776336360981
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=67561&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -638,7 +638,7 @@
       spin: 1
 - name: Atomization energy of N2 (Nitrogen diatomic)
   type: ae
-  true_val: 0.35865165487199996
+  true_val: 0.3640088936562587
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7727379&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -653,7 +653,7 @@
       spin: 3
 - name: Atomization energy of N2H4 (Hydrazine)
   type: ae
-  true_val: 0.6461473455079999
+  true_val: 0.6972006267003178
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=302012&charge=0
   cmd: 2 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -675,7 +675,7 @@
       spin: 1
 - name: Atomization energy of NO (Nitric oxide)
   type: ae
-  true_val: 0.23885734017599997
+  true_val: 0.24317969260460393
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10102439&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -696,7 +696,7 @@
       spin: 3
 - name: Atomization energy of O2 (Oxygen diatomic)
   type: ae
-  true_val: 0.188032739664
+  true_val: 0.19162030557081067
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7782447&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -712,7 +712,7 @@
       spin: 2
 - name: Atomization energy of H2O2 (Hydrogen peroxide)
   type: ae
-  true_val: 0.40201862889999995
+  true_val: 0.4273586875663937
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7722841&charge=0
   cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -733,7 +733,7 @@
       spin: 1
 - name: Atomization energy of F2 (Fluorine diatomic)
   type: ae
-  true_val: 0.058861164291999994
+  true_val: 0.06093617314381479
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7782414&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -748,7 +748,7 @@
       spin: 1
 - name: Atomization energy of CO2 (Carbon dioxide)
   type: ae
-  true_val: 0.608649729198
+  true_val: 0.6200770180832496
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=124389&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -768,7 +768,7 @@
       spin: 2
 - name: Atomization energy of Na2 (Disodium)
   type: ae
-  true_val: 0.027012
+  true_val: 0.027373481
   ref: https://cccbdb.nist.gov/exp2x.asp
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -783,7 +783,7 @@
       spin: 1
 - name: Atomization energy of Si2 (Silicon diatomic)
   type: ae
-  true_val: 0.118583116932
+  true_val: 0.11974508403498277
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=12597352&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -799,7 +799,7 @@
       spin: 2
 - name: Atomization energy of P2 (Phosphorus diatomic)
   type: ae
-  true_val: 0.18491714290000003
+  true_val: 0.18669273719077958
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=12185090&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -814,7 +814,7 @@
       spin: 3
 - name: Atomization energy of S2 (Sulfur diatomic)
   type: ae
-  true_val: 0.16055987969000002
+  true_val: 0.16221013420916255
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=23550450&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -830,7 +830,7 @@
       spin: 2
 - name: Atomization energy of Cl2 (Chlorine diatomic)
   type: ae
-  true_val: 0.091129300948
+  true_val: 0.09240153090915428
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7782505&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -845,7 +845,7 @@
       spin: 1
 - name: Atomization energy of NaCl (Sodium Chloride)
   type: ae
-  true_val: 0.155162812924
+  true_val: 0.1559919333558217
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7647145&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -865,7 +865,7 @@
       spin: 1
 - name: Atomization energy of SiO (Silicon monoxide)
   type: ae
-  true_val: 0.302452840382
+  true_val: 0.3052749989157601
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10097286&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -885,7 +885,7 @@
       spin: 2
 - name: Atomization energy of CS (carbon monosulfide)
   type: ae
-  true_val: 0.27152920942000003
+  true_val: 0.2744499706943135
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2944050&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -905,7 +905,7 @@
       spin: 2
 - name: Atomization energy of SO (Sulfur monoxide)
   type: ae
-  true_val: 0.196812019054
+  true_val: 0.1994271272330112
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13827322&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -926,7 +926,7 @@
       spin: 2
 - name: Atomization energy of ClO (Monochlorine monoxide)
   type: ae
-  true_val: 0.100997896566
+  true_val: 0.10293720727356952
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=14989301&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -947,7 +947,7 @@
       spin: 1
 - name: Atomization energy of ClF (Chlorine monofluoride)
   type: ae
-  true_val: 0.09411539858
+  true_val: 0.09589469307066141
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7790898&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -967,7 +967,7 @@
       spin: 1
 - name: Atomization energy of Si2H6 (disilane)
   type: ae
-  true_val: 0.8026203849439998
+  true_val: 0.85054847594
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=1590870&charge=0
   cmd: 2 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -989,7 +989,7 @@
       spin: 1
 - name: Atomization energy of CH3Cl (Methyl chloride)
   type: ae
-  true_val: 0.5914606238239999
+  true_val: 0.6280844468142854
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74873&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1042,7 +1042,7 @@
       spin: 1
 - name: Atomization energy of HOCl (hypochlorous acid)
   type: ae
-  true_val: 0.24909919799799998
+  true_val: 0.26179405935847944
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7790923&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
@@ -1068,7 +1068,7 @@
       spin: 1
 - name: Atomization energy of SO2 (Sulfur dioxide)
   type: ae
-  true_val: 0.40483713942
+  true_val: 0.4117418099051305
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7446095&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1088,7 +1088,7 @@
       spin: 2
 - name: Atomization energy of BF3 (Borane, trifluoro-)
   type: ae
-  true_val: 0.733159335818
+  true_val: 0.7455457332799422
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7637072&charge=0
   cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1109,7 +1109,7 @@
       spin: 1
 - name: Atomization energy of BCl3 (Borane, trichloro-)
   type: ae
-  true_val: 0.50306603984
+  true_val: 0.5106500599155573
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10294345&charge=0
   cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1130,7 +1130,7 @@
       spin: 1
 - name: Atomization energy of AlF3 (Aluminum trifluoride)
   type: ae
-  true_val: 0.672264273394
+  true_val: 0.6799713145221498
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7784181&charge=0
   cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1151,7 +1151,7 @@
       spin: 1
 - name: Atomization energy of AlCl3 (Aluminum trichloride)
   type: ae
-  true_val: 0.483473582928
+  true_val: 0.48813927025594883
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7446700&charge=0
   cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1172,7 +1172,7 @@
       spin: 1
 - name: Atomization energy of CF4 (Carbon tetrafluoride)
   type: ae
-  true_val: 0.7417634104999999
+  true_val: 0.7589398832430677
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75730&charge=0
   cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1193,7 +1193,7 @@
       spin: 1
 - name: Atomization energy of CCl4 (Carbon tetrachloride)
   type: ae
-  true_val: 0.48869163618799993
+  true_val: 0.4981756480758177
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=56235&charge=0
   cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1214,7 +1214,7 @@
       spin: 1
 - name: Atomization energy of OCS (Carbonyl sulfide)
   type: ae
-  true_val: 0.523629740242
+  true_val: 0.5326535622664167
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=463581&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
@@ -1239,7 +1239,7 @@
       spin: 2
 - name: Atomization energy of CS2 (Carbon disulfide)
   type: ae
-  true_val: 0.436153076576
+  true_val: 0.4429579633184722
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75150&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1259,7 +1259,7 @@
       spin: 2
 - name: Atomization energy of CF2O (Carbonic difluoride)
   type: ae
-  true_val: 0.6599009150859999
+  true_val: 0.6738569700523155
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=353504&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1285,7 +1285,7 @@
       spin: 1
 - name: Atomization energy of SiF4 (Silicon tetrafluoride)
   type: ae
-  true_val: 0.900491258352
+  true_val: 0.9132467189717194
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7783611&charge=0
   cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1306,7 +1306,7 @@
       spin: 1
 - name: Atomization energy of SiCl4 (Silane, tetrachloro-)
   type: ae
-  true_val: 0.603416440746
+  true_val: 0.61082048557795
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10026047&charge=0
   cmd: energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1327,7 +1327,7 @@
       spin: 1
 - name: Atomization energy of N2O (Nitrous oxide)
   type: ae
-  true_val: 0.42028181531
+  true_val: 0.4309595870414922
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10024972&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -1347,7 +1347,7 @@
       spin: 2
 - name: Atomization energy of ClNO (Nitrosyl chloride)
   type: ae
-  true_val: 0.29811081066199996
+  true_val: 0.3043242850849724
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2696926&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
@@ -1373,7 +1373,7 @@
       spin: 2
 - name: Atomization energy of NF3 (Nitrogen trifluoride)
   type: ae
-  true_val: 0.3157493542
+  true_val: 0.3259487107269662
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7783542&charge=0
   cmd: energy(systems[1]) + 3 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1394,7 +1394,7 @@
       spin: 1
 - name: Atomization energy of O3 (Ozone)
   type: ae
-  true_val: 0.22703102238599998
+  true_val: 0.23353974733519417
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10028156&charge=0
   cmd: 3 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -1409,7 +1409,7 @@
       spin: 2
 - name: Atomization energy of F2O (Difluorine monoxide)
   type: ae
-  true_val: 0.142688999474
+  true_val: 0.147746531636132
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=7783417&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1429,7 +1429,7 @@
       spin: 1
 - name: Atomization energy of C2F4 (Tetrafluoroethylene)
   type: ae
-  true_val: 0.9093657576920001
+  true_val: 0.9306392871199229
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=116143&charge=0
   cmd: 2 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1450,7 +1450,7 @@
       spin: 1
 - name: Atomization energy of CF3CN (Acetonitrile, trifluoro-)
   type: ae
-  true_val: 0.9966177022760001
+  true_val: 1.0189619704950048
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=353855&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1476,7 +1476,7 @@
       spin: 1
 - name: Atomization energy of CH3CCH (propyne)
   type: ae
-  true_val: 1.0687982331739998
+  true_val: 1.122647281694862
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74997&charge=0
   cmd: 3 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1498,7 +1498,7 @@
       spin: 1
 - name: Atomization energy of CH2CCH2 (allene)
   type: ae
-  true_val: 1.0662082505339998
+  true_val: 1.1193351199127919
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=463490&charge=0
   cmd: 3 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1518,9 +1518,9 @@
       moldesc: H 0 0 0
       basis: 6-311++G(3df,3pd)
       spin: 1
-- name: Atomization energy of C3H4 (Cyclopropene)
+- name: Atomization energy of C3H4 (cyclopropene)
   type: ae
-  true_val: 1.0329193560139998
+  true_val: 1.0867592918642996
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2781853&charge=0
   cmd: 3 * energy(systems[1]) + 4 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1542,7 +1542,7 @@
       spin: 1
 - name: Atomization energy of C3H6 (Cyclopropane)
   type: ae
-  true_val: 1.2795314089179997
+  true_val: 1.3583377839416348
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75194&charge=0
   cmd: 3 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1565,7 +1565,7 @@
       spin: 1
 - name: Atomization energy of C3H8 (Propane)
   type: ae
-  true_val: 1.5023003863419997
+  true_val: 1.6026217765634614
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=74986&charge=0
   cmd: 3 * energy(systems[1]) + 8 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1611,7 +1611,7 @@
       spin: 1
 - name: Atomization energy of C4H6 (Methylenecyclopropane)
   type: ae
-  true_val: 1.4948389510599998
+  true_val: 1.5770124578564417
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=6142730&charge=0
   cmd: 4 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1634,7 +1634,7 @@
       spin: 1
 - name: Atomization energy of C4H6 (Cyclobutene)
   type: ae
-  true_val: 1.5110263425599997
+  true_val: 1.595316267094559
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=822355&charge=0
   cmd: 4 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1657,7 +1657,7 @@
       spin: 1
 - name: Atomization energy of CH3CH(CH3)CH3 (Isobutane)
   type: ae
-  true_val: 1.9468899504879997
+  true_val: 2.0618417332973946
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75285&charge=0
   cmd: 4 * energy(systems[1]) + 10 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1681,7 +1681,7 @@
       spin: 1
 - name: Atomization energy of C6H6 (Benzene)
   type: ae
-  true_val: 2.080738729804
+  true_val: 2.178210132307071
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=71432&charge=0
   cmd: 6 * energy(systems[1]) + 6 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1704,7 +1704,7 @@
       spin: 1
 - name: Atomization energy of CH2F2 (Methane, difluoro-)
   type: ae
-  true_val: 0.6636297283279999
+  true_val: 0.6956949378694449
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75105&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1730,7 +1730,7 @@
       spin: 1
 - name: Atomization energy of CHF3 (Methane, trifluoro-)
   type: ae
-  true_val: 0.7041629566439999
+  true_val: 0.7290291564411489
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75467&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1756,7 +1756,7 @@
       spin: 1
 - name: Atomization energy of CH2Cl2 (Methylene chloride)
   type: ae
-  true_val: 0.560152304264
+  true_val: 0.5888162095180292
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75092&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1782,7 +1782,7 @@
       spin: 1
 - name: Atomization energy of CHCl3 (Chloroform)
   type: ae
-  true_val: 0.527164304786
+  true_val: 0.5467282972164165
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=67663&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1808,7 +1808,7 @@
       spin: 1
 - name: Atomization energy of CH3CN (Acetonitrile)
   type: ae
-  true_val: 0.9407045476359999
+  true_val: 0.9845501620469874
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75058&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1834,7 +1834,7 @@
       spin: 1
 - name: Atomization energy of HCOOH (Formic acid)
   type: ae
-  true_val: 0.764981843108
+  true_val: 0.79755964036858
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=64186&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1860,7 +1860,7 @@
       spin: 1
 - name: Atomization energy of CH3CONH2 (Acetamide)
   type: ae
-  true_val: 1.310698802952
+  true_val: 1.3813046857365314
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=60355&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + energy(systems[3]) + 5 * energy(systems[4])
     - energy(systems[0])
@@ -1894,7 +1894,7 @@
       spin: 1
 - name: Atomization energy of C2H5N (Aziridine)
   type: ae
-  true_val: 1.07823262582
+  true_val: 1.1462382080595506
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=151564&charge=0
   cmd: energy(systems[1]) + 5 * energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1921,7 +1921,7 @@
       spin: 2
 - name: Atomization energy of C2N2 (Cyanogen)
   type: ae
-  true_val: 0.7834202342259999
+  true_val: 0.7989299995232048
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=460195&charge=0
   cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
@@ -1970,7 +1970,7 @@
       spin: 2
 - name: Atomization energy of CH2CO (Ketene)
   type: ae
-  true_val: 0.8172956836379999
+  true_val: 0.8478682377413238
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=463514&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + 2 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -1996,7 +1996,7 @@
       spin: 1
 - name: Atomization energy of C2H4O (Ethylene oxide)
   type: ae
-  true_val: 0.9801941652999999
+  true_val: 1.0356265403310791
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75218&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -2023,7 +2023,7 @@
       spin: 1
 - name: Atomization energy of C2H2O2 (Ethanedial)
   type: ae
-  true_val: 0.9729726842919999
+  true_val: 1.0088219302844814
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=107222&charge=0
   cmd: 2 * energy(systems[1]) + 2 * energy(systems[2]) + 2 * energy(systems[3]) -
     energy(systems[0])
@@ -2050,7 +2050,7 @@
       spin: 2
 - name: Atomization energy of CH3CH2OH (Ethanol)
   type: ae
-  true_val: 1.212165198692
+  true_val: 1.289478918277514
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=64175&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + 6 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -2078,7 +2078,7 @@
       spin: 1
 - name: Atomization energy of CH3OCH3 (Dimethyl ether)
   type: ae
-  true_val: 1.1929383863879999
+  true_val: 1.2702958467922134
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=115106&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) + 6 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -2105,7 +2105,7 @@
       spin: 1
 - name: Atomization energy of C2H4O (Ethylene oxide)
   type: ae
-  true_val: 0.9801941652999999
+  true_val: 1.0356265403310791
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75218&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -2160,7 +2160,7 @@
       spin: 1
 - name: Atomization energy of CH2CHF (Ethene, fluoro-)
   type: ae
-  true_val: 0.8684021352019999
+  true_val: 0.9109332468843614
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75025&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -2187,7 +2187,7 @@
       spin: 1
 - name: Atomization energy of CH3CH2Cl (Ethyl chloride)
   type: ae
-  true_val: 1.0359587768179999
+  true_val: 1.100105143074374
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75003&charge=0
   cmd: 2 * energy(systems[1]) + 5 * energy(systems[2]) + energy(systems[3]) - energy(systems[0])
   systems:
@@ -2214,7 +2214,7 @@
       spin: 1
 - name: Atomization energy of CH3COF (Acetyl fluoride)
   type: ae
-  true_val: 1.076751003398
+  true_val: 1.1243715415894617
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=557993&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + energy(systems[3]) + 3 * energy(systems[4])
     - energy(systems[0])
@@ -2247,7 +2247,7 @@
       spin: 1
 - name: Atomization energy of CH3COCl (Acetyl Chloride)
   type: ae
-  true_val: 1.017242343446
+  true_val: 1.0632020974274645
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=75365&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) + energy(systems[3]) + 3 * energy(systems[4])
     - energy(systems[0])
@@ -2308,7 +2308,7 @@
       spin: 1
 - name: Atomization energy of C4H4O (Furan)
   type: ae
-  true_val: 1.514896081328
+  true_val: 1.5828697692205822
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=110009&charge=0
   cmd: energy(systems[1]) + 4 * energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -2335,7 +2335,7 @@
       spin: 1
 - name: Atomization energy of C4H5N (Pyrrole)
   type: ae
-  true_val: 1.626730008204
+  true_val: 1.706826737379271
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=109977&charge=0
   cmd: energy(systems[1]) + 5 * energy(systems[2]) + 4 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -2363,7 +2363,7 @@
       spin: 2
 - name: Atomization energy of H2 (Hydrogen diatomic)
   type: ae
-  true_val: 0.16457054398399998
+  true_val: 0.1745001973566661
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=1333740&charge=0
   cmd: 2 * energy(systems[1]) - energy(systems[0])
   systems:
@@ -2378,7 +2378,7 @@
       spin: 1
 - name: Atomization energy of HS (Mercapto radical)
   type: ae
-  true_val: 0.13368500100199998
+  true_val: 0.13977767786399725
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=13940211&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -2399,7 +2399,7 @@
       spin: 1
 - name: Atomization energy of C2H (Ethynyl radical)
   type: ae
-  true_val: 0.408843994916
+  true_val: 0.42224554387859353
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2122487&charge=0
   cmd: 2 * energy(systems[1]) + energy(systems[2]) - energy(systems[0])
   systems:
@@ -2420,7 +2420,7 @@
       spin: 1
 - name: Atomization energy of CH3O (Methoxy radical)
   type: ae
-  true_val: 0.6009331044499999
+  true_val: 0.6327044303658075
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=2143682&charge=0
   cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
   systems:
@@ -2445,9 +2445,36 @@
       moldesc: H 0 0 0
       basis: 6-311++G(3df,3pd)
       spin: 1
+- name: Atomization energy of CH3S (thiomethoxy)
+  type: ae
+  true_val: 0.6061907162553855
+  ref: https://cccbdb.nist.gov/exp2x.asp?casno=7175759&charge=0
+  cmd: energy(systems[1]) + energy(systems[2]) + 3 * energy(systems[3]) - energy(systems[0])
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: C -2.0821 0.0002 -0.0059; S 1.3024 0.0000 0.0008; H -2.7904 -0.0147
+        1.9283; H -2.7787 1.6985 -0.9405; H -2.7770 -1.6853 -0.9647
+      basis: 6-311++G(3df,3pd)
+      spin: 1
+  - type: mol
+    kwargs:
+      moldesc: C 0 0 0
+      basis: 6-311++G(3df,3pd)
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: S 0 0 0
+      basis: 6-311++G(3df,3pd)
+      spin: 2
+  - type: mol
+    kwargs:
+      moldesc: H 0 0 0
+      basis: 6-311++G(3df,3pd)
+      spin: 1
 - name: Atomization energy of NO2 (Nitrogen dioxide)
   type: ae
-  true_val: 0.35334980805599997
+  true_val: 0.36174713397925157
   ref: https://cccbdb.nist.gov/exp2x.asp?casno=10102440&charge=0
   cmd: energy(systems[1]) + 2 * energy(systems[2]) - energy(systems[0])
   systems:
