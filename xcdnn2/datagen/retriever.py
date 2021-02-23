@@ -309,7 +309,7 @@ class System(object):
         best_ene = 9e99
         for spin in spins:
             try:
-                mol = gto.M(atom=moldesc, charge=charge, basis=basis, spin=spin, unit="Bohr")
+                mol = gto.M(atom=moldesc, charge=charge, basis="3-21G", spin=spin, unit="Bohr")
                 if spin == 0:
                     m = dft.RKS(mol)
                 else:
@@ -319,6 +319,8 @@ class System(object):
                 if ene < best_ene:
                     best_spin = spin
                     best_ene = ene
+                else:
+                    break
             except Exception as e:
                 print(e)
         return best_spin
