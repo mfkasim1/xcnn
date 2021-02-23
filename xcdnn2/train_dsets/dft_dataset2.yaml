@@ -518,7 +518,7 @@
   - type: mol
     kwargs:
       moldesc: He 0 0 0
-      basis: 6-311+G**
+      basis: 6-311+G(2d,p)
 
 - name: Density profile of Li
   type: dens
