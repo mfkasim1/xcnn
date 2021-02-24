@@ -53,13 +53,15 @@ class LitDFTXC(pl.LightningModule):
 
         # set the weights
         weights = {
-            "ie": hparams.get("iew", 440.),
+            "ie": hparams.get("iew", 1340.),
             "ae": hparams.get("aew", 1340.),
             "dm": hparams.get("dmw", 220.),
             "dens": hparams.get("densw", 170.),
         }
-        self.dweights = {  # weights from the dataset
-            "ie": 440.0,
+        # set arbitrarily, but more weights on the energy as they are the
+        # ones we know from experiments (not from simulations)
+        self.dweights = {
+            "ie": 1340.0,
             "ae": 1340.0,
             "dm": 220.0,
             "dens": 170.0,
@@ -184,7 +186,7 @@ class LitDFTXC(pl.LightningModule):
                             help="Always propagate gradient even if the iteration does not converge")
 
         # hparams for the loss function
-        parser.add_argument("--iew", type=float, default=440.0,
+        parser.add_argument("--iew", type=float, default=1340.0,
                             help="Weight of ionization energy")
         parser.add_argument("--aew", type=float, default=1340.0,
                             help="Weight of atomization energy")
