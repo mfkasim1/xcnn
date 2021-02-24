@@ -10,13 +10,20 @@ from dqc.utils.datastruct import SpinParam
 from pyscf import dft, scf, cc
 from xcdnn2.entry import Entry, System
 from xcdnn2.kscalc import BaseKSCalc, DQCKSCalc, PySCFKSCalc
-from xcdnn2.xcmodels import BaseNNXC
+from xcdnn2.xcmodels import BaseNNXC, PureXC
 from xcdnn2.utils import hashstr
 
 class BaseEvaluator(torch.nn.Module):
     """
     Object containing trainable parameters and the interface to the NN models.
     """
+    @abstractmethod
+    def get_xc(self) -> BaseNNXC:
+        """
+        Returns the xc model in the evaluator.
+        """
+        pass
+
     @abstractmethod
     def calc_loss_function(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
         """
@@ -54,6 +61,9 @@ class XCDNNEvaluator(BaseEvaluator):
 
         # register system-specific buffer
         self._init_dm_buffer(entries)
+
+    def get_xc(self):
+        return self.xc
 
     def calc_loss_function(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
         # calculate the loss function of the entry
@@ -187,6 +197,9 @@ class PySCFEvaluator(BaseEvaluator):
             self.calc = "ccsdt"
         else:
             self.calc = "ksdft"
+
+    def get_xc(self):
+        return PureXC(self.xc)
 
     def calc_loss_function(self, entry_raw: Union[Entry, Dict]) -> torch.Tensor:
         # calculate the loss function of the entry

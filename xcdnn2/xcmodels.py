@@ -153,6 +153,20 @@ class NNGGA(BaseNNXC):
         res = res.squeeze(-1)
         return res
 
+class PureXC(BaseNNXC):
+    # BaseNNXC wrapper for xc from libxc
+    def __init__(self, xcstr: str):
+        super().__init__()
+        self.xc = get_xc(xcstr)
+
+    @property
+    def family(self) -> int:
+        return self.xc.family
+
+    def get_edensityxc(self, densinfo: Union[ValGrad, SpinParam[ValGrad]]) -> torch.Tensor:
+        xc_ene = self.xc.get_edensityxc(densinfo)
+        return xc_ene
+
 class HybridXC(BaseNNXC):
     def __init__(self, xcstr: str, nnmodel: torch.nn.Module, *,
                  ninpmode: int = 1,  # mode to decide how to transform the density to nn input
