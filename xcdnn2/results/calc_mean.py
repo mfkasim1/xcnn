@@ -1,6 +1,6 @@
 import argparse
 import numpy as np
-from typing import Tuple, List
+from typing import Tuple, List, Optional
 
 def input_parser():
     # parse the input from command line
@@ -11,11 +11,12 @@ def input_parser():
     args = parser.parse_args()
     return args
 
-def parse_file(fname: str) -> Tuple[List[str], List[str], np.ndarray]:
+def parse_file(fname: str) -> Tuple[List[str], List[str], np.ndarray, Optional[np.ndarray]]:
     # parse the results file and returns:
     # * list of checkpoints
     # * list of entry names
     # * entry values in a 2D numpy array
+    # * a 1D numpy array of the number of bond (or None)
     chkpts = []
     chkpt_marker = "# Checkpoints:"
     entry_marker = "out of"
@@ -37,7 +38,22 @@ def parse_file(fname: str) -> Tuple[List[str], List[str], np.ndarray]:
                 names.append(components[1].strip())
             else:
                 pass
-    return chkpts, names, np.array(entries)
+
+    # get the number of bonds
+    nentries = len(entries)
+    nbonds: Optiona[np.ndarray] = None
+    if nentries == 110:
+        nbonds = np.array([1, 1, 1, 2, 3, 4, 1, 2, 3, 1, 2, 1, 2, 3, 4, 2, 3, 2, 1, 1, 1, 3, 5, 7, 1, 2, 1, 2, 3, 5, 1,
+                           5, 1, 1, 3, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 4, 5, 2, 2, 3, 3, 3, 3, 4, 4, 2, 2, 3,
+                           4, 4, 2, 2, 3, 2, 2, 5, 5, 6, 6, 7, 9, 10, 9, 10, 10, 13, 12, 4, 4, 4, 4, 5, 4, 8, 7, 3, 9, 4,
+                           6, 5, 8, 8, 6, 8, 5, 7, 6, 6, 10, 8, 9, 1, 1, 2, 4, 2], dtype=np.float64)
+    elif nentries == 105:
+        nbonds = np.array([1, 1, 1, 3, 4, 1, 2, 3, 1, 2, 1, 2, 3, 4, 3, 2, 1, 1, 1, 3, 5, 7, 1, 2, 1, 2, 3, 5, 1, 5, 1,
+                           1, 3, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 4, 2, 2, 3, 3, 3, 3, 4, 4, 2, 2, 3, 4, 4, 2,
+                           2, 3, 2, 2, 5, 5, 6, 6, 7, 9, 10, 10, 10, 13, 12, 4, 4, 4, 4, 5, 4, 8, 7, 3, 4, 6, 5, 8, 8, 6,
+                           5, 7, 6, 6, 3, 8, 9, 1, 1, 2, 4, 4, 2], dtype=np.float64)
+
+    return chkpts, names, np.array(entries), nbonds
 
 def np2str(a: np.ndarray, sep: str = ", ", fmt: str = "%.4e") -> str:
     # convert the numpy 1D array to a string
@@ -104,18 +120,26 @@ def get_subsets(entry_names: List[str], values: np.ndarray) -> Tuple[List[str], 
 
 def main():
     args = input_parser()
-    chkpts, names, values = parse_file(args.fname)
+    chkpts, names, values, nbonds = parse_file(args.fname)
 
     # calculate the error statistics for all groups
     print("Checkpoints: %s" % "|".join(chkpts))
     print_stats(values)
+    if nbonds is not None:
+        print("Per bond information:")
+        vals_per_bond = values / nbonds[:, None]
+        print_stats(vals_per_bond)
 
     if args.calcsubset:
         subset_names, entryname_subsets, val_subsets = get_subsets(names, values)
-        for sname, vals in zip(subset_names, val_subsets):
+        if nbonds is not None:
+            _, _, valpbond_subsets = get_subsets(names, vals_per_bond)
+        for sname, vals, vpbond in zip(subset_names, val_subsets, valpbond_subsets):
             print("----------------------------")
             print("Subset: %s" % sname)
             print_stats(vals)
+            print("  Per-bond information:")
+            print_stats(vpbond)
 
 if __name__ == "__main__":
     main()
