@@ -90,6 +90,8 @@ class LitDFTXC(pl.LightningModule):
             model_nnlda = HybridXC(hparams["libxc"], nnmodel,
                                    ninpmode=hparams["ninpmode"],
                                    sinpmode=hparams.get("sinpmode", 1),
+                                   aweight0=hparams.get("nnweight0", 0.0),
+                                   bweight0=hparams.get("xcweight0", 1.0),
                                    outmultmode=hparams["outmultmode"])
             always_attach = hparams.get("always_attach", False)
             return XCDNNEvaluator(model_nnlda, weights,
@@ -172,6 +174,10 @@ class LitDFTXC(pl.LightningModule):
                             help="Add skip connection in the neural network")
         parser.add_argument("--libxc", type=str, default="lda_x",
                             help="Initial xc to be used")
+        parser.add_argument("--nnweight0", type=float, default=0.0,
+                            help="Initial weight of the nn in hybrid xc-nn")
+        parser.add_argument("--xcweight0", type=float, default=1.0,
+                            help="Initial weight of the xc in hybrid xc-nn")
         parser.add_argument("--ninpmode", type=int, default=1,
                             help="The mode to decide the transformation of density to the NN input")
         parser.add_argument("--sinpmode", type=int, default=1,
