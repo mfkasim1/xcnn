@@ -1,3 +1,4 @@
+import re
 import argparse
 import warnings
 from typing import Dict, List
@@ -82,11 +83,14 @@ class LitDFTXC(pl.LightningModule):
                 raise RuntimeError("Unimplemented nn for xc family %d" % family)
 
             # setup the xc nn model
-            nhid = hparams["nhid"]
-            ndepths = hparams["ndepths"]
-            nn_with_skip = hparams.get("nn_with_skip", False)
+            if hparams.get("nneq", None) is not None:
+                nhid = hparams["nhid"]
+                ndepths = hparams["ndepths"]
+                nn_with_skip = hparams.get("nn_with_skip", False)
 
             nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip).to(torch.double)
+            else:
+                nnmodel = construct_nn_model_from_eq(hparams["nneq"]).to(torch.double)
             model_nnlda = HybridXC(hparams["libxc"], nnmodel,
                                    ninpmode=hparams["ninpmode"],
                                    sinpmode=hparams.get("sinpmode", 1),
@@ -172,6 +176,9 @@ class LitDFTXC(pl.LightningModule):
                             help="The number of hidden layers depths")
         parser.add_argument("--nn_with_skip", action="store_const", const=True, default=False,
                             help="Add skip connection in the neural network")
+        parser.add_argument("--nneq", type=str, default=None,
+                            help=("Equation of the neural network. If specified, then other nn "
+                                  "architecture arguments are ignored (nhid, ndepths, nn_with_skip)."))
         parser.add_argument("--libxc", type=str, default="lda_x",
                             help="Initial xc to be used")
         parser.add_argument("--nnweight0", type=float, default=0.0,
@@ -276,3 +283,52 @@ def construct_nn_model(ninp: int, nhid: int, ndepths: int, with_skip: bool = Fal
         return torch.nn.Sequential(*layers)
     else:
         return NNModel(ninp, nhid, ndepths, with_skip)
+
+def construct_nn_model_from_eq(eq: str) -> torch.nn.Module:
+    # construct the neural network from the equations given
+    # variables in the equation must be x0, x1, x2, etc.
+    # this function uses _ModuleEq module
+
+    # parse the coefficients
+    coeff_pattern = re.compile(r"(?:^|[^a-zA-z_-])([-+]?(?:(?:\d*\.\d+)|(?:\d+\.?))(?:[Ee][+-]?\d+)?)")
+    coeffs = re.findall(coeff_pattern, eq)
+
+    # find the variables (starting with x)
+    var_pattern = re.compile(r"([^\d\w])x([\d]+)([^\d])")
+    var_repl_pattern = r"\1x[..., \2]\3"
+    eq = re.sub(var_pattern, var_repl_pattern, eq)
+
+    # find the functions and add a "torch." prefix
+    fcn_pattern = re.compile(r"((?!x[^\w])[a-zA-Z_][\w]*)")
+    fcn_repl_pattern = r"torch.\1"
+    eq = re.sub(fcn_pattern, fcn_repl_pattern, eq)
+
+    # substitute the coefficients with variables
+    coeff_vals: List[float] = []
+    for i, coeff in enumerate(coeffs):
+        coeff_name = "p[%d]" % i
+        eq = eq.replace(coeff, coeff_name)
+        coeff_vals.append(float(coeff))
+
+    print(eq)
+    return _ModuleEq(eq, coeff_vals)
+
+class _ModuleEq(torch.nn.Module):
+    # a torch module constructed from an equation
+    def __init__(self, eq: str, coeffs: List[float]):
+        super().__init__()
+        self.eq = eq  # contains x as the variable and p as the parameters
+        self.coeffs = torch.nn.Parameter(torch.tensor(coeffs))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # x: (..., nfeats)
+        # y: (...,)
+
+        glob = {
+            "x": x,
+            "p": self.coeffs,
+            "torch": torch,
+        }
+        y = eval(self.eq, glob)
+        return y
+
