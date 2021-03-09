@@ -87,8 +87,9 @@ class LitDFTXC(pl.LightningModule):
                 nhid = hparams["nhid"]
                 ndepths = hparams["ndepths"]
                 nn_with_skip = hparams.get("nn_with_skip", False)
+                modeltype = hparams.get("modeltype", 1)
 
-            nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip).to(torch.double)
+                nnmodel = construct_nn_model(ninp, nhid, ndepths, nn_with_skip, modeltype).to(torch.double)
             else:
                 nnmodel = construct_nn_model_from_eq(hparams["nneq"]).to(torch.double)
             model_nnlda = HybridXC(hparams["libxc"], nnmodel,
@@ -176,6 +177,8 @@ class LitDFTXC(pl.LightningModule):
                             help="The number of hidden layers depths")
         parser.add_argument("--nn_with_skip", action="store_const", const=True, default=False,
                             help="Add skip connection in the neural network")
+        parser.add_argument("--modeltype", type=int, default=1,
+                            help="The neural network model type")
         parser.add_argument("--nneq", type=str, default=None,
                             help=("Equation of the neural network. If specified, then other nn "
                                   "architecture arguments are ignored (nhid, ndepths, nn_with_skip)."))
@@ -270,17 +273,33 @@ class NNModel(torch.nn.Module):
             x = y
         return x
 
-def construct_nn_model(ninp: int, nhid: int, ndepths: int, with_skip: bool = False):
+class ExpM1Activation(torch.nn.Module):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return torch.exp(x) - 1
+
+def construct_nn_model(ninp: int, nhid: int, ndepths: int, with_skip: bool = False, modeltype: int = 1):
     # construct the neural network model of the xc energy
     if not with_skip:
-        # old version, to enable loading the old models
-        layers = []
-        for i in range(ndepths):
-            n1 = ninp if i == 0 else nhid
-            layers.append(torch.nn.Linear(n1, nhid))
-            layers.append(torch.nn.Softplus())
-        layers.append(torch.nn.Linear(nhid, 1, bias=False))
-        return torch.nn.Sequential(*layers)
+        if modeltype == 1:
+            # old version, to enable loading the old models
+            layers = []
+            for i in range(ndepths):
+                n1 = ninp if i == 0 else nhid
+                layers.append(torch.nn.Linear(n1, nhid))
+                layers.append(torch.nn.Softplus())
+            layers.append(torch.nn.Linear(nhid, 1, bias=False))
+            return torch.nn.Sequential(*layers)
+        elif modeltype == 2:
+            layers = []
+            for i in range(ndepths):
+                n1 = ninp if i == 0 else nhid
+                layers.append(torch.nn.Linear(n1, nhid))
+                if i < ndepths - 1:
+                    layers.append(torch.nn.Softplus())
+                else:
+                    layers.append(ExpM1Activation())
+            layers.append(torch.nn.Linear(nhid, 1, bias=False))
+            return torch.nn.Sequential(*layers)
     else:
         return NNModel(ninp, nhid, ndepths, with_skip)
 
@@ -332,3 +351,9 @@ class _ModuleEq(torch.nn.Module):
         y = eval(self.eq, glob)
         return y
 
+# if __name__ == "__main__":
+#     s = "-2.04696 + (1.1819856 * log(abs(square(sinh((0.2608374 + cos(0.23133296 + x1)) + (-1.0020039 * x0))) + cosh(x1))))"
+#     s = "square(x0 + x1)"
+#     model = construct_nn_model_from_eq(s)
+#     x = torch.tensor([[1.0, 2.0], [-1.0, 2.0], [0.0, 2.0]], requires_grad=True)
+#     print(model(x))
