@@ -83,7 +83,7 @@ class LitDFTXC(pl.LightningModule):
                 raise RuntimeError("Unimplemented nn for xc family %d" % family)
 
             # setup the xc nn model
-            if hparams.get("nneq", None) is not None:
+            if hparams.get("nneq", None) is None:
                 nhid = hparams["nhid"]
                 ndepths = hparams["ndepths"]
                 nn_with_skip = hparams.get("nn_with_skip", False)
