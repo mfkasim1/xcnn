@@ -136,7 +136,7 @@ def main():
             _, _, valpbond_subsets = get_subsets(names, vals_per_bond)
         for sname, vals, vpbond in zip(subset_names, val_subsets, valpbond_subsets):
             print("----------------------------")
-            print("Subset: %s" % sname)
+            print("Subset: %d %s" % (len(val_subsets), sname))
             print_stats(vals)
             print("  Per-bond information:")
             print_stats(vpbond)

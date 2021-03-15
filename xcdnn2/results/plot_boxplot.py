@@ -15,31 +15,31 @@ def parse_file(fname: str) -> Tuple[List[str], List[str], np.ndarray]:
     # returns: (1) list of headers, (2) list of groups of the entries,
     #          (3) the values per entries in 2D numpy array
     delim = ","
-    group_col = 2
+    group_col = 1
     # load the header
     headers = list(np.loadtxt(fname, delimiter=delim, max_rows=1, dtype=str))
     ncols = len(headers)
     groups = list(np.loadtxt(fname, delimiter=delim, skiprows=1, dtype=str, usecols=[group_col]).ravel())
     content = np.abs(np.loadtxt(fname, delimiter=delim, skiprows=1, usecols=list(range(group_col + 1, ncols))))
-    return headers[1:], groups, content
+    return headers[2:], groups, content
 
 def main():
     # parameters to be set by the user
     selected_headers = [
+        "PBE",
         "XCNN-PBE",
-        "XCNN-PBE-2",
         "XCNN-PBE-IP",
-        "CCSD (basis: cc-pvqz)",
-        "CCSD (basis: 6-311++G**)",
+        "CCSD (cc-pvqz)",
+        "CCSD-T (cc-pvqz)",
     ]
-    header_colors = ["C0", "C1", "C2", "C3", "C4"]
+    header_colors = ["C%d" % i for i in range(len(selected_headers))]
     group_order = {
         "IP 18": lambda g: g == "IP 18",
-        "AE 110": lambda g: g.startswith("AE"),
-        "AE 18 HC": lambda g: g == "AE 18 HC",
-        "AE 28 subs HC": lambda g: g == "AE 28 subs HC",
+        "AE 104": lambda g: g.startswith("AE"),
+        "AE 16 HC": lambda g: g == "AE 16 HC",
+        "AE 25 subs HC": lambda g: g == "AE 25 subs HC",
         "AE 33 others-1": lambda g: g == "AE 33 others-1",
-        "AE 31 others-2": lambda g: g == "AE 31 others-2",
+        "AE 30 others-2": lambda g: g == "AE 30 others-2",
     }
 
     # plot parameters
@@ -54,6 +54,7 @@ def main():
 
     # obtain the header idxs
     header_idxs = np.array([headers.index(sh) for sh in selected_headers])
+    print(headers)
 
     # get the data that belongs to each group
     all_data = []
