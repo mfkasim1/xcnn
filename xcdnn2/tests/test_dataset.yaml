@@ -53,3 +53,12 @@
     kwargs:
       moldesc: H 0.7005 0 0; H -0.7005 0 0
       basis: 6-311++G**
+
+# force at the equilibrium position
+- name: Density profile of H2
+  type: force
+  systems:
+  - type: mol
+    kwargs:
+      moldesc: H 0.7005 0 0; H -0.7005 0 0
+      basis: 6-311++G**

@@ -23,6 +23,11 @@ class BaseKSCalc(object):
         # returns the density profile in the given rgrid (npoints, 3)
         pass
 
+    @abstractmethod
+    def force(self) -> torch.Tensor:
+        # returns the force experienced by each atoms (natoms, ndim)
+        pass
+
 class DQCKSCalc(BaseKSCalc):
     """
     Interface to DQC's KS calculation.
@@ -47,6 +52,14 @@ class DQCKSCalc(BaseKSCalc):
         # returns the total density profile in the given grid
         dmtot = self.aodmtot()
         return self.qc.get_system().get_hamiltonian().aodm2dens(dmtot, rgrid)
+
+    def force(self) -> torch.Tensor:
+        # returns the force for each atom
+        ene = self.energy()
+        atompos = self.qc.get_system().atompos
+        is_grad_enabled = torch.is_grad_enabled()
+        f, = torch.autograd.grad(ene, atompos, create_graph=is_grad_enabled, retain_graph=True)
+        return f
 
 class PySCFKSCalc(BaseKSCalc):
     """
@@ -81,3 +94,6 @@ class PySCFKSCalc(BaseKSCalc):
         ao = numint.eval_ao(self.mol, rgrid.detach())
         dens = numint.eval_rho(self.mol, ao, dmtot)  # (*BG, ngrid)
         return torch.as_tensor(dens)
+
+    def force(self) -> torch.Tensor:
+        raise NotImplementedError()

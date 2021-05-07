@@ -40,7 +40,7 @@ class BaseEvaluator(torch.nn.Module):
         pass
 
     @abstractmethod
-    def run(self, system: System) -> BaseKSCalc:
+    def run(self, system: System, entry_type: str) -> BaseKSCalc:
         """
         Run the Quantum Chemistry calculation of the given system and return
         the post-run QCCalc object
@@ -86,7 +86,7 @@ class XCDNNEvaluator(BaseEvaluator):
             warnings.simplefilter("always", xt.ConvergenceWarning)
 
             # evaluate the command
-            qcs = [self.run(syst) for syst in entry.get_systems()]
+            qcs = [self.run(syst, entry.entry_type) for syst in entry.get_systems()]
             val = entry.get_val(qcs)
 
             # compare the calculated value with the true value
@@ -109,14 +109,15 @@ class XCDNNEvaluator(BaseEvaluator):
 
         return loss
 
-    def run(self, system: System) -> BaseKSCalc:
+    def run(self, system: System, entry_type: str) -> BaseKSCalc:
         # run the Kohn Sham DFT for the system
 
         # check the buffer for the initial density matrix
         dm0, buffer_name = self._get_dm0_buffer(system)
 
         # run ks
-        syst = system.get_dqc_system()
+        pos_reqgrad = entry_type in ["force"]
+        syst = system.get_dqc_system(pos_reqgrad=pos_reqgrad)
         qc = KS(syst, xc=self.xc).run(dm0=dm0, bck_options={"max_niter": 50})
         dm = qc.aodm()
 
@@ -218,7 +219,7 @@ class PySCFEvaluator(BaseEvaluator):
         entry = Entry.create(entry_raw)
 
         # evaluate the command
-        qcs = [self.run(syst) for syst in entry.get_systems()]
+        qcs = [self.run(syst, entry.entry_type) for syst in entry.get_systems()]
         val = entry.get_val(qcs)
 
         # compare the calculated value with the true value
@@ -227,7 +228,7 @@ class PySCFEvaluator(BaseEvaluator):
 
         return loss
 
-    def run(self, system: System) -> BaseKSCalc:
+    def run(self, system: System, entry_type: str) -> BaseKSCalc:
         # run the Kohn Sham DFT for the system
 
         # run ks in pyscf

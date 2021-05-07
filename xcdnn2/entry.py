@@ -58,12 +58,16 @@ class System(dict):
         else:
             raise RuntimeError("Unknown system type: %s" % systype)
 
-    def get_dqc_system(self) -> BaseSystem:
+    def get_dqc_system(self, pos_reqgrad: bool = False) -> BaseSystem:
         # convert the system dictionary to DQC system
 
         systype = self["type"]
         if systype == "mol":
-            return Mol(**self["kwargs"])
+            diffparams = []
+            if pos_reqgrad:
+                diffparams.append("atompos")
+            mol = Mol(**self["kwargs"], diffparams=diffparams)
+            return mol
         else:
             raise RuntimeError("Unknown system type: %s" % systype)
 
@@ -105,6 +109,7 @@ class Entry(dict):
                 "ae": EntryAE,
                 "dm": EntryDM,
                 "dens": EntryDens,
+                "force": EntryForce,
             }[tpe](**kwargs)
             cls.created_entries[s] = obj
         return cls.created_entries[s]
@@ -322,3 +327,26 @@ class EntryDens(Entry):
             self._grid = grid
 
         return self._grid
+
+class EntryForce(Entry):
+    """Entry for force at the experimental equilibrium position"""
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        assert len(self.get_systems()) == 1, "force entry can only have 1 system"
+
+    @property
+    def entry_type(self) -> str:
+        return "force"
+
+    def _get_true_val(self) -> torch.Tensor:
+        # get the density matrix from PySCF's CCSD calculation
+        return torch.tensor(0.0, dtype=self.dtype, device=self.device)
+
+    def get_val(self, qcs: List[BaseKSCalc]) -> torch.Tensor:
+        return qcs[0].force()
+
+    def get_loss(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
+        return torch.mean((val - true_val) ** 2)
+
+    def get_deviation(self, val: torch.Tensor, true_val: torch.Tensor) -> torch.Tensor:
+        return (val - true_val) * 627.5 * 1.88972687777  # MAE in kcal/mol/angstrom

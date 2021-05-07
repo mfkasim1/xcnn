@@ -9,7 +9,7 @@ from xcdnn2.xcmodels import HybridXC
 
 dtype = torch.float64
 filedir = os.path.dirname(os.path.realpath(__file__))
-dset_types = ["ie", "ae", "dm", "dens"]
+dset_types = ["ie", "ae", "dm", "dens", "force"]
 
 class SimpleNN(torch.nn.Module):
     def __init__(self, w1, w2):
@@ -51,6 +51,7 @@ def test_evaluator_nn_grad(dset_type):
         "ae": 1.0,
         "dm": 1.0,
         "dens": 1.0,
+        "force": 1.0,
     }
     w1 = torch.nn.Parameter(torch.randn(2, 2, dtype=dtype))
     w2 = torch.nn.Parameter(torch.randn(2, 1, dtype=dtype))
@@ -65,7 +66,7 @@ def test_evaluator_nn_grad(dset_type):
 
 @pytest.mark.parametrize(
     "dset_type,use_pyscf",
-    itertools.product(dset_types, [False, True][1:])
+    itertools.product(dset_types, [False, True])
 )
 def test_evaluator_nn(dset_type, use_pyscf):
     # check the value of get_loss
@@ -78,6 +79,7 @@ def test_evaluator_nn(dset_type, use_pyscf):
         "ae": 1.2724805701,
         "dm": 0.0265032992,
         "dens": 0.2927950191,
+        "force": 0.0,
     }[dset_type]
     true_lossval = torch.tensor(true_lossval, dtype=dtype)
 
@@ -87,6 +89,7 @@ def test_evaluator_nn(dset_type, use_pyscf):
         "ae": 1e3,
         "dm": 1e3,
         "dens": 1e3,
+        "force": 1e3,
     }
     if not use_pyscf:
         w1 = torch.nn.Parameter(torch.randn(2, 2, dtype=dtype))
