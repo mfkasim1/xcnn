@@ -42,6 +42,7 @@ def parse_file(fname: str) -> Tuple[List[str], List[str], np.ndarray, Optional[n
     # get the number of bonds
     nentries = len(entries)
     nbonds: Optiona[np.ndarray] = None
+    ignores = []
     if nentries == 110:
         nbonds = np.array([1, 1, 1, 2, 3, 4, 1, 2, 3, 1, 2, 1, 2, 3, 4, 2, 3, 2, 1, 1, 1, 3, 5, 7, 1, 2, 1, 2, 3, 5, 1,
                            5, 1, 1, 3, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 4, 5, 2, 2, 3, 3, 3, 3, 4, 4, 2, 2, 3,
@@ -52,6 +53,15 @@ def parse_file(fname: str) -> Tuple[List[str], List[str], np.ndarray, Optional[n
                            1, 3, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 4, 2, 2, 3, 3, 3, 3, 4, 4, 2, 2, 3, 4, 4, 2,
                            2, 3, 2, 2, 5, 5, 6, 6, 7, 9, 10, 10, 10, 13, 12, 4, 4, 4, 4, 5, 4, 8, 7, 3, 4, 6, 5, 8, 8, 6,
                            5, 7, 6, 6, 3, 8, 9, 1, 1, 2, 4, 4, 2], dtype=np.float64)
+        ignores = [96]
+        if fname.startswith("dens"):
+            ignores.extend([2, 8, 30, 44, 99, 100])
+
+    # ignore some invalid data
+    if len(ignores) != 0:
+        names = [name for i, name in enumerate(names) if i not in ignores]
+        entries = [entry for i, entry in enumerate(entries) if i not in ignores]
+        nbonds = np.array([nb for i, nb in enumerate(nbonds) if i not in ignores])
 
     return chkpts, names, np.array(entries), nbonds
 
