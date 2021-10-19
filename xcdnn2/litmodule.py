@@ -48,7 +48,7 @@ class LitDFTXC(pl.LightningModule):
             raise RuntimeError("Invalid value of nnxcmode: %s" % str(nnxcmode))
 
         self.evl = self._construct_model(hparams, entries)
-        self.hparams = hparams
+        self._hparams = hparams
 
     def _construct_model(self, hparams: Dict, entries: List[Dict] = []) -> XCDNNEvaluator:
 
@@ -112,7 +112,7 @@ class LitDFTXC(pl.LightningModule):
         params = list(self.parameters())
 
         # making optimizer for every type of datasets (to stabilize the gradients)
-        opt_str = self.hparams.get("optimizer", "adam").lower()
+        opt_str = self._hparams.get("optimizer", "adam").lower()
         if opt_str == "adam":
             opt_cls = torch.optim.Adam
         elif opt_str == "radam":
@@ -120,8 +120,8 @@ class LitDFTXC(pl.LightningModule):
             opt_cls = RAdam
         else:
             raise RuntimeError("Unknown optimizer %s" % opt_str)
-        wdecay = self.hparams.get("wdecay", 0.0)
-        opts = [opt_cls(params, lr=self.hparams["%slr" % tpe], weight_decay=wdecay) for tpe in self.weights]
+        wdecay = self._hparams.get("wdecay", 0.0)
+        opts = [opt_cls(params, lr=self._hparams["%slr" % tpe], weight_decay=wdecay) for tpe in self.weights]
         return opts
 
     def forward(self, x: Dict) -> torch.Tensor:
@@ -137,7 +137,7 @@ class LitDFTXC(pl.LightningModule):
     def training_step(self, train_batch: Dict, batch_idx: int, optimizer_idx: int) -> torch.Tensor:
         # obtain which optimizer should be performed based on the batch type
         tpe = train_batch["type"]
-        if self.hparams["split_opt"]:
+        if self._hparams["split_opt"]:
             idx = self.type_indices[tpe]
         else:
             idx = 0
