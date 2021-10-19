@@ -9,6 +9,7 @@ import numpy as np
 import torch
 from pyscf import gto, cc, scf
 from pyscf.dft import numint
+import dqc
 from dqc.utils.datastruct import SpinParam
 from dqc.system.mol import Mol
 from dqc.system.base_system import BaseSystem
@@ -63,10 +64,10 @@ class System(dict):
 
         systype = self["type"]
         if systype == "mol":
-            diffparams = []
+            atomzs, atomposs = dqc.parse_moldesc(self["kwargs"]["moldesc"])
             if pos_reqgrad:
-                diffparams.append("atompos")
-            mol = Mol(**self["kwargs"], diffparams=diffparams)
+                atomposs.requires_grad_()
+            mol = Mol(**self["kwargs"])
             return mol
         else:
             raise RuntimeError("Unknown system type: %s" % systype)
