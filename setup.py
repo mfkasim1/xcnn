@@ -16,7 +16,7 @@ setup(
     install_requires=[
         "numpy>=1.8.2",
         "pyyaml",
-        "pytorch_lightning",
+        "pytorch_lightning==1.0.0",
         "ray[tune]"
         # "pytorch>=1.8.0",
         # "radam"
